@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1>Yo! This is the home page of Sepehr Dadeh and this component is a demonstration one.</h1>
-  </div>
+  <div></div>
 </template>
 
 <script>
@@ -10,8 +8,4 @@ export default {
 }
 </script>
 
-<style scoped>
-h1 {
-  font-size: 30px;
-}
-</style>
+<style scoped></style>

@@ -2,7 +2,7 @@
   <div class="main-container w-[100%] flex flex-col justify-between">
     <header class="flex justify-between">
       <img class="w-[191px] h-[100px]" src="../assets/images/khamenei.png" alt="Khamenei">
-      <div class="navbar w-[50%] h-[100px] flex justify-between items-center rounded-[6px]">
+      <div class="navbar w-[50%] h-[70px] flex justify-between items-center rounded-xl translate-y-[20px]">
         <div class="w-[20%] flex items-center justify-center">
           <a class="text-[white]" href="#">ورود به سیستم</a>
         </div>

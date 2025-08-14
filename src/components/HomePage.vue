@@ -24,7 +24,7 @@
     </div>
     <main class="w-full h-full flex justify-center translate-y-[35px]">
       <div class="agreement-container w-[95%] h-[100%] flex justify-around gap-4">
-        <div class="announcement-container w-[25%] h-[750px] rounded-xl
+        <div class="announcement-container w-[25%] h-[730px] rounded-xl
          bg-[var(--body-bg)] flex justify-center items-center">
           <div class="announcement w-[100%] h-[100%] flex flex-col justify-start items-center">
             <div class="text-center flex justify-center items-center text-[white]
@@ -45,7 +45,7 @@
              w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">پایگاه اطلاعات قراردادهای کشور</a>
           </div>
         </div>
-        <div class="agreement-list-container w-[60%] h-[750px] rounded-xl
+        <div class="agreement-list-container w-[60%] h-[730px] rounded-xl
          bg-[var(--body-bg)] relative overflow-y-hidden">
           <h2 style="padding: 1rem" class="text-[18px] absolute top-[0] right-[10px]">لیست قراردهای فعال</h2>
           <div class="agreement-list w-[100%] h-[93%]
@@ -72,7 +72,7 @@
             <div class="bg-[red]"></div>
           </div>
         </div>
-        <div class="agreement-search-container w-[25%] h-[750px] rounded-xl bg-[var(--body-bg)]
+        <div class="agreement-search-container w-[25%] h-[730px] rounded-xl bg-[var(--body-bg)]
          flex justify-center items-center">
           <div class="agreement-search w-[100%] h-[100%] flex flex-col justify-start items-center">
             <a class="text-center flex justify-center items-center text-[white]

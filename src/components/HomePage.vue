@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .navbar {
-  background-color: rgba(20,21,62,0.7);
+  background-color: rgba(20, 21, 62, 0.7);
 }
 
 .other-links {

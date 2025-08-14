@@ -110,4 +110,9 @@ export default {
   margin-bottom: 0.5rem;
   border-radius: 6px;
 }
+
+.agreement-search > a {
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
 </style>

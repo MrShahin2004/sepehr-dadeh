@@ -8,9 +8,6 @@
         </div>
         <div class="other-links w-[80%] flex justify-end gap-5">
           <a class="text-[white] hover:text-blue-500" href="#">صفحه اصلی</a>
-          <a class="text-[white] hover:text-blue-500" href="#">شفافیت</a>
-          <a class="text-[white] hover:text-blue-500" href="#">راهنما</a>
-          <a class="text-[white] hover:text-blue-500" href="#">تماس با ما</a>
         </div>
       </div>
       <img class="w-[150px] h-[150px]" src="../assets/images/education.svg" alt="Education" style="margin-right: 2rem">

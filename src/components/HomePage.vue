@@ -58,46 +58,186 @@
           <h2 style="padding: 1rem" class="text-[18px] absolute top-[0] right-[10px]">لیست قراردهای فعال</h2>
           <div class="agreement-list w-[100%] h-[93%]
             flex flex-col items-center justify-start overflow-y-auto translate-y-[50px]">
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
-            <a class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
-              hover:bg-[#cbfbf1] transition" href="#"></a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p class="text-center text-[13px] opacity-50">1404/04/24</p>
+                <p class="text-[13px] opacity-50">Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
+            <a style="direction: rtl" class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px]
+              hover:bg-[#cbfbf1] transition relative" href="#">
+              <div class="text-container w-[100%] h-[100%]
+               flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]">
+                <p>Hello there</p>
+                <p>1403/04/24</p>
+                <p>Some test text</p>
+              </div>
+            </a>
           </div>
         </div>
         <div class="agreement-search-container w-[25%] h-[730px] rounded-xl bg-[var(--body-bg)]

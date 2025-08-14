@@ -144,13 +144,10 @@ export default {
   padding: 2rem;
 }
 
-.agreement-list > div {
-  width: 100%;
-  height: 120px;
-  min-height: 120px;
+.agreement-list > a {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
-  margin-bottom: 0.5rem;
-  border-radius: 6px;
+  margin-bottom: 0.8rem;
 }
 
 .agreement-search > a {

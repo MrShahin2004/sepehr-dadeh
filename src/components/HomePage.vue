@@ -52,7 +52,15 @@
             <div class="bg-[red]"></div>
           </div>
         </div>
-        <div class="agreement-search w-[25%] h-[700px] rounded-xl bg-[var(--body-bg)]"></div>
+        <div class="agreement-search-container w-[25%] h-[750px] rounded-xl bg-[var(--body-bg)]
+         flex justify-center items-center">
+          <div class="agreement-search w-[100%] h-[100%] flex flex-col justify-start items-center">
+            <a class="text-center flex justify-center items-center text-[white]
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">جستجوی قرارداد</a>
+            <a class="text-center flex justify-center items-center text-[white]
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">شفافیت</a>
+          </div>
+        </div>
       </div>
     </main>
     <footer></footer>

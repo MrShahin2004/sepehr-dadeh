@@ -150,6 +150,10 @@ export default {
   margin-bottom: 0.8rem;
 }
 
+.agreement-list > a:hover {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 .agreement-search > a {
   margin-top: 1rem;
   padding: 0.5rem;

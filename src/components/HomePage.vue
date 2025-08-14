@@ -24,8 +24,8 @@
     </div>
     <main class="w-full h-full flex justify-center translate-y-[35px]">
       <div class="agreement-container w-[95%] h-[100%] flex justify-around gap-4">
-        <div class="announcement w-[25%] h-[700px] rounded-xl bg-[var(--body-bg)]"></div>
-        <div class="agreement-list-container w-[60%] h-[700px] rounded-xl
+        <div class="announcement w-[25%] h-[750px] rounded-xl bg-[var(--body-bg)]"></div>
+        <div class="agreement-list-container w-[60%] h-[750px] rounded-xl
          bg-[var(--body-bg)] relative overflow-y-hidden">
           <h2 style="padding: 1rem" class="text-[18px] absolute top-[0] right-[10px]">لیست قراردهای فعال</h2>
           <div class="agreement-list w-[100%] h-[93%]

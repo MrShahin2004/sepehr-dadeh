@@ -4,13 +4,13 @@
       <img class="w-[191px] h-[100px]" src="../assets/images/khamenei.png" alt="Khamenei">
       <div class="navbar w-[50%] h-[70px] flex justify-between items-center rounded-xl translate-y-[20px]">
         <div class="w-[20%] flex items-center justify-center">
-          <a class="text-[white] hover:text-blue-500" href="#">ورود به سیستم</a>
+          <a class="text-[white] hover:text-blue-500 transition" href="#">ورود به سیستم</a>
         </div>
         <div class="other-links w-[80%] flex justify-end gap-5">
-          <a class="text-[white] hover:text-blue-500" href="#">تماس با ما</a>
-          <a class="text-[white] hover:text-blue-500" href="#">راهنما</a>
-          <a class="text-[white] hover:text-blue-500" href="#">شفافیت</a>
-          <a class="text-[white] hover:text-blue-500" href="#">صفحه اصلی</a>
+          <a class="text-[white] hover:text-blue-500 transition" href="#">تماس با ما</a>
+          <a class="text-[white] hover:text-blue-500 transition" href="#">راهنما</a>
+          <a class="text-[white] hover:text-blue-500 transition" href="#">شفافیت</a>
+          <a class="text-[white] hover:text-blue-500 transition" href="#">صفحه اصلی</a>
         </div>
       </div>
       <img class="w-[150px] h-[150px]" src="../assets/images/education.svg" alt="Education" style="margin-right: 2rem">
@@ -32,19 +32,25 @@
               اطلاعیه
             </div>
             <a class="text-center flex justify-center items-center text-[white]
-             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">درگاه اداره کل آموزش و پرورش خراسان
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+               href="#">درگاه اداره کل آموزش و پرورش خراسان
               رضوی</a>
             <a class="text-center flex justify-center items-center text-[white]
-             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">سامانه تدارکات الکترونیکی دولت (ستاد
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+               href="#">سامانه تدارکات الکترونیکی دولت (ستاد
               ایران)</a>
             <a class="text-center flex justify-center items-center text-[white]
-             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">اتوماسیون اداری</a>
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+               href="#">اتوماسیون اداری</a>
             <a class="text-center flex justify-center items-center text-[white]
-             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">سایت تأمین اجتماعی</a>
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+               href="#">سایت تأمین اجتماعی</a>
             <a class="text-center flex justify-center items-center text-[white]
-             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">سامانه جامع رسانه های کشور</a>
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+               href="#">سامانه جامع رسانه های کشور</a>
             <a class="text-center flex justify-center items-center text-[white]
-             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">پایگاه اطلاعات قراردادهای کشور</a>
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+               href="#">پایگاه اطلاعات قراردادهای کشور</a>
           </div>
         </div>
         <div class="agreement-list-container w-[60%] h-[730px] rounded-xl
@@ -98,9 +104,9 @@
          flex justify-center items-center">
           <div class="agreement-search w-[100%] h-[100%] flex flex-col justify-start items-center">
             <a class="text-center flex justify-center items-center text-[white]
-             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">جستجوی قرارداد</a>
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition" href="#">جستجوی قرارداد</a>
             <a class="text-center flex justify-center items-center text-[white]
-             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">شفافیت</a>
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition" href="#">شفافیت</a>
           </div>
         </div>
       </div>

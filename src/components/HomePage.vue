@@ -32,7 +32,8 @@
               اطلاعیه
             </div>
             <a class="text-center flex justify-center items-center text-[white]
-             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">درگاه اداره کل آموزش و پرورش خراسان رضوی</a>
+             w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">درگاه اداره کل آموزش و پرورش خراسان
+              رضوی</a>
             <a class="text-center flex justify-center items-center text-[white]
              w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a]" href="#">سامانه تدارکات الکترونیکی دولت (ستاد ایران)</a>
             <a class="text-center flex justify-center items-center text-[white]

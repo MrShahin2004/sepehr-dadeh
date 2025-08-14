@@ -135,4 +135,9 @@ export default {
   margin-top: 1rem;
   padding: 0.5rem;
 }
+
+.announcement div, .announcement > a {
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
 </style>

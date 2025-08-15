@@ -197,9 +197,9 @@
         </div>
       </div>
       <div style="border-top: 1px solid white; margin-bottom: 2.5rem" class="w-[100%] h-[1px]"></div>
-      <div class="more-info-container w-[100%] h-[600px] flex justify-center items-center">
+      <div style="margin-bottom: 1.5rem" class="more-info-container w-[100%] h-[600px] flex justify-center items-center">
         <div class="more-info w-[100%] h-[100%] flex justify-center items-center gap-8">
-          <div class="contact-us-container w-[40%] h-[100%] bg-[var(--body-bg)] rounded-2xl relative
+          <div class="contact-us-container w-[40%] h-[100%] bg-[white] rounded-2xl relative
             flex flex-col justify-center items-center">
             <div class="w-[100%] h-[20%] flex flex-col justify-center items-center">
               <h2 style="padding: 1rem" class="text-[18px] absolute top-[5px] right-[10px]">ارتباط با ما</h2>
@@ -223,11 +223,42 @@
               </p>
             </div>
           </div>
-          <div class="links w-[40%] h-[100%] bg-[var(--body-bg)] rounded-2xl relative"></div>
+          <div class="links-container w-[40%] h-[100%] bg-[white] rounded-2xl relative">
+            <div class="w-[100%] h-[20%] flex flex-col justify-center items-center">
+              <h2 style="padding: 1rem" class="text-[18px] absolute top-[5px] right-[10px]">پیوندها</h2>
+              <div style="border-top: 1px solid black" class="w-[90%] h-[1px]"></div>
+            </div>
+            <div class="links w-[100%] h-[80%] flex flex-col justify-start items-center">
+              <a class="w-[80%] h-fit flex justify-center" href="https://leader.ir/" target="_blank">
+                <img class="w-[50%] h-fit" src="../assets/images/leader.png" alt="Leader">
+              </a>
+              <a class="w-[80%] h-fit flex justify-center" href="https://president.ir/" target="_blank">
+                <img class="w-[50%] h-fit" src="../assets/images/president.png" alt="President">
+              </a>
+              <a class="w-[80%] h-fit flex justify-center" href="https://dowlat.ir/" target="_blank">
+                <img class="w-[50%] h-fit" src="../assets/images/government.png" alt="Government">
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </main>
-    <footer></footer>
+    <footer class="w-full h-[160px] translate-y-[35px] flex justify-center items-center">
+      <div style="margin-bottom: 1rem" class="footer-links-container w-[82%] h-[90%] bg-[white] rounded-2xl">
+        <div class="footer-links w-[100%] h-[50%] flex justify-center items-center gap-4">
+          <a class="hover:text-blue-500 transition" href="#" target="_blank">حریم خصوصی</a>
+          <a class="hover:text-blue-500 transition" href="#" target="_blank">نظرسنجی ها</a>
+          <a class="hover:text-blue-500 transition" href="#" target="_blank">پیوندها</a>
+          <a class="hover:text-blue-500 transition" href="#" target="_blank">فراخوان ها</a>
+          <a class="hover:text-blue-500 transition" href="#" target="_blank">آمارها</a>
+          <a class="hover:text-blue-500 transition" href="#" target="_blank">صفحه اصلی</a>
+        </div>
+        <div class="copyright w-[100%] h-[50%] flex flex-col justify-center items-center">
+          <p class="text-[12px] opacity-70">© کلیه حقوق این پایگاه به سپهر داده تعلق دارد</p>
+          <p class="text-[12px] opacity-70">طراحی، تولید و توسعه توسط: سپهر داده</p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 

@@ -6,7 +6,7 @@
         <div class="w-[20%] flex items-center justify-center">
           <a class="text-[white] hover:text-blue-500 transition" href="#">ورود به سیستم</a>
         </div>
-        <div class="other-links w-[80%] flex justify-end gap-5">
+        <div class="other-header-links w-[80%] flex justify-end gap-5">
           <a class="text-[white] hover:text-blue-500 transition" href="#">تماس با ما</a>
           <a class="text-[white] hover:text-blue-500 transition" href="#">راهنما</a>
           <a class="text-[white] hover:text-blue-500 transition" href="#">شفافیت</a>
@@ -22,7 +22,7 @@
         <p class="text-[white] translate-x-[-10%]">اداره کل آموزش و پرورش خراسان رضوی</p>
       </div>
     </div>
-    <main class="w-full h-full flex justify-center translate-y-[35px]">
+    <main class="w-full h-full flex flex-col justify-center items-center translate-y-[35px]">
       <div class="agreement-container w-[95%] h-[100%] flex justify-around gap-4">
         <div class="announcement-container w-[25%] h-[730px] rounded-xl
           bg-[var(--body-bg)] flex justify-center items-center">
@@ -250,6 +250,11 @@
           </div>
         </div>
       </div>
+      <div style="border-top: 1px solid white; margin-bottom: 2.5rem" class="w-[100%] h-[1px]"></div>
+      <div class="more-info w-[100%] h-[500px]">
+        <div class="contact-us"></div>
+        <div class="links"></div>
+      </div>
     </main>
     <footer></footer>
   </div>
@@ -274,7 +279,7 @@ export default {
   background-color: rgba(20, 21, 62, 0.7);
 }
 
-.other-links {
+.other-header-links {
   margin-right: 1.5rem;
 }
 
@@ -284,6 +289,10 @@ export default {
 
 .secondary-title {
   background-color: rgba(20, 21, 62, 0.7);
+}
+
+.agreement-container {
+  margin-bottom: 5rem;
 }
 
 .agreement-list {

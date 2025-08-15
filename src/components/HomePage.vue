@@ -197,9 +197,13 @@
         </div>
       </div>
       <div style="border-top: 1px solid white; margin-bottom: 2.5rem" class="w-[100%] h-[1px]"></div>
-      <div class="more-info w-[100%] h-[500px]">
-        <div class="contact-us"></div>
-        <div class="links"></div>
+      <div class="more-info-container w-[100%] h-[600px] flex justify-center items-center">
+        <div class="more-info w-[100%] h-[100%] flex justify-center items-center gap-8">
+          <div class="contact-us w-[40%] h-[100%] bg-[var(--body-bg)] rounded-2xl relative">
+            <h2 style="padding: 1rem" class="text-[18px] absolute top-[0] right-[10px]">ارتباط با ما</h2>
+          </div>
+          <div class="links w-[40%] h-[100%] bg-[black] rounded-2xl relative"></div>
+        </div>
       </div>
     </main>
     <footer></footer>

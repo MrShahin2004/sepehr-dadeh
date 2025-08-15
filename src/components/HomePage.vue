@@ -199,10 +199,31 @@
       <div style="border-top: 1px solid white; margin-bottom: 2.5rem" class="w-[100%] h-[1px]"></div>
       <div class="more-info-container w-[100%] h-[600px] flex justify-center items-center">
         <div class="more-info w-[100%] h-[100%] flex justify-center items-center gap-8">
-          <div class="contact-us w-[40%] h-[100%] bg-[var(--body-bg)] rounded-2xl relative">
-            <h2 style="padding: 1rem" class="text-[18px] absolute top-[0] right-[10px]">ارتباط با ما</h2>
+          <div class="contact-us-container w-[40%] h-[100%] bg-[var(--body-bg)] rounded-2xl relative
+            flex flex-col justify-center items-center">
+            <div class="w-[100%] h-[20%] flex flex-col justify-center items-center">
+              <h2 style="padding: 1rem" class="text-[18px] absolute top-[5px] right-[10px]">ارتباط با ما</h2>
+              <div style="border-top: 1px solid black" class="w-[90%] h-[1px]"></div>
+            </div>
+            <div dir="rtl" class="contact-us w-[90%] h-[80%]
+              flex flex-col justify-start items-center gap-4 translate-y-[-30px]">
+              <p class="w-[100%] h-fit">تلفن خانه: ۲-۳۱۰۷۵۱۶۱-۰۵۱</p>
+              <p class="w-[100%] h-fit">دفتر مدیرکل: ۳۱۰۷۵۹۱۰-۰۵۱</p>
+              <p class="w-[100%] h-fit">امور قراردادها: ۳۱۰۷۵۴۴۱-۰۵۱</p>
+              <p class="w-[100%] h-fit">ستاد خبری حراست: ۳۱۰۷۵۳۲۳-۰۵۱</p>
+              <p class="w-[100%] h-fit">اداره حقوقی املاک و حمایت قضایی کارکنان: ۳۱۰۷۵۳۶۱-۰۵۱</p>
+              <p class="w-[100%] h-fit">ارزیابی عملکرد و پاسخگویی به شکایات: ۳۱۰۷۵۳۴۹-۰۵۱، ۳۱۰۷۵۳۳۲-۰۵۱</p>
+              <p class="w-[100%] h-fit">نمابر اداره اطلاع رسانی: ۳۲۲۳۹۸۹۶-۰۵۱</p>
+              <p class="w-[100%] h-fit">وب سایت: razavi.medu.gov.ir</p>
+              <p class="w-[100%] h-fit">پایگاه پیام رسان شاد: shad.ir/apkhrazvi</p>
+              <p class="w-[100%] h-fit">سامانه پیامک: ۳۰۰۰۷۴۸۵</p>
+              <p class="w-[100%] h-fit">
+                آدرس: مشهد مقدس، خیابان امام خمینی (ره)، حد فاصل ایستگاه سراب و میدان شهدا، اداره کل آموزش و پرورش
+                خراسان رضوی
+              </p>
+            </div>
           </div>
-          <div class="links w-[40%] h-[100%] bg-[black] rounded-2xl relative"></div>
+          <div class="links w-[40%] h-[100%] bg-[var(--body-bg)] rounded-2xl relative"></div>
         </div>
       </div>
     </main>

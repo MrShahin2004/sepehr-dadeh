@@ -1,0 +1,354 @@
+<template>
+  <div class="flex flex-col justify-between z-1">
+    <div class="flex justify-between relative">
+      <img class="w-[160px]" src="@/assets/images/khamenei.png" alt="khamenei_image">
+      <h1 class="text-[16px] absolute left-[50%] top-[90px] translate-x-[-50%] translate-y-[-100%]
+                 text-shadow-[0_4px_10px_black]"
+          style="font-family: 'B Titr', 'cursive'">
+        پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی</h1>
+      <img class="w-[160px]" src="@/assets/images/education.svg" alt="education_image">
+    </div>
+    <div class="login-body w-full h-full flex justify-center items-center">
+      <div class="w-[500px] h-[600px] bg-[var(--body-bg)]
+                  flex flex-col justify-between items-center rounded-[10px]">
+        <p class="body-title text-[15px] bg-[var(--title-bg)]
+                  w-[90%] box-border h-fit rounded-[6px]" dir="rtl">ورود به سامانه کشوری برون سپاری</p>
+        <div class="body-inputs w-full flex flex-col justify-center items-center">
+          <TypeSelect @SendType="AssignType($event)"/>
+          <UserName @SendUser="AssignUser($event)"/>
+          <PassWord @SendPass="AssignPass($event)"/>
+          <SecurityCode @SendCode="AssignCode($event)"/>
+        </div>
+        <div class="body-desc text-[16px] flex flex-col justify-center items-center">
+          <p>فیلد گذر واژه به کوچکی و بزرگی حروف حساس است</p>
+          <p>گذر واژه باید ترکیبی از عدد و حروف باشد</p>
+          <p>فیلد کد امنیتی به کوچکی و بزرگی حروف حساس نیست</p>
+          <p>به زبان صفحه کلید خود دقت کنید تا روی زبان درست تنظیم شده باشد</p>
+        </div>
+        <div class="buttons flex flex-col md:flex-row justify-center items-center gap-4">
+          <button @click="SendRequest" class="bg-[var(--btn-bg)] text-[white]
+          w-[150px] h-[50px] rounded-[10px] hover:cursor-pointer">ورود به سامانه
+          </button>
+          <button class="bg-[var(--btn-bg)] text-[white]
+           w-[150px] h-[50px] rounded-[10px] hover:cursor-pointer">فراموشی گذر واژه
+          </button>
+        </div>
+        <div class="register-link w-[40%] flex justify-evenly items-center">
+          <a href="#" @click="OpenSignIn">ثبت نام کنید</a>
+          <p>حساب کاربری ندارید؟</p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="login-footer">
+      <div class="footer-links flex justify-center items-center gap-x-[1rem]">
+        <a class="text-white transition hover:cursor-pointer" href="#">حریم خصوصی</a>
+        <a class="text-white transition hover:cursor-pointer" href="#">نظرسنجی‌ها</a>
+        <a class="text-white transition hover:cursor-pointer" href="#">پیوندها</a>
+        <a class="text-white transition hover:cursor-pointer" href="#">فراخوان‌ها</a>
+        <a class="text-white transition hover:cursor-pointer" href="#">آمارها</a>
+        <a class="text-white transition hover:cursor-pointer" href="#">صفحه اصلی</a>
+      </div>
+      <div class="footer-desc flex justify-center items-center">
+        <p class="text-[white]">© کلیه حقوق این پایگاه به سپهر داده تعلق دارد</p>
+      </div>
+    </div>
+    <div
+        class="popup w-[400px] h-[150px] rounded-[6px] z-10
+         absolute top-[0] right-[0]"
+    ></div>
+  </div>
+</template>
+
+<script>
+import TypeSelect from "@/components/loginPageComps/TypeSelect.vue";
+import UserName from "@/components/loginPageComps/UserName.vue";
+import PassWord from "@/components/loginPageComps/PassWord.vue";
+import SecurityCode from "@/components/loginPageComps/SecurityCode.vue";
+import {jwtDecode} from "jwt-decode";
+
+export default {
+  name: "LogIn",
+  components: {
+    TypeSelect,
+    UserName,
+    PassWord,
+    SecurityCode
+  },
+  data() {
+    return {
+      ReceivedType: "",
+      ReceivedUser: "",
+      ReceivedPass: "",
+      ReceivedCode: "",
+      Issue: "",
+      Message: ""
+    };
+  },
+  methods: {
+    AssignType(type) {
+      this.ReceivedType = type;
+    },
+    AssignUser(user) {
+      this.ReceivedUser = user;
+    },
+    AssignPass(pass) {
+      this.ReceivedPass = pass;
+    },
+    AssignCode(code) {
+      this.ReceivedCode = code;
+    },
+    async SendRequest() {
+      try {
+        const Response = await fetch("http://localhost:3000/api/mariadb/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            type: this.ReceivedType,
+            username: this.ReceivedUser,
+            password: this.ReceivedPass,
+            code: this.ReceivedCode
+          }),
+        });
+        const Data = await Response.json();
+        this.Issue = Data.issue;
+        this.Message = Data.message;
+
+        if ("issue" in Data) {
+          this.ErrorPopup(this.Issue, this.Message);
+        } else {
+          let Token = Data.token;
+          let ParsedToken = jwtDecode(Token);
+          let UserObject = ParsedToken.UserObject;
+          let RoleFromServer = UserObject.role;
+
+          if (!Token || typeof Token !== "string") {
+            console.error("Invalid or missing token: ", Data.message || "No token provided.");
+            return;
+          }
+
+          localStorage.setItem("token", Token);
+          this.SuccessPopup(Data.message);
+
+          setTimeout(() => {
+            if (RoleFromServer === "Owner") {
+              this.$router.push({
+                name: "OwnerProfile",
+                params: {
+                  username: this.ReceivedUser
+                }
+              });
+            }
+
+            if (RoleFromServer === "Admin") {
+              this.$router.push({
+                name: 'AdminProfile',
+                params: {
+                  username: this.ReceivedUser,
+                  token: Token
+                }
+              });
+            }
+
+            if (RoleFromServer === "User") {
+              this.$router.push({
+                name: 'UserProfile',
+                params: {
+                  username: this.ReceivedUser,
+                  token: Token
+                }
+              });
+            }
+          }, 3000);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    OpenSignIn() {
+      this.$router.push({
+        name: "SignIn"
+      });
+    },
+    ErrorPopup(issue, message) {
+      let MsgArg = "";
+      if (issue === "Empty field(s)") {
+        MsgArg = message;
+      }
+
+      if (issue === "Expired CAPTCHA") {
+        MsgArg = message;
+      }
+
+      if (issue === "Wrong CAPTCHA") {
+        MsgArg = message;
+      }
+
+      if (issue === "Username not found") {
+        MsgArg = message;
+      }
+
+      if (issue === "Wrong type") {
+        MsgArg = message;
+      }
+
+      if (issue === "Wrong password") {
+        MsgArg = message;
+      }
+
+      if (issue === "Not verified") {
+        MsgArg = message;
+      }
+
+      let PopupEl = document.querySelector(".popup");
+      PopupEl.style.display = "block";
+      PopupEl.style.transform = "translateX(0)";
+      PopupEl.classList.remove("top-[0]", "right-[0]");
+      PopupEl.classList.add("popup-show", "top-[10px]", "right-[10px]", "bg-[#9c2b2e]");
+      PopupEl.innerHTML = `
+          <div class="w-[100%] h-[100%] flex justify-center items-center">
+              <p style="font-family: YekanBakh, sans-serif; color: white">${MsgArg}</p>
+          </div>
+      `;
+
+      setTimeout(() => {
+        PopupEl.classList.remove("popup-show");
+        PopupEl.classList.add("popup-hide", "top-[0]", "right-[0]");
+        setTimeout(() => {
+          PopupEl.style.transform = "translateX(100%)";
+          PopupEl.style.display = "none";
+          PopupEl.classList.remove("popup-hide", "top-[10px]", "right-[10px]", "bg-[#9c2b2e]");
+        }, 500);
+      }, 3000);
+    },
+    SuccessPopup(message) {
+      let PopupEl = document.querySelector(".popup");
+      PopupEl.style.display = "block";
+      PopupEl.style.transform = "translateX(0)";
+      PopupEl.classList.remove("top-[0]", "right-[0]");
+      PopupEl.classList.add("popup-show", "top-[10px]", "right-[10px]", "bg-[#4caf50]");
+      PopupEl.innerHTML = `
+          <div class="w-[100%] h-[100%] flex justify-center items-center">
+              <p style="font-family: YekanBakh, sans-serif; color: white">${message}</p>
+          </div>
+      `;
+
+      setTimeout(() => {
+        PopupEl.classList.remove("popup-show");
+        PopupEl.classList.add("popup-hide", "top-[0]", "right-[0]");
+        setTimeout(() => {
+          PopupEl.style.transform = "translateX(100%)";
+          PopupEl.style.display = "none";
+          PopupEl.classList.remove("popup-hide", "top-[10px]", "right-[10px]", "bg-[#4caf50]");
+        }, 500);
+      }, 2000);
+    }
+  },
+};
+</script>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-title: #dcb417;
+  --body-bg: #e5e7eb;
+  --title-bg: #48b3bd;
+  --input-bg: #dbeafe;
+  --btn-bg: #293da3;
+}
+
+#body {
+  background: #0059E7;
+  background: radial-gradient(circle,
+  rgba(0, 89, 231, 1) 0%,
+  rgba(43, 16, 88, 1) 100%);
+  font-family: YekanBakh, sans-serif;
+}
+
+h1 {
+  color: var(--main-title);
+}
+
+.login-body {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.body-title {
+  padding: 0.5rem 2rem;
+  color: white;
+  margin-top: 1.5rem;
+}
+
+button {
+  margin-bottom: 1.5rem;
+}
+
+hr {
+  color: white;
+}
+
+.footer-links {
+  margin-bottom: 1rem;
+}
+
+a:hover {
+  color: blue;
+}
+
+.footer-desc {
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  margin-top: 1rem;
+}
+
+.register-link {
+  margin-bottom: 1rem;
+}
+
+.popup {
+  transform: translateX(100%);
+  display: none;
+}
+
+.popup-show {
+  animation-name: ShowPopup;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+.popup-hide {
+  animation-name: HidePopup;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes ShowPopup {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes HidePopup {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+</style>

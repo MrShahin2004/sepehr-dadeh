@@ -207,13 +207,13 @@
           </div>
           <div class="links w-[100%] h-[80%] flex flex-col justify-start items-center">
             <a class="w-[80%] h-fit flex justify-center" href="https://leader.ir/" target="_blank">
-              <img class="w-[50%] h-fit" src="../assets/images/leader.png" alt="Leader">
+              <img class="w-[50%] h-fit" src="../../assets/images/leader.png" alt="Leader">
             </a>
             <a class="w-[80%] h-fit flex justify-center" href="https://president.ir/" target="_blank">
-              <img class="w-[50%] h-fit" src="../assets/images/president.png" alt="President">
+              <img class="w-[50%] h-fit" src="../../assets/images/president.png" alt="President">
             </a>
             <a class="w-[80%] h-fit flex justify-center" href="https://dowlat.ir/" target="_blank">
-              <img class="w-[50%] h-fit" src="../assets/images/government.png" alt="Government">
+              <img class="w-[50%] h-fit" src="../../assets/images/government.png" alt="Government">
             </a>
           </div>
         </div>

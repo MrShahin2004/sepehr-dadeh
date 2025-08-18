@@ -5,7 +5,8 @@ import HomePage from "@/views/HomePage.vue";
 import LogIn from "@/views/LogIn.vue";
 
 const routes = [
-    {path: "/", component: HomePage, name: "HomePage"}
+    {path: "/", component: HomePage, name: "HomePage"},
+    {path: "/login/", component: LogIn, name: "Login"},
 ];
 
 const router = createRouter({

@@ -10,24 +10,24 @@
           </div>
           <a class="text-center flex justify-center items-center text-[white]
               w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-             href="#">درگاه اداره کل آموزش و پرورش خراسان
+             href="https://razavi.medu.gov.ir/" target="_blank">درگاه اداره کل آموزش و پرورش خراسان
             رضوی</a>
           <a class="text-center flex justify-center items-center text-[white]
               w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-             href="#">سامانه تدارکات الکترونیکی دولت (ستاد
+             href="https://setadiran.ir/setad/cms/" target="_blank">سامانه تدارکات الکترونیکی دولت (ستاد
             ایران)</a>
           <a class="text-center flex justify-center items-center text-[white]
               w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-             href="#">اتوماسیون اداری</a>
+             href="https://oa.razaviedu.ir/" target="_blank">اتوماسیون اداری</a>
           <a class="text-center flex justify-center items-center text-[white]
               w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-             href="#">سایت تأمین اجتماعی</a>
+             href="https://es.tamin.ir/" target="_blank">سایت تأمین اجتماعی</a>
           <a class="text-center flex justify-center items-center text-[white]
               w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-             href="#">سامانه جامع رسانه های کشور</a>
+             href="https://e-rasaneh.ir/" target="_blank">سامانه جامع رسانه های کشور</a>
           <a class="text-center flex justify-center items-center text-[white]
               w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-             href="#">پایگاه اطلاعات قراردادهای کشور</a>
+             href="https://cdb.mporg.ir/" target="_blank">پایگاه اطلاعات قراردادهای کشور</a>
         </div>
       </div>
       <div class="agreement-list-container w-[60%] h-[730px] rounded-xl

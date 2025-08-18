@@ -61,10 +61,10 @@
 </template>
 
 <script>
-import TypeSelect from "@/components/loginPageComps/TypeSelect.vue";
-import UserName from "@/components/loginPageComps/UserName.vue";
-import PassWord from "@/components/loginPageComps/PassWord.vue";
-import SecurityCode from "@/components/loginPageComps/SecurityCode.vue";
+import TypeSelect from "@/components/LoginPageComps/TypeSelect.vue";
+import UserName from "@/components/LoginPageComps/UserName.vue";
+import PassWord from "@/components/LoginPageComps/PassWord.vue";
+import SecurityCode from "@/components/LoginPageComps/SecurityCode.vue";
 import {jwtDecode} from "jwt-decode";
 
 export default {

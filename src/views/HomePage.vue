@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import HeaderElements from "../components/homePageComps/HeaderElements.vue"
-import MainElements from "../components/homePageComps/MainElements.vue"
-import FooterElements from "../components/homePageComps/FooterElements.vue"
+import HeaderElements from "@/components/HomePageComps/HeaderElements.vue"
+import MainElements from "@/components/HomePageComps/MainElements.vue"
+import FooterElements from "@/components/HomePageComps/FooterElements.vue"
 
 export default {
   name: "HomePage",

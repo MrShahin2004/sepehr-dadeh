@@ -17,6 +17,22 @@
 </template>
 
 <script>
+import {useRouter} from "vue-router";
+
+export default {
+  setup() {
+    let Router = useRouter();
+
+    function RedirectToLogIn() {
+      Router.push('/login');
+    }
+
+    return {
+      RedirectToLogIn,
+      Router
+    }
+  }
+}
 </script>
 
 <style>

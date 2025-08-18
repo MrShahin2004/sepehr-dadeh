@@ -20,6 +20,7 @@ export default {
   },
   methods: {
     GetCaptcha() {
+      // This is an obsolete code, delete or change it if not needed.
       this.CaptchaLink = "http://localhost:4000/api/captcha/get?t" + Date.now();
     },
     SendCode() {

@@ -20,10 +20,11 @@
         </div>
         <div v-else class="mt-12 text-center">قراردادی یافت نشد.</div>
       </div>
-      <router-link class="mt-4 text-[#fff] hover:text-blue-500 transition" :to="{ name: 'HomePage' }"
+      <router-link
+          class="mt-4 text-[#fff] hover:text-blue-500 transition"
+          :to="{ name: 'HomePage' }"
       >بازگشت به صفحه اصلی
-      </router-link
-      >
+      </router-link>
     </main>
     <FooterElements/>
   </div>

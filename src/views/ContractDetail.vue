@@ -11,17 +11,19 @@
     </h1>
     <main class="w-full h-full flex flex-col items-center translate-y-[35px]">
       <div
-          class="w-[100%] min-h-[600px] bg-[#cbe9f6] relative"
+          class="w-[99%] h-[800px] bg-[#cbe9f6] flex justify-center items-center"
       >
-        <h1 class="text-[18px] absolute top-[10px] right-[14px]">
-          جزئیات قرارداد
-        </h1>
-        <div v-if="agreement" class="mt-12" style="direction: rtl">
-          <p class="text-[16px] mb-2">{{ agreement.title }}</p>
-          <p class="text-[13px] opacity-60 mb-2">{{ agreement.date }}</p>
-          <p class="text-[14px] opacity-80">{{ agreement.description }}</p>
+        <div class="w-[70%] h-[90%] bg-[white] relative">
+          <h1 class="text-[18px] absolute top-[10px] right-[14px]">
+            جزئیات قرارداد
+          </h1>
+          <div v-if="agreement" style="direction: rtl">
+            <p class="text-[16px]">{{ agreement.title }}</p>
+            <p class="text-[13px] opacity-60">{{ agreement.date }}</p>
+            <p class="text-[14px] opacity-80">{{ agreement.description }}</p>
+          </div>
+          <div v-else class="mt-12 text-center">قراردادی یافت نشد.</div>
         </div>
-        <div v-else class="mt-12 text-center">قراردادی یافت نشد.</div>
       </div>
       <router-link
           class="mt-4 text-[#fff] hover:text-blue-500 transition"

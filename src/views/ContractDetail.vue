@@ -25,11 +25,6 @@
           <div v-else class="mt-12 text-center">قراردادی یافت نشد.</div>
         </div>
       </div>
-      <router-link
-          class="mt-4 text-[#fff] hover:text-blue-500 transition"
-          :to="{ name: 'HomePage' }"
-      >بازگشت به صفحه اصلی
-      </router-link>
     </main>
     <FooterElements/>
   </div>

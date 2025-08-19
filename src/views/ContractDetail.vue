@@ -13,16 +13,30 @@
       <div
           class="w-[99%] h-[800px] bg-[#cbe9f6] flex justify-center items-center"
       >
-        <div class="w-[70%] h-[90%] bg-[white] rounded-[2rem] shadow-xl relative">
-          <h1 class="text-[18px] absolute top-[10px] right-[14px]">
+        <div class="w-[70%] h-[90%] bg-white rounded-[2rem] shadow-xl relative p-6">
+          <h1 class="text-[24px] absolute top-[10px] right-[14px] text-gray-800 font-bold">
             جزئیات قرارداد
           </h1>
-          <div v-if="agreement" style="direction: rtl">
-            <p class="text-[16px]">{{ agreement.title }}</p>
-            <p class="text-[13px] opacity-60">{{ agreement.date }}</p>
-            <p class="text-[14px] opacity-80">{{ agreement.description }}</p>
+          <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+               v-if="agreement" style="direction: rtl">
+            <table class="w-full border-collapse border border-gray-300">
+              <thead>
+              <tr class="bg-gray-200">
+                <th class="border border-gray-300 p-2 text-right">عنوان</th>
+                <th class="border border-gray-300 p-2 text-right">تاریخ ثبت</th>
+                <th class="border border-gray-300 p-2 text-right">طرف قرارداد</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="hover:bg-gray-100">
+                <td class="border border-gray-300 p-2 text-right">{{ agreement.title }}</td>
+                <td class="border border-gray-300 p-2 text-right">{{ agreement.date }}</td>
+                <td class="border border-gray-300 p-2 text-right">{{ agreement.description }}</td>
+              </tr>
+              </tbody>
+            </table>
           </div>
-          <div v-else class="mt-12 text-center">قراردادی یافت نشد.</div>
+          <div v-else class="mt-12 text-center text-gray-500">قراردادی یافت نشد.</div>
         </div>
       </div>
     </main>

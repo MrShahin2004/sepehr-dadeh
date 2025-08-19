@@ -8,7 +8,7 @@
     </h1>
     <main class="w-full h-full flex flex-col items-center translate-y-[35px]">
       <div
-          class="w-[95%] min-h-[400px] bg-[var(--body-bg)] rounded-xl mt-8 p-6 relative"
+          class="w-[95%] min-h-[600px] bg-[var(--body-bg)] rounded-xl mt-8 p-6 relative"
       >
         <h1 class="text-[18px] absolute top-[10px] right-[14px]">
           جزئیات قرارداد

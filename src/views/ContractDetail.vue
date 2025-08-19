@@ -1,6 +1,9 @@
 <template>
   <div class="main-container w-[100%] flex flex-col justify-between">
-    <HeaderElements/>
+    <header class="flex justify-between">
+      <img class="w-[191px] h-[100px]" src="../assets/images/khamenei.png" alt="Khamenei">
+      <img class="w-[130px] h-[130px]" src="../assets/images/education.svg" alt="Education" style="margin-right: 1rem">
+    </header>
     <h1
         class="main-title text-[24px] text-[var(--main-title)] text-shadow-[0_4px_10px_black] text-center"
     >

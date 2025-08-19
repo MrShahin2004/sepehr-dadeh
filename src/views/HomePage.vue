@@ -1,7 +1,7 @@
 <template>
   <div class="main-container w-[100%] flex flex-col justify-between">
     <HeaderElements/>
-    <h1 class="main-title text-[24px] text-[var(--main-title)] text-shadow-[0_4px_10px_black] text-center">
+    <h1 class="main-title text-[42px] text-[var(--main-title)] text-shadow-[0_4px_10px_black] text-center">
       پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی</h1>
     <div class="secondary-title-container w-[100%] h-[100px] flex justify-center items-center translate-y-[40px]">
       <div class="secondary-title w-[96%] h-[70%] flex justify-end items-center rounded-xl">

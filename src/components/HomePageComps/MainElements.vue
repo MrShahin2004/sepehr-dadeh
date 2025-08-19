@@ -15,37 +15,43 @@
             اطلاعیه
           </div>
           <a
-              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              class="text-center flex justify-center items-center
+               text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
               href="https://razavi.medu.gov.ir/"
               target="_blank"
           >درگاه اداره کل آموزش و پرورش خراسان رضوی</a
           >
           <a
-              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              class="text-center flex justify-center items-center
+               text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
               href="https://setadiran.ir/setad/cms/"
               target="_blank"
           >سامانه تدارکات الکترونیکی دولت (ستاد ایران)</a
           >
           <a
-              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              class="text-center flex justify-center items-center
+               text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
               href="https://oa.razaviedu.ir/"
               target="_blank"
           >اتوماسیون اداری</a
           >
           <a
-              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              class="text-center flex justify-center items-center
+               text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
               href="https://es.tamin.ir/"
               target="_blank"
           >سایت تأمین اجتماعی</a
           >
           <a
-              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              class="text-center flex justify-center items-center
+               text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
               href="https://e-rasaneh.ir/"
               target="_blank"
           >سامانه جامع رسانه های کشور</a
           >
           <a
-              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              class="text-center flex justify-center items-center
+               text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
               href="https://cdb.mporg.ir/"
               target="_blank"
           >پایگاه اطلاعات قراردادهای کشور</a
@@ -62,7 +68,8 @@
           لیست قراردهای فعال
         </h2>
         <div
-            class="agreement-list w-[100%] h-[93%] flex flex-col items-center justify-start overflow-y-auto translate-y-[50px]"
+            class="agreement-list w-[100%] h-[93%]
+             flex flex-col items-center justify-start overflow-y-auto translate-y-[50px]"
         >
           <router-link
               v-for="item in agreements"
@@ -72,7 +79,8 @@
               class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px] hover:bg-[#cbfbf1] transition relative"
           >
             <div
-                class="text-container w-[100%] h-[100%] flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]"
+                class="text-container w-[100%] h-[100%]
+                 flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]"
             >
               <p>{{ item.title }}</p>
               <p class="text-center text-[13px] opacity-50">{{ item.date }}</p>
@@ -82,19 +90,22 @@
         </div>
       </div>
       <div
-          class="agreement-search-container w-[25%] h-[730px] rounded-xl bg-[var(--body-bg)] flex justify-center items-center"
+          class="agreement-search-container w-[25%] h-[730px]
+           rounded-xl bg-[var(--body-bg)] flex justify-center items-center"
       >
         <div
             class="agreement-search w-[100%] h-[100%] flex flex-col justify-start items-center"
         >
           <router-link
-              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              class="text-center flex justify-center items-center
+               text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
               :to="{ name: 'SearchPage' }"
           >جستجوی قرارداد
           </router-link
           >
           <a
-              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              class="text-center flex justify-center items-center
+               text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
               href="#"
           >شفافیت</a
           >
@@ -113,7 +124,8 @@
           class="more-info w-[100%] h-[100%] flex justify-center items-center gap-8"
       >
         <div
-            class="contact-us-container w-[40%] h-[100%] bg-[white] rounded-2xl relative flex flex-col justify-center items-center"
+            class="contact-us-container w-[40%] h-[100%]
+             bg-[white] rounded-2xl relative flex flex-col justify-center items-center"
         >
           <div
               class="w-[100%] h-[20%] flex flex-col justify-center items-center"

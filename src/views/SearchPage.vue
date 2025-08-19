@@ -88,7 +88,7 @@
                       تاریخ: {{ item.date }}
                     </p>
                   </div>
-                  <div class="text-gray-400 text-xs">ناظر مدیر</div>
+                  <div class="text-gray-400 text-xs">ناظر: مدیر</div>
                 </div>
               </div>
             </router-link>

@@ -58,7 +58,7 @@
             </div>
             <button
                 @click="onSearch"
-                class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 px-5 py-2 rounded-xl transition"
+                class="bg-yellow-400 cursor-pointer hover:bg-yellow-500 text-gray-800 px-5 py-2 rounded-xl transition"
             >
               جستجو
             </button>

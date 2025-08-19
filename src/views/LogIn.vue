@@ -2,10 +2,12 @@
   <div class="flex flex-col justify-between z-1">
     <div class="flex justify-between relative">
       <img class="w-[160px]" src="@/assets/images/khamenei.png" alt="khamenei_image">
-      <h1 class="text-[16px] absolute left-[50%] top-[90px] translate-x-[-50%] translate-y-[-100%]
+      <router-link to="/">
+        <h1 class="text-[16px] absolute left-[50%] top-[90px] translate-x-[-50%] translate-y-[-100%]
                  text-shadow-[0_4px_10px_black]"
-          style="font-family: 'B Titr', 'cursive'">
-        پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی</h1>
+            style="font-family: 'B Titr', 'cursive'">
+          پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی</h1>
+      </router-link>
       <img class="w-[160px]" src="@/assets/images/education.svg" alt="education_image">
     </div>
     <div class="login-body w-full h-full flex justify-center items-center">

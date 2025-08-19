@@ -1,5 +1,5 @@
 <template>
-  <div class="code-input bg-[#f3f4f6] w-[90%] h-fit grid grid-cols-[3fr_1fr_1.3fr] rounded-b-[6px_6px]">
+  <div class="code-input bg-[#f3f4f6] w-[90%] h-fit grid grid-cols-[2.5fr_1fr_1.3fr] rounded-b-[6px_6px]">
     <input v-model="InsertedCode" @input="SendCode"
            class="bg-[#dbeafe] border-0 rounded-[6px] text-[16px] focus:outline-0"
            id="code-input" type="text">

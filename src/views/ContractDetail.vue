@@ -36,7 +36,7 @@ import FooterElements from "@/components/HomePageComps/FooterElements.vue";
 
 export default {
   name: "ContractDetail",
-  components: {HeaderElements, FooterElements},
+  components: {FooterElements},
   props: {
     id: {
       type: String,

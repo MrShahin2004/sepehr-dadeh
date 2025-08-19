@@ -26,7 +26,22 @@
         </div>
       </div>
     </main>
-    <FooterElements/>
+    <footer class="translate-y-[50px]">
+      <hr>
+      <div class="login-footer">
+        <div class="footer-links flex justify-center items-center gap-x-[1rem]">
+          <a class="text-white transition hover:cursor-pointer" href="#">حریم خصوصی</a>
+          <a class="text-white transition hover:cursor-pointer" href="#">نظرسنجی‌ها</a>
+          <a class="text-white transition hover:cursor-pointer" href="#">پیوندها</a>
+          <a class="text-white transition hover:cursor-pointer" href="#">فراخوان‌ها</a>
+          <a class="text-white transition hover:cursor-pointer" href="#">آمارها</a>
+          <a class="text-white transition hover:cursor-pointer" href="#">صفحه اصلی</a>
+        </div>
+        <div class="footer-desc flex justify-center items-center">
+          <p class="text-[white]">© کلیه حقوق این پایگاه به سپهر داده تعلق دارد</p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 

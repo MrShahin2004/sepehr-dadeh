@@ -1,3 +1,6 @@
+/* Some custom font families */
+
+/* Yekan - Start of Section */
 @font-face {
     font-family: 'YekanBakh';
     src: url("./fonts/Yekan/YekanBakh-Bold.ttf") format('truetype');
@@ -39,7 +42,9 @@
     font-weight: normal;
     font-style: normal;
 }
+/* Yekan - End of Section */
 
+/* Nastaliq */
 @font-face {
     font-family: 'IranNastaliq';
     src: url("./fonts/Nastaliq/IranNastaliq_YasDL.com.ttf") format('truetype');

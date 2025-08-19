@@ -13,7 +13,7 @@
       <div
           class="w-[99%] h-[800px] bg-[#cbe9f6] flex justify-center items-center"
       >
-        <div class="w-[70%] h-[90%] bg-[white] relative">
+        <div class="w-[70%] h-[90%] bg-[white] rounded-[2rem] shadow-xl relative">
           <h1 class="text-[18px] absolute top-[10px] right-[14px]">
             جزئیات قرارداد
           </h1>

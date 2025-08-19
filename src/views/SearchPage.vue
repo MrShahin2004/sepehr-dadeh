@@ -49,6 +49,7 @@
                 </svg>
               </span>
               <input
+                  dir="rtl"
                   v-model="query"
                   type="text"
                   placeholder="... جستجو"

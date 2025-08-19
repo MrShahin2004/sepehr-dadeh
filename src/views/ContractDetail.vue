@@ -50,7 +50,6 @@ import agreements from "@/data/agreements.js";
 
 export default {
   name: "ContractDetail",
-  components: {FooterElements},
   props: {
     id: {
       type: String,

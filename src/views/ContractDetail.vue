@@ -47,7 +47,6 @@
 
 <script>
 import agreements from "@/data/agreements.js";
-import FooterElements from "@/components/HomePageComps/FooterElements.vue";
 
 export default {
   name: "ContractDetail",

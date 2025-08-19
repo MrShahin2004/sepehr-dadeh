@@ -36,7 +36,7 @@ export default {
 }
 
 .main-title {
-  font-family: "B Titr", "Arial", sans-serif;
+  font-family: IranNastaliq, sans-serif;
 }
 
 .secondary-title {

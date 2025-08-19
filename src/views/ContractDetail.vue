@@ -32,7 +32,6 @@
 
 <script>
 import agreements from "@/data/agreements.js";
-import HeaderElements from "@/components/HomePageComps/HeaderElements.vue";
 import FooterElements from "@/components/HomePageComps/FooterElements.vue";
 
 export default {

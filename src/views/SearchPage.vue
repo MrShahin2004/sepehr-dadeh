@@ -52,7 +52,7 @@
                   dir="rtl"
                   v-model="query"
                   type="text"
-                  placeholder="... جستجو"
+                  placeholder="جستجوی قرارداد..."
                   class="w-full bg-gray-100 rounded-xl pl-10 pr-4 py-3 outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>

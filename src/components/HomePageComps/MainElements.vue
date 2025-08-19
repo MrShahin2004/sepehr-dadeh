@@ -87,10 +87,11 @@
         <div
             class="agreement-search w-[100%] h-[100%] flex flex-col justify-start items-center"
         >
-          <a
+          <router-link
               class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-              href="#"
-          >جستجوی قرارداد</a
+              :to="{ name: 'SearchPage' }"
+          >جستجوی قرارداد
+          </router-link
           >
           <a
               class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"

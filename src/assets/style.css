@@ -1,7 +1,9 @@
 #body {
-    background: #0059E7;
-    background: radial-gradient(circle,
+  background: #0059e7;
+  background: radial-gradient(
+    circle,
     rgba(0, 89, 231, 1) 0%,
-    rgba(43, 16, 88, 1) 100%);
-    font-family: YekanBakh, sans-serif;
+    rgba(43, 16, 88, 1) 100%
+  );
+  font-family: YekanBakh, sans-serif;
 }

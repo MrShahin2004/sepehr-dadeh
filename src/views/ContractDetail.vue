@@ -4,11 +4,13 @@
       <img class="w-[191px] h-[100px]" src="../assets/images/khamenei.png" alt="Khamenei">
       <img class="w-[130px] h-[130px]" src="../assets/images/education.svg" alt="Education" style="margin-right: 1rem">
     </header>
-    <h1
-        class="main-title text-[24px] text-[var(--main-title)] text-shadow-[0_4px_10px_black] text-center"
-    >
-      پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی
-    </h1>
+    <router-link to="/">
+      <h1
+          class="main-title text-[24px] text-[var(--main-title)] text-shadow-[0_4px_10px_black] text-center"
+      >
+        پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی
+      </h1>
+    </router-link>
     <main class="w-full h-full flex flex-col items-center translate-y-[35px]">
       <div
           class="w-[99%] h-[800px] bg-[#cbe9f6] flex justify-center items-center"

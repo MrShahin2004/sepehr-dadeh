@@ -100,74 +100,8 @@ export default {
     AssignCode(code) {
       this.ReceivedCode = code;
     },
-    async SendRequest() {
-      try {
-        const Response = await fetch("http://localhost:3000/api/mariadb/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            type: this.ReceivedType,
-            username: this.ReceivedUser,
-            password: this.ReceivedPass,
-            code: this.ReceivedCode
-          }),
-        });
-        const Data = await Response.json();
-        this.Issue = Data.issue;
-        this.Message = Data.message;
-
-        if ("issue" in Data) {
-          this.ErrorPopup(this.Issue, this.Message);
-        } else {
-          let Token = Data.token;
-          let ParsedToken = jwtDecode(Token);
-          let UserObject = ParsedToken.UserObject;
-          let RoleFromServer = UserObject.role;
-
-          if (!Token || typeof Token !== "string") {
-            console.error("Invalid or missing token: ", Data.message || "No token provided.");
-            return;
-          }
-
-          localStorage.setItem("token", Token);
-          this.SuccessPopup(Data.message);
-
-          setTimeout(() => {
-            if (RoleFromServer === "Owner") {
-              this.$router.push({
-                name: "OwnerProfile",
-                params: {
-                  username: this.ReceivedUser
-                }
-              });
-            }
-
-            if (RoleFromServer === "Admin") {
-              this.$router.push({
-                name: 'AdminProfile',
-                params: {
-                  username: this.ReceivedUser,
-                  token: Token
-                }
-              });
-            }
-
-            if (RoleFromServer === "User") {
-              this.$router.push({
-                name: 'UserProfile',
-                params: {
-                  username: this.ReceivedUser,
-                  token: Token
-                }
-              });
-            }
-          }, 3000);
-        }
-      } catch (error) {
-        console.error(error);
-      }
+    SendRequest() {
+      window.open("https://sepehr-dad.com/cartable");
     },
     OpenSignIn() {
       this.$router.push({

@@ -6,8 +6,7 @@
     </header>
     <router-link to="/">
       <h1
-          class="main-title text-[24px] text-[var(--main-title)] text-shadow-[0_4px_10px_black] text-center"
-      >
+          class="main-title text-[40px] text-[var(--main-title)] text-shadow-[0_4px_10px_black] text-center">
         پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی
       </h1>
     </router-link>

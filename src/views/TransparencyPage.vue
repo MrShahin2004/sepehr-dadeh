@@ -72,22 +72,14 @@
           شفافیت
         </h2>
         <div
-            class="agreement-list w-[100%] h-[93%] flex flex-col items-center justify-start overflow-y-auto translate-y-[50px]"
-        >
-          <router-link
-              v-for="item in agreements"
-              :key="item.id"
-              :to="{ name: 'ContractDetail', params: { id: item.id } }"
-              style="direction: rtl"
-              class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px] hover:bg-[#cbfbf1] transition relative"
-          >
-            <div
-                class="text-container w-[100%] h-[100%] flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]"
-            >
-              <p>{{ item.title }}</p>
-              <p class="text-center text-[13px] opacity-50">{{ item.date }}</p>
-              <p class="text-[13px] opacity-50">{{ item.description }}</p>
-            </div>
+            class="agreement-list w-[100%] h-[93%] overflow-y-auto translate-y-[50px] relative">
+          <router-link class="w-[130px] bg-[white]
+            flex flex-col justify-between rounded-lg shadow-lg absolute top-[5px] right-[20px]"
+                       style="padding: 1rem;"
+                       to="/search">
+            <img src="../assets/images/note.png" alt="Note">
+            <p class="w-[100%] h-fit text-[13px]"
+               style="margin-top: 1rem;"> قراردادها، مناقصات، مزایده ها و تفاهم نامه ها </p>
           </router-link>
         </div>
       </div>

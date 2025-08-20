@@ -69,7 +69,7 @@
             style="padding: 1rem"
             class="text-[18px] absolute top-[0] right-[10px]"
         >
-          لیست قراردهای فعال
+          شفافیت
         </h2>
         <div
             class="agreement-list w-[100%] h-[93%] flex flex-col items-center justify-start overflow-y-auto translate-y-[50px]"

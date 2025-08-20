@@ -65,39 +65,52 @@
             </button>
           </div>
 
-          <!-- Results list -->
-          <div
-              class="mt-8 space-y-4 max-h-[60vh] overflow-y-auto pr-1"
-              style="direction: rtl"
-          >
-            <router-link
-                v-for="item in filteredAgreements"
-                :key="item.id"
-                :to="{ name: 'ContractDetail', params: { id: item.id } }"
-                class="block"
-            >
-              <div
-                  class="bg-white rounded-2xl shadow-md border border-gray-200 p-5 hover:shadow-lg transition"
+          <!-- Results list with pagination -->
+          <div class="mt-8 max-h-[60vh] overflow-hidden pr-1" style="direction: rtl">
+            <div class="space-y-4 overflow-y-auto max-h-[50vh]">
+              <router-link
+                  v-for="item in paginatedAgreements"
+                  :key="item.id"
+                  :to="{ name: 'ContractDetail', params: { id: item.id } }"
+                  class="block"
               >
-                <div class="flex items-center justify-between">
-                  <div>
-                    <p class="text-gray-700 text-sm">
-                      کد شناسه یکتا:
-                      <span class="font-semibold">{{ item.id }}</span>
-                    </p>
-                    <p class="text-[13px] text-gray-500 mt-1">
-                      تاریخ: {{ item.date }}
-                    </p>
+                <div
+                    class="bg-white rounded-2xl shadow-md border border-gray-200 p-5 hover:shadow-lg transition"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-gray-700 text-sm">
+                        کد شناسه یکتا:
+                        <span class="font-semibold">{{ item.id }}</span>
+                      </p>
+                      <p class="text-[13px] text-gray-500 mt-1">
+                        تاریخ: {{ item.date }}
+                      </p>
+                    </div>
+                    <div class="text-gray-400 text-xs">ناظر: مدیر</div>
                   </div>
-                  <div class="text-gray-400 text-xs">ناظر: مدیر</div>
                 </div>
+              </router-link>
+              <div
+                  v-if="filteredAgreements.length === 0"
+                  class="text-center text-gray-500 py-10"
+              >
+                موردی یافت نشد
               </div>
-            </router-link>
-            <div
-                v-if="filteredAgreements.length === 0"
-                class="text-center text-gray-500 py-10"
-            >
-              موردی یافت نشد
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-4 gap-2">
+              <button
+                  class="cursor-pointer"
+                  v-for="page in totalPages"
+                  :key="page"
+                  @click="currentPage = page"
+                  :class="['px-3 py-1 rounded-md',
+                   currentPage === page ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300']"
+              >
+                {{ page }}
+              </button>
             </div>
           </div>
         </div>
@@ -129,8 +142,20 @@ export default {
     return {
       query: "",
       agreements,
-      filteredAgreements: agreements, // Initialize with all agreements
+      filteredAgreements: agreements,
+      currentPage: 1,
+      itemsPerPage: 10,
     };
+  },
+  computed: {
+    totalPages() {
+      return Math.ceil(this.filteredAgreements.length / this.itemsPerPage);
+    },
+    paginatedAgreements() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.filteredAgreements.slice(start, end);
+    },
   },
   methods: {
     onSearch() {
@@ -147,6 +172,7 @@ export default {
           );
         });
       }
+      this.currentPage = 1; // Reset to first page on new search
     },
   },
 };

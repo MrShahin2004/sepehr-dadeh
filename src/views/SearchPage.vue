@@ -71,7 +71,7 @@
               style="direction: rtl"
           >
             <router-link
-                v-for="item in filtered"
+                v-for="item in filteredAgreements"
                 :key="item.id"
                 :to="{ name: 'ContractDetail', params: { id: item.id } }"
                 class="block"
@@ -94,7 +94,7 @@
               </div>
             </router-link>
             <div
-                v-if="filtered.length === 0"
+                v-if="filteredAgreements.length === 0"
                 class="text-center text-gray-500 py-10"
             >
               موردی یافت نشد
@@ -129,25 +129,24 @@ export default {
     return {
       query: "",
       agreements,
+      filteredAgreements: agreements, // Initialize with all agreements
     };
-  },
-  computed: {
-    filtered() {
-      const q = this.query.trim();
-      if (!q) return this.agreements;
-      return this.agreements.filter((a) => {
-        return (
-            a.title.includes(q) ||
-            a.description.includes(q) ||
-            String(a.id).includes(q) ||
-            a.date.includes(q)
-        );
-      });
-    },
   },
   methods: {
     onSearch() {
-      // Triggered by the button; filtering is reactive via v-model
+      const q = this.query.trim();
+      if (!q) {
+        this.filteredAgreements = this.agreements;
+      } else {
+        this.filteredAgreements = this.agreements.filter((a) => {
+          return (
+              a.title.includes(q) ||
+              a.description.includes(q) ||
+              String(a.id).includes(q) ||
+              a.date.includes(q)
+          );
+        });
+      }
     },
   },
 };

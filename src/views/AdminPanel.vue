@@ -149,11 +149,12 @@
                   >
                     صفحه اصلی
                   </router-link>
-                  <button
+                  <router-link
+                      to="/new-contract"
                       class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition"
                   >
                     جدید
-                  </button>
+                  </router-link>
                   <button
                       class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition"
                   >

@@ -105,7 +105,7 @@
           <!-- Submit -->
           <div class="mt-6">
             <button
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded cursor-pointer"
             >
               ثبت
             </button>

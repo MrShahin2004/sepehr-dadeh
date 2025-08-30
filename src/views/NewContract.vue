@@ -47,21 +47,79 @@
                 <label class="block text-sm text-gray-600 mb-1"
                 >عنوان قرارداد:</label
                 >
-                <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder=""
-                />
+                <div class="relative">
+                  <input
+                      v-model="contractTitle"
+                      type="text"
+                      :class="[
+                      'w-full rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-2',
+                      titleError
+                        ? 'border-red-500 bg-red-50 focus:ring-red-500'
+                        : 'border-gray-300 bg-white focus:ring-blue-500',
+                    ]"
+                      placeholder=""
+                      @focus="onTitleFocus"
+                      @blur="onTitleBlur"
+                  />
+                  <div
+                      v-if="titleError"
+                      class="absolute left-3 top-1/2 transform -translate-y-1/2"
+                  >
+                    <svg
+                        class="w-5 h-5 text-red-500"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                    >
+                      <path
+                          fill-rule="evenodd"
+                          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                          clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <p v-if="titleError" class="text-red-500 text-sm mt-1">
+                  این فیلد الزامی است
+                </p>
               </div>
               <div>
                 <label class="block text-sm text-gray-600 mb-1"
                 >موضوع قرارداد:</label
                 >
-                <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder=""
-                />
+                <div class="relative">
+                  <input
+                      v-model="contractSubject"
+                      type="text"
+                      :class="[
+                      'w-full rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-2',
+                      subjectError
+                        ? 'border-red-500 bg-red-50 focus:ring-red-500'
+                        : 'border-gray-300 bg-white focus:ring-blue-500',
+                    ]"
+                      placeholder=""
+                      @focus="onSubjectFocus"
+                      @blur="onSubjectBlur"
+                  />
+                  <div
+                      v-if="subjectError"
+                      class="absolute left-3 top-1/2 transform -translate-y-1/2"
+                  >
+                    <svg
+                        class="w-5 h-5 text-red-500"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                    >
+                      <path
+                          fill-rule="evenodd"
+                          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                          clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <p v-if="subjectError" class="text-red-500 text-sm mt-1">
+                  این فیلد الزامی است
+                </p>
               </div>
 
               <!-- Upload card -->
@@ -73,7 +131,12 @@
                   >صورتجلسه پیش فراخوان:</span
                   >
                   <label class="inline-flex">
-                    <input type="file" class="hidden" @change="handleFileUpload" accept="application/pdf"/>
+                    <input
+                        type="file"
+                        class="hidden"
+                        @change="handleFileUpload"
+                        accept="application/pdf"
+                    />
                     <span
                         class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded"
                     >بارگذاری</span
@@ -95,7 +158,12 @@
                   class="bg-white rounded-xl border border-gray-200 shadow-sm h-[420px] flex items-start justify-center p-6"
               >
                 <div v-if="pdfUrl" class="w-full h-full">
-                  <embed :src="pdfUrl" type="application/pdf" width="100%" height="100%">
+                  <embed
+                      :src="pdfUrl"
+                      type="application/pdf"
+                      width="100%"
+                      height="100%"
+                  />
                 </div>
                 <span v-else class="text-gray-500">نمایش مدارک آپلود شده</span>
               </div>
@@ -152,6 +220,10 @@ export default {
   data() {
     return {
       pdfUrl: null,
+      contractTitle: "",
+      contractSubject: "",
+      titleError: false,
+      subjectError: false,
     };
   },
   methods: {
@@ -162,6 +234,22 @@ export default {
       } else {
         alert("Please upload a PDF file.");
         this.pdfUrl = null;
+      }
+    },
+    onTitleFocus() {
+      this.titleError = false;
+    },
+    onTitleBlur() {
+      if (!this.contractTitle) {
+        this.titleError = true;
+      }
+    },
+    onSubjectFocus() {
+      this.subjectError = false;
+    },
+    onSubjectBlur() {
+      if (!this.contractSubject) {
+        this.subjectError = true;
       }
     },
   },

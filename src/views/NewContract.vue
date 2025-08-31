@@ -1,5 +1,7 @@
 <template>
   <div class="w-full flex flex-col items-center" dir="rtl">
+    <!-- ModalPopup for file type validation -->
+    <ModalPopup :show="showModal" :message="modalMessage" @close="closeModal"/>
     <!-- Header (reuse from AdminPanel) -->
     <header class="flex justify-between w-full px-4 sm:px-8 pt-4">
       <img
@@ -173,6 +175,7 @@
           <!-- Submit -->
           <div class="mt-6">
             <button
+                @click="submitContract"
                 class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded cursor-pointer"
             >
               ثبت
@@ -215,8 +218,13 @@
 </template>
 
 <script>
+import ModalPopup from "@/components/ModalPopup.vue";
+
 export default {
   name: "NewContract",
+  components: {
+    ModalPopup,
+  },
   data() {
     return {
       pdfUrl: null,
@@ -224,16 +232,25 @@ export default {
       contractSubject: "",
       titleError: false,
       subjectError: false,
+      showModal: false,
+      modalMessage: "",
+      selectedFile: null,
     };
   },
   methods: {
     handleFileUpload(event) {
       const file = event.target.files[0];
+      console.log(file);
       if (file && file.type === "application/pdf") {
         this.pdfUrl = URL.createObjectURL(file);
+        this.selectedFile = file;
       } else {
-        alert("Please upload a PDF file.");
+        this.showModal = true;
+        this.modalMessage = "File type is not valid";
         this.pdfUrl = null;
+        this.selectedFile = null;
+        // Reset the file input
+        event.target.value = "";
       }
     },
     onTitleFocus() {
@@ -251,6 +268,114 @@ export default {
       if (!this.contractSubject) {
         this.subjectError = true;
       }
+    },
+    closeModal() {
+      this.showModal = false;
+      this.modalMessage = "";
+    },
+    async submitContract() {
+      // Validate inputs
+      if (!this.contractTitle.trim()) {
+        this.titleError = true;
+        return;
+      }
+      if (!this.contractSubject.trim()) {
+        this.subjectError = true;
+        return;
+      }
+      if (!this.selectedFile) {
+        this.showModal = true;
+        this.modalMessage = "لطفا یک فایل PDF انتخاب کنید";
+        return;
+      }
+
+      // Check file size (limit to 5MB for localStorage)
+      const maxFileSize = 20 * 1024 * 1024; // 5MB in bytes
+      if (this.selectedFile.size > maxFileSize) {
+        this.showModal = true;
+        this.modalMessage = "حجم فایل انتخاب شده باید حداکثر 20 مگابایت باشد";
+        return;
+      }
+
+      try {
+        // Check localStorage quota before processing
+        const testKey = "test_storage";
+        const testData = "x".repeat(1024 * 1024); // 1MB test data
+        try {
+          localStorage.setItem(testKey, testData);
+          localStorage.removeItem(testKey);
+        } catch (quotaError) {
+          this.showModal = true;
+          this.modalMessage =
+              "فضای ذخیره‌سازی پر شده است. لطفا برخی از قراردادهای قبلی را حذف کنید";
+          return;
+        }
+
+        // Convert file to base64 for storage
+        const fileBase64 = await this.fileToBase64(this.selectedFile);
+
+        // Create new contract object
+        const newContract = {
+          id: Date.now(), // Generate unique ID
+          title: this.contractTitle.trim(),
+          description: this.contractSubject.trim(),
+          date: this.getCurrentDate(),
+          fileName: this.selectedFile.name,
+          fileData: fileBase64,
+          fileType: this.selectedFile.type,
+        };
+
+        // Get existing contracts from localStorage
+        let existingContracts = JSON.parse(
+            localStorage.getItem("userContracts") || "[]"
+        );
+
+        // Add new contract to the beginning of the array
+        existingContracts.unshift(newContract);
+
+        // Try to save to localStorage with error handling
+        try {
+          localStorage.setItem(
+              "userContracts",
+              JSON.stringify(existingContracts)
+          );
+        } catch (storageError) {
+          this.showModal = true;
+          this.modalMessage =
+              "فضای ذخیره‌سازی کافی نیست. لطفا برخی از قراردادهای قبلی را حذف کنید";
+          return;
+        }
+
+        // Reset form
+        this.contractTitle = "";
+        this.contractSubject = "";
+        this.pdfUrl = null;
+        this.selectedFile = null;
+        this.titleError = false;
+        this.subjectError = false;
+
+        // Navigate back to home page
+        this.$router.push("/");
+      } catch (error) {
+        console.error("Error saving contract:", error);
+        this.showModal = true;
+        this.modalMessage = "خطا در پردازش فایل. لطفا دوباره تلاش کنید";
+      }
+    },
+    fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+    },
+    getCurrentDate() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      return `${year}/${month}/${day}`;
     },
   },
 };

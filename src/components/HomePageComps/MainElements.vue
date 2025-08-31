@@ -1,78 +1,78 @@
 <template>
   <main
-    class="w-full h-full flex flex-col justify-center items-center translate-y-[35px]"
+      class="w-full h-full flex flex-col justify-center items-center translate-y-[35px]"
   >
     <div class="agreement-container w-[95%] h-[100%] flex justify-around gap-4">
       <div
-        class="announcement-container w-[25%] h-[730px] rounded-xl bg-[var(--body-bg)] flex justify-center items-center"
+          class="announcement-container w-[25%] h-[730px] rounded-xl bg-[var(--body-bg)] flex justify-center items-center"
       >
         <div
-          class="announcement w-[100%] h-[100%] flex flex-col justify-start items-center"
+            class="announcement w-[100%] h-[100%] flex flex-col justify-start items-center"
         >
           <div
-            class="text-center flex justify-center items-center text-[white] w-[65%] h-fit rounded-lg bg-[#005f5a]"
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit rounded-lg bg-[#005f5a]"
           >
             اطلاعیه
           </div>
           <a
-            class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-            href="https://razavi.medu.gov.ir/"
-            target="_blank"
-            >درگاه اداره کل آموزش و پرورش خراسان رضوی</a
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              href="https://razavi.medu.gov.ir/"
+              target="_blank"
+          >درگاه اداره کل آموزش و پرورش خراسان رضوی</a
           >
           <a
-            class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-            href="https://setadiran.ir/setad/cms/"
-            target="_blank"
-            >سامانه تدارکات الکترونیکی دولت (ستاد ایران)</a
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              href="https://setadiran.ir/setad/cms/"
+              target="_blank"
+          >سامانه تدارکات الکترونیکی دولت (ستاد ایران)</a
           >
           <a
-            class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-            href="https://oa.razaviedu.ir/"
-            target="_blank"
-            >اتوماسیون اداری</a
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              href="https://oa.razaviedu.ir/"
+              target="_blank"
+          >اتوماسیون اداری</a
           >
           <a
-            class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-            href="https://es.tamin.ir/"
-            target="_blank"
-            >سایت تأمین اجتماعی</a
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              href="https://es.tamin.ir/"
+              target="_blank"
+          >سایت تأمین اجتماعی</a
           >
           <a
-            class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-            href="https://e-rasaneh.ir/"
-            target="_blank"
-            >سامانه جامع رسانه های کشور</a
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              href="https://e-rasaneh.ir/"
+              target="_blank"
+          >سامانه جامع رسانه های کشور</a
           >
           <a
-            class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-            href="https://cdb.mporg.ir/"
-            target="_blank"
-            >پایگاه اطلاعات قراردادهای کشور</a
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              href="https://cdb.mporg.ir/"
+              target="_blank"
+          >پایگاه اطلاعات قراردادهای کشور</a
           >
         </div>
       </div>
       <div
-        class="agreement-list-container w-[60%] h-[730px] rounded-xl bg-[var(--body-bg)] relative overflow-y-hidden"
+          class="agreement-list-container w-[60%] h-[730px] rounded-xl bg-[var(--body-bg)] relative overflow-y-hidden"
       >
         <h2
-          style="padding: 1rem"
-          class="text-[18px] absolute top-[0] right-[10px]"
+            style="padding: 1rem"
+            class="text-[18px] absolute top-[0] right-[10px]"
         >
           لیست قراردهای فعال
         </h2>
         <div
-          class="agreement-list w-[100%] h-[93%] flex flex-col items-center justify-start overflow-y-auto translate-y-[50px]"
+            class="agreement-list w-[100%] h-[93%] flex flex-col items-center justify-start overflow-y-auto translate-y-[50px]"
         >
           <router-link
-            v-for="item in agreements"
-            :key="item.id"
-            :to="{ name: 'ContractDetail', params: { id: item.id } }"
-            style="direction: rtl"
-            class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px] hover:bg-[#cbfbf1] transition relative"
+              v-for="item in agreements"
+              :key="item.id"
+              :to="{ name: 'ContractDetail', params: { id: item.id } }"
+              style="direction: rtl"
+              class="w-[100%] h-[90px] bg-[white] min-h-[90px] rounded-[6px] hover:bg-[#cbfbf1] transition relative"
           >
             <div
-              class="text-container w-[100%] h-[100%] flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]"
+                class="text-container w-[100%] h-[100%] flex flex-col justify-center items-start absolute top-[10px] right-[14px] translate-y-[-8px]"
             >
               <p>{{ item.title }}</p>
               <p class="text-center text-[13px] opacity-50">{{ item.date }}</p>
@@ -82,60 +82,60 @@
         </div>
       </div>
       <div
-        class="agreement-search-container w-[25%] h-[730px] rounded-xl bg-[var(--body-bg)] flex justify-center items-center"
+          class="agreement-search-container w-[25%] h-[730px] rounded-xl bg-[var(--body-bg)] flex justify-center items-center"
       >
         <div
-          class="agreement-search w-[100%] h-[100%] flex flex-col justify-start items-center"
+            class="agreement-search w-[100%] h-[100%] flex flex-col justify-start items-center"
         >
           <router-link
-            class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-            :to="{ name: 'SearchPage' }"
-            >جستجوی قرارداد
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              :to="{ name: 'SearchPage' }"
+          >جستجوی قرارداد
           </router-link>
           <a
-            class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
-            href="#"
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              href="#"
           >
             <router-link
-              class="w-full h-full text-center"
-              :to="{ name: 'TransparencyPage' }"
-              >شفافیت
+                class="w-full h-full text-center"
+                :to="{ name: 'TransparencyPage' }"
+            >شفافیت
             </router-link>
           </a>
         </div>
       </div>
     </div>
     <div
-      style="border-top: 1px solid white; margin-bottom: 2.5rem"
-      class="w-[100%] h-[1px]"
+        style="border-top: 1px solid white; margin-bottom: 2.5rem"
+        class="w-[100%] h-[1px]"
     ></div>
     <div
-      style="margin-bottom: 1.5rem"
-      class="more-info-container w-[100%] h-[600px] flex justify-center items-center"
+        style="margin-bottom: 1.5rem"
+        class="more-info-container w-[100%] h-[600px] flex justify-center items-center"
     >
       <div
-        class="more-info w-[100%] h-[100%] flex justify-center items-center gap-8"
+          class="more-info w-[100%] h-[100%] flex justify-center items-center gap-8"
       >
         <div
-          class="contact-us-container w-[40%] h-[100%] bg-[white] rounded-2xl relative flex flex-col justify-center items-center"
+            class="contact-us-container w-[40%] h-[100%] bg-[white] rounded-2xl relative flex flex-col justify-center items-center"
         >
           <div
-            class="w-[100%] h-[20%] flex flex-col justify-center items-center"
+              class="w-[100%] h-[20%] flex flex-col justify-center items-center"
           >
             <h2
-              style="padding: 1rem"
-              class="text-[18px] absolute top-[5px] right-[10px]"
+                style="padding: 1rem"
+                class="text-[18px] absolute top-[5px] right-[10px]"
             >
               ارتباط با ما
             </h2>
             <div
-              style="border-top: 1px solid black"
-              class="w-[90%] h-[1px]"
+                style="border-top: 1px solid black"
+                class="w-[90%] h-[1px]"
             ></div>
           </div>
           <div
-            dir="rtl"
-            class="contact-us w-[90%] h-[80%] flex flex-col justify-start items-center gap-4 translate-y-[-30px]"
+              dir="rtl"
+              class="contact-us w-[90%] h-[80%] flex flex-col justify-start items-center gap-4 translate-y-[-30px]"
           >
             <p class="w-[100%] h-fit">تلفن خانه: ۲-۳۱۰۷۵۱۶۱-۰۵۱</p>
             <p class="w-[100%] h-fit">دفتر مدیرکل: ۳۱۰۷۵۹۱۰-۰۵۱</p>
@@ -160,56 +160,56 @@
           </div>
         </div>
         <div
-          class="links-container w-[40%] h-[100%] bg-[white] rounded-2xl relative"
+            class="links-container w-[40%] h-[100%] bg-[white] rounded-2xl relative"
         >
           <div
-            class="w-[100%] h-[20%] flex flex-col justify-center items-center"
+              class="w-[100%] h-[20%] flex flex-col justify-center items-center"
           >
             <h2
-              style="padding: 1rem"
-              class="text-[18px] absolute top-[5px] right-[10px]"
+                style="padding: 1rem"
+                class="text-[18px] absolute top-[5px] right-[10px]"
             >
               پیوندها
             </h2>
             <div
-              style="border-top: 1px solid black"
-              class="w-[90%] h-[1px]"
+                style="border-top: 1px solid black"
+                class="w-[90%] h-[1px]"
             ></div>
           </div>
           <div
-            class="links w-[100%] h-[80%] flex flex-col justify-start items-center"
+              class="links w-[100%] h-[80%] flex flex-col justify-start items-center"
           >
             <a
-              class="w-[80%] h-fit flex justify-center"
-              href="https://leader.ir/"
-              target="_blank"
+                class="w-[80%] h-fit flex justify-center"
+                href="https://leader.ir/"
+                target="_blank"
             >
               <img
-                class="w-[50%] h-fit"
-                src="../../assets/images/leader.png"
-                alt="Leader"
+                  class="w-[50%] h-fit"
+                  src="../../assets/images/leader.png"
+                  alt="Leader"
               />
             </a>
             <a
-              class="w-[80%] h-fit flex justify-center"
-              href="https://president.ir/"
-              target="_blank"
+                class="w-[80%] h-fit flex justify-center"
+                href="https://president.ir/"
+                target="_blank"
             >
               <img
-                class="w-[50%] h-fit"
-                src="../../assets/images/president.png"
-                alt="President"
+                  class="w-[50%] h-fit"
+                  src="../../assets/images/president.png"
+                  alt="President"
               />
             </a>
             <a
-              class="w-[80%] h-fit flex justify-center"
-              href="https://dowlat.ir/"
-              target="_blank"
+                class="w-[80%] h-fit flex justify-center"
+                href="https://dowlat.ir/"
+                target="_blank"
             >
               <img
-                class="w-[50%] h-fit"
-                src="../../assets/images/government.png"
-                alt="Government"
+                  class="w-[50%] h-fit"
+                  src="../../assets/images/government.png"
+                  alt="Government"
               />
             </a>
           </div>
@@ -226,8 +226,31 @@ export default {
   name: "MainElements",
   data() {
     return {
-      agreements,
+      staticAgreements: agreements,
     };
+  },
+  computed: {
+    agreements() {
+      // Get user contracts from localStorage
+      const userContracts = JSON.parse(
+          localStorage.getItem("userContracts") || "[]"
+      );
+
+      // Convert user contracts to match the static agreements format
+      const formattedUserContracts = userContracts.map((contract) => ({
+        id: contract.id,
+        title: contract.title,
+        description: contract.description,
+        date: contract.date,
+        isUserContract: true, // Flag to identify user contracts
+        fileName: contract.fileName,
+        fileData: contract.fileData,
+        fileType: contract.fileType,
+      }));
+
+      // Combine user contracts with static agreements
+      return [...formattedUserContracts, ...this.staticAgreements];
+    },
   },
 };
 </script>

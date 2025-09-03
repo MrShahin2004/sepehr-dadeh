@@ -47,12 +47,6 @@
                 <th class="border border-gray-300 p-2 text-right">
                   طرف قرارداد
                 </th>
-                <th
-                    v-if="agreement.isUserContract"
-                    class="border border-gray-300 p-2 text-right"
-                >
-                  فایل
-                </th>
               </tr>
               </thead>
               <tbody>

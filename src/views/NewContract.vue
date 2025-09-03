@@ -298,22 +298,6 @@ export default {
       }
 
       try {
-        // Check localStorage quota before processing
-        const testKey = "test_storage";
-        const testData = "x".repeat(1024 * 1024); // 1MB test data
-        try {
-          localStorage.setItem(testKey, testData);
-          localStorage.removeItem(testKey);
-        } catch (quotaError) {
-          this.showModal = true;
-          this.modalMessage =
-              "فضای ذخیره‌سازی پر شده است. لطفا برخی از قراردادهای قبلی را حذف کنید";
-          return;
-        }
-
-        // Convert file to base64 for storage
-        const fileBase64 = await this.fileToBase64(this.selectedFile);
-
         // Create new contract object
         const newContract = {
           id: Date.now(), // Generate unique ID
@@ -321,7 +305,6 @@ export default {
           description: this.contractSubject.trim(),
           date: this.getCurrentDate(),
           fileName: this.selectedFile.name,
-          fileData: fileBase64,
           fileType: this.selectedFile.type,
         };
 

@@ -66,17 +66,6 @@
                 <td class="border border-gray-300 p-2 text-right">
                   {{ agreement.description }}
                 </td>
-                <td
-                    v-if="agreement.isUserContract"
-                    class="border border-gray-300 p-2 text-right"
-                >
-                  <button
-                      @click="downloadFile"
-                      class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm cursor-pointer"
-                  >
-                    دانلود فایل
-                  </button>
-                </td>
               </tr>
               </tbody>
             </table>

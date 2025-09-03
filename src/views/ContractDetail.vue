@@ -145,31 +145,7 @@ export default {
       // If not found in user contracts, check static agreements
       return agreements.find((a) => a.id === numericId);
     },
-  },
-  methods: {
-    downloadFile() {
-      if (this.agreement && this.agreement.fileData) {
-        // Create a blob from the base64 data
-        const byteCharacters = atob(this.agreement.fileData.split(",")[1]);
-        const byteNumbers = new Array(byteCharacters.length);
-        for (let i = 0; i < byteCharacters.length; i++) {
-          byteNumbers[i] = byteCharacters.charCodeAt(i);
-        }
-        const byteArray = new Uint8Array(byteNumbers);
-        const blob = new Blob([byteArray], {type: this.agreement.fileType});
-
-        // Create download link
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = this.agreement.fileName || "contract.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      }
-    },
-  },
+  }
 };
 </script>
 

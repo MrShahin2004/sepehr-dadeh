@@ -3,30 +3,32 @@
     <!-- Top banner -->
     <header class="relative overflow-hidden">
       <div
-          class="bg-gradient-to-r from-blue-800 to-blue-700 h-32 w-full flex items-center justify-center"
+        class="bg-gradient-to-r from-blue-800 to-blue-700 h-32 w-full flex items-center justify-center"
       >
         <!-- Left image (Iranian flag with figures) -->
         <div class="absolute left-4 top-2 flex items-center space-x-2">
           <img
-              src="@/assets/images/khamenei.png"
-              class="w-50 h-auto object-contain"
-              alt="Iranian figures"
+            src="@/assets/images/khamenei.png"
+            class="w-50 h-auto object-contain"
+            alt="Iranian figures"
           />
         </div>
 
         <!-- Center text -->
         <div class="text-center text-white leading-relaxed">
-          <h1 class="text-xl font-bold">
-            پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان رضوی
-          </h1>
+          <router-link to="/">
+            <h1 class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]">
+              پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان رضوی
+            </h1>
+          </router-link>
         </div>
 
         <!-- Right image (Iranian emblem) -->
         <div class="absolute right-4 top-2 flex flex-col items-center">
           <img
-              src="@/assets/images/education.svg"
-              class="w-40 h-auto object-contain"
-              alt="Iranian emblem"
+            src="@/assets/images/education.svg"
+            class="w-40 h-auto object-contain"
+            alt="Iranian emblem"
           />
         </div>
       </div>
@@ -35,10 +37,10 @@
     <main class="mx-auto max-w-7xl px-4 py-6">
       <!-- Admin info bar -->
       <div
-          class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6"
+        class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6"
       >
         <span class="px-3 py-1 bg-teal-600 rounded text-sm"
-        >admin : کارشناس ثبت</span
+          >admin : کارشناس ثبت</span
         >
         <span class="text-sm">اطلاعیه های اخیر</span>
       </div>
@@ -47,17 +49,17 @@
       <div class="flex flex-col lg:flex-row gap-4 mb-6">
         <div class="flex gap-3">
           <button
-              class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm"
+            class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm"
           >
             کاربر جدید
           </button>
           <button
-              class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm"
+            class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm"
           >
             کارتابل
           </button>
           <button
-              class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm"
+            class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm"
           >
             ویرایش متن قرارداد
           </button>
@@ -66,30 +68,45 @@
         <div class="flex-1 max-w-md">
           <div class="relative">
             <input
-                type="text"
-                placeholder="جستجوی قرارداد..."
-                class="w-full rounded-lg border border-gray-300 bg-white py-2 pr-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              type="text"
+              placeholder="جستجوی قرارداد..."
+              class="w-full rounded-lg border border-gray-300 bg-white py-2 pr-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             />
             <span class="absolute left-3 top-2.5 text-gray-400">🔍</span>
           </div>
+        </div>
+
+        <!-- Contracts Management Dashboard title -->
+        <div class="text-right">
+          <h2 class="text-xl font-semibold text-gray-800 leading-7">
+            داشبورد مدیریت<br />قراردادها
+          </h2>
         </div>
       </div>
 
       <!-- Contract category cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <KpiCard color="bg-purple-500" title="اجاره"/>
-        <KpiCard color="bg-yellow-400" title="فروش اموال غیر منقول"/>
-        <KpiCard color="bg-green-500" title="فروش اموال منقول"/>
-        <KpiCard color="bg-blue-500" title="کل قراردادها"/>
+        <KpiCard color="bg-purple-500" title="اجاره" />
+        <KpiCard color="bg-yellow-400" title="فروش اموال غیر منقول" />
+        <KpiCard color="bg-green-500" title="فروش اموال منقول" />
+        <KpiCard color="bg-blue-500" title="کل قراردادها" />
       </div>
 
       <!-- Bottom panels -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- Upcoming payments -->
         <div class="bg-white rounded-lg shadow p-6">
-          <h3 class="text-lg font-semibold text-gray-800 mb-4">
-            پرداخت های پیش رو
-          </h3>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">
+              پرداخت های پیش رو
+            </h3>
+            <a
+              href="#"
+              class="text-blue-600 hover:text-blue-800 text-sm flex items-center"
+            >
+              مشاهده همه <span class="mr-1">˂</span>
+            </a>
+          </div>
           <p class="text-gray-600">هیچ پرداختی در هفته آینده وجود ندارد</p>
         </div>
 
@@ -101,10 +118,10 @@
                 آخرین قراردادها
               </h3>
               <a
-                  href="#"
-                  class="text-blue-600 hover:text-blue-800 text-sm flex items-center"
+                href="#"
+                class="text-blue-600 hover:text-blue-800 text-sm flex items-center"
               >
-                مشاهده همه <span class="mr-1">‹</span>
+                مشاهده همه <span class="mr-1">˂</span>
               </a>
             </div>
           </div>
@@ -112,32 +129,32 @@
             <div class="overflow-x-auto">
               <table class="w-full text-sm">
                 <thead class="text-gray-600">
-                <tr class="border-b border-gray-200">
-                  <th class="py-3 pr-4 text-right font-medium">
-                    نام قرارداد
-                  </th>
-                  <th class="py-3 px-4 text-right font-medium">نوع</th>
-                  <th class="py-3 px-4 text-right font-medium">تاریخ</th>
-                  <th class="py-3 pl-4 text-right font-medium">وضعیت</th>
-                </tr>
+                  <tr class="border-b border-gray-200">
+                    <th class="py-3 pr-4 text-right font-medium">
+                      نام قرارداد
+                    </th>
+                    <th class="py-3 px-4 text-right font-medium">نوع</th>
+                    <th class="py-3 px-4 text-right font-medium">تاریخ</th>
+                    <th class="py-3 pl-4 text-right font-medium">وضعیت</th>
+                  </tr>
                 </thead>
                 <tbody class="text-gray-800">
-                <tr class="border-b border-gray-100">
-                  <td class="py-4 pr-4">—</td>
-                  <td class="py-4 px-4">
+                  <tr class="border-b border-gray-100">
+                    <td class="py-4 pr-4">—</td>
+                    <td class="py-4 px-4">
                       <span
-                          class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-blue-800 text-xs"
-                      >منقول</span
+                        class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-blue-800 text-xs"
+                        >منقول</span
                       >
-                  </td>
-                  <td class="py-4 px-4">۱۴۰۴/۶/۲۹</td>
-                  <td class="py-4 pl-4">
+                    </td>
+                    <td class="py-4 px-4">۱۴۰۴/۶/۲۹</td>
+                    <td class="py-4 pl-4">
                       <span
-                          class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-gray-800 text-xs"
-                      >در حال اجرا</span
+                        class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-gray-800 text-xs"
+                        >در حال اجرا</span
                       >
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -148,10 +165,10 @@
       <!-- Footer -->
       <footer class="mt-10">
         <div
-            class="bg-gradient-to-r from-blue-800 to-blue-700 text-white rounded-lg px-6 py-8"
+          class="bg-gradient-to-r from-blue-800 to-blue-700 text-white rounded-lg px-6 py-8"
         >
           <nav
-              class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm mb-4"
+            class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm mb-4"
           >
             <a href="#" class="hover:underline">صفحه اصلی</a>
             <a href="#" class="hover:underline">آمارها</a>
@@ -175,7 +192,7 @@ export default {
   name: "DashBoard",
   components: {
     KpiCard: {
-      props: {title: String, color: String},
+      props: { title: String, color: String },
       template: `
         <div class="bg-white rounded-lg shadow p-4">
           <div class="flex items-center justify-between mb-4">
@@ -193,3 +210,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.main-title {
+  font-family: IranNastaliq, sans-serif;
+}
+</style>

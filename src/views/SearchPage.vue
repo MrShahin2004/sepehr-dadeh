@@ -17,7 +17,7 @@
     <router-link to="/">
       <h1
           class="text-[36px] text-[var(--main-title)] text-shadow-[0_4px_10px_black] text-center mt-4"
-          style="font-family: IranNastaliq, sans-serif;"
+          style="font-family: IranNastaliq, sans-serif"
       >
         پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی
       </h1>
@@ -66,7 +66,10 @@
           </div>
 
           <!-- Results list with pagination -->
-          <div class="mt-8 max-h-[60vh] overflow-hidden pr-1" style="direction: rtl">
+          <div
+              class="mt-8 max-h-[60vh] overflow-hidden pr-1"
+              style="direction: rtl"
+          >
             <div class="space-y-4 overflow-y-auto max-h-[50vh]">
               <router-link
                   v-for="item in paginatedAgreements"
@@ -106,8 +109,12 @@
                   v-for="page in totalPages"
                   :key="page"
                   @click="currentPage = page"
-                  :class="['px-3 py-1 rounded-md',
-                   currentPage === page ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300']"
+                  :class="[
+                  'px-3 py-1 rounded-md',
+                  currentPage === page
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-200 hover:bg-gray-300',
+                ]"
               >
                 {{ page }}
               </button>
@@ -117,15 +124,23 @@
       </div>
     </main>
   </div>
-  <hr>
+  <hr/>
   <div class="login-footer">
     <div class="footer-links flex justify-center items-center gap-x-[1rem]">
-      <a class="text-white transition hover:cursor-pointer" href="#">حریم خصوصی</a>
-      <a class="text-white transition hover:cursor-pointer" href="#">نظرسنجی‌ها</a>
+      <a class="text-white transition hover:cursor-pointer" href="#"
+      >حریم خصوصی</a
+      >
+      <a class="text-white transition hover:cursor-pointer" href="#"
+      >نظرسنجی‌ها</a
+      >
       <a class="text-white transition hover:cursor-pointer" href="#">پیوندها</a>
-      <a class="text-white transition hover:cursor-pointer" href="#">فراخوان‌ها</a>
+      <a class="text-white transition hover:cursor-pointer" href="#"
+      >فراخوان‌ها</a
+      >
       <a class="text-white transition hover:cursor-pointer" href="#">آمارها</a>
-      <a class="text-white transition hover:cursor-pointer" href="#">صفحه اصلی</a>
+      <a class="text-white transition hover:cursor-pointer" href="#"
+      >صفحه اصلی</a
+      >
     </div>
     <div class="footer-desc flex justify-center items-center">
       <p class="text-[white]">© کلیه حقوق این پایگاه به سپهر داده تعلق دارد</p>
@@ -148,6 +163,18 @@ export default {
     };
   },
   computed: {
+    mergedAgreements() {
+      const userContracts = JSON.parse(
+          localStorage.getItem("userContracts") || "[]"
+      );
+      const normalizedUsers = userContracts.map((c) => ({
+        id: c.id,
+        title: c.title,
+        description: c.description,
+        date: c.date,
+      }));
+      return [...normalizedUsers, ...this.agreements];
+    },
     totalPages() {
       return Math.ceil(this.filteredAgreements.length / this.itemsPerPage);
     },
@@ -161,9 +188,9 @@ export default {
     onSearch() {
       const q = this.query.trim();
       if (!q) {
-        this.filteredAgreements = this.agreements;
+        this.filteredAgreements = this.mergedAgreements;
       } else {
-        this.filteredAgreements = this.agreements.filter((a) => {
+        this.filteredAgreements = this.mergedAgreements.filter((a) => {
           return (
               a.title.includes(q) ||
               a.description.includes(q) ||
@@ -174,6 +201,10 @@ export default {
       }
       this.currentPage = 1; // Reset to first page on new search
     },
+  },
+  created() {
+    // Initialize results with merged list on load
+    this.filteredAgreements = this.mergedAgreements;
   },
 };
 </script>

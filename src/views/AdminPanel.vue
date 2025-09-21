@@ -303,13 +303,25 @@ export default {
     };
   },
   computed: {
+    mergedAgreements() {
+      const userContracts = JSON.parse(
+          localStorage.getItem("userContracts") || "[]"
+      );
+      const normalizedUsers = userContracts.map((c) => ({
+        id: c.id,
+        title: c.title,
+        description: c.description,
+        date: c.date,
+      }));
+      return [...normalizedUsers, ...this.agreements];
+    },
     totalPages() {
-      return Math.ceil(this.agreements.length / this.itemsPerPage);
+      return Math.ceil(this.mergedAgreements.length / this.itemsPerPage);
     },
     paginatedAgreements() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
-      return this.agreements.slice(start, end);
+      return this.mergedAgreements.slice(start, end);
     },
   },
 };

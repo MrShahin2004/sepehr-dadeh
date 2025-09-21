@@ -219,6 +219,7 @@
 
 <script>
 import ModalPopup from "@/components/ModalPopup.vue";
+import agreements from "@/data/agreements.js";
 
 export default {
   name: "NewContract",
@@ -298,9 +299,23 @@ export default {
       }
 
       try {
+        // Determine next incremental ID based on both static and user contracts
+        const existingUserContracts = JSON.parse(
+            localStorage.getItem("userContracts") || "[]"
+        );
+        const staticMaxId = agreements.reduce(
+            (max, item) => (item.id > max ? item.id : max),
+            0
+        );
+        const userMaxId = existingUserContracts.reduce(
+            (max, item) => (item.id > max ? item.id : max),
+            0
+        );
+        const nextId = Math.max(staticMaxId, userMaxId) + 1;
+
         // Create new contract object
         const newContract = {
-          id: Date.now(), // Generate unique ID
+          id: nextId,
           title: this.contractTitle.trim(),
           description: this.contractSubject.trim(),
           date: this.getCurrentDate(),
@@ -309,9 +324,7 @@ export default {
         };
 
         // Get existing contracts from localStorage
-        let existingContracts = JSON.parse(
-            localStorage.getItem("userContracts") || "[]"
-        );
+        let existingContracts = existingUserContracts;
 
         // Add new contract to the beginning of the array
         existingContracts.unshift(newContract);

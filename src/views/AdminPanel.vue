@@ -139,6 +139,7 @@
               <div class="px-6 py-4 border-t bg-gray-50">
                 <div class="flex flex-wrap gap-2 justify-center">
                   <button
+                      @click="GoToDashboard"
                       class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition"
                   >
                     صفحه داشبورد
@@ -324,6 +325,11 @@ export default {
       return this.mergedAgreements.slice(start, end);
     },
   },
+  methods: {
+    GoToDashboard() {
+      this.$router.push({ name: "DashBoard" });
+    }
+  }
 };
 </script>
 

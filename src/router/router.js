@@ -8,6 +8,7 @@ import SearchPage from "@/views/SearchPage.vue";
 import TransparencyPage from "@/views/TransparencyPage.vue";
 import AdminPanel from "@/views/AdminPanel.vue";
 import NewContract from "@/views/NewContract.vue";
+import DashBoard from "@/views/DashBoard.vue";
 
 const routes = [
     { path: "/", component: HomePage, name: "HomePage" },

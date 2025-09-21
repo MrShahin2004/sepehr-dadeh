@@ -9,7 +9,7 @@
         <div class="absolute left-4 top-2 flex items-center space-x-2">
           <img
               src="@/assets/images/khamenei.png"
-              class="w-20 h-auto object-contain"
+              class="w-50 h-auto object-contain"
               alt="Iranian figures"
           />
         </div>
@@ -25,7 +25,7 @@
         <div class="absolute right-4 top-2 flex flex-col items-center">
           <img
               src="@/assets/images/education.svg"
-              class="w-16 h-auto object-contain"
+              class="w-40 h-auto object-contain"
               alt="Iranian emblem"
           />
         </div>

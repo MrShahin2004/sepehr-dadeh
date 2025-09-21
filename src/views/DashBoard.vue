@@ -3,7 +3,7 @@
     <!-- Top banner -->
     <header class="relative overflow-hidden">
       <div
-        class="bg-gradient-to-r from-blue-800 to-blue-700 h-32 w-full flex items-center justify-center"
+        class="top-navbar h-32 w-full flex items-center justify-center"
       >
         <!-- Left image (Iranian flag with figures) -->
         <div class="absolute left-4 top-2 flex items-center space-x-2">
@@ -17,8 +17,11 @@
         <!-- Center text -->
         <div class="text-center text-white leading-relaxed">
           <router-link to="/">
-            <h1 class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]">
-              پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان رضوی
+            <h1
+              class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
+            >
+              پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان
+              رضوی
             </h1>
           </router-link>
         </div>
@@ -165,7 +168,7 @@
       <!-- Footer -->
       <footer class="mt-10">
         <div
-          class="bg-gradient-to-r from-blue-800 to-blue-700 text-white rounded-lg px-6 py-8"
+          class="footer-navbar text-white rounded-lg px-6 py-8"
         >
           <nav
             class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm mb-4"
@@ -214,5 +217,14 @@ export default {
 <style>
 .main-title {
   font-family: IranNastaliq, sans-serif;
+}
+
+.top-navbar, .footer-navbar {
+  background: #0059e7;
+  background: radial-gradient(
+      circle,
+      rgba(0, 89, 231, 1) 0%,
+      rgba(43, 16, 88, 1) 100%
+  );
 }
 </style>

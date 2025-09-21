@@ -17,6 +17,7 @@ const routes = [
     { path: "/search", component: SearchPage, name: "SearchPage", props: true },
     { path: "/transparency", component: TransparencyPage, name: "TransparencyPage" },
     { path: "/admin", component: AdminPanel, name: "AdminPanel", props: true },
+    { path: "/admin/dashboard", component: DashBoard, name: "DashBoard" }, // NEW
     { path: "/new-contract", component: NewContract, name: "NewContract" },
 ];
 

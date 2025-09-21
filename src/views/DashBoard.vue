@@ -28,11 +28,6 @@
               class="w-16 h-auto object-contain"
               alt="Iranian emblem"
           />
-          <p class="text-xs text-white text-center mt-1 leading-tight">
-            جمهوری اسلامی ایران<br/>
-            وزارت آموزش و پرورش<br/>
-            اداره ی کل آموزش و پرورش خراسان رضوی
-          </p>
         </div>
       </div>
     </header>

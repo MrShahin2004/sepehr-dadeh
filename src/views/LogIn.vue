@@ -140,7 +140,7 @@ export default {
       this.ReceivedCode = code;
     },
     SendRequest() {
-      this.$router.push({name: "AdminPanel"});
+      this.$router.push({name: "CarTable"});
     },
     OpenSignIn() {
       this.$router.push({

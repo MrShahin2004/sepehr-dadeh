@@ -275,14 +275,17 @@ export default {
     KpiCard: {
       props: {title: String, color: String},
       template: `
-        <div class="bg-white rounded-lg shadow p-4 flex flex-col h-32">
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-gray-700 font-medium text-sm">{{ title }}</span>
-            <span :class="['w-6 h-6 rounded-full', color]"></span>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden h-32 flex flex-col">
+          <div class="px-5 pt-5 pb-4 relative">
+            <span :class="['absolute right-5 top-5 w-4 h-4 rounded-full', color]"></span>
+            <div class="text-center">
+              <span class="text-gray-700 text-sm">{{ title }}</span>
+            </div>
           </div>
-          <div class="mt-auto">
+          <div class="mt-auto bg-gray-50 px-5 py-3 border-t border-gray-200">
             <a href="#" class="text-teal-600 hover:text-teal-800 text-sm inline-flex items-center">
-              مشاهده جزئیات <span class="mr-1">></span>
+              <span class="ml-2">‹</span>
+              مشاهده جزئیات
             </a>
           </div>
         </div>

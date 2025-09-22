@@ -41,10 +41,8 @@
         <div
             class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6"
         >
-        <span class="px-3 py-1 bg-teal-600 rounded text-sm"
-        >admin : کارشناس ثبت</span
-        >
           <span class="text-sm">اطلاعیه های اخیر</span>
+        <span class="px-3 py-1 bg-teal-600 rounded text-sm">admin : کارشناس ثبت</span>
         </div>
 
         <!-- Action buttons and search bar -->

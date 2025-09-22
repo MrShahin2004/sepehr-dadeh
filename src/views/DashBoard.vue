@@ -69,18 +69,18 @@
 
           <div class="flex gap-3">
             <button
-                class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm"
+                class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
             >
               کاربر جدید
             </button>
             <button
                 @click="GoToCartable"
-                class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm"
+                class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
             >
               کارتابل
             </button>
             <button
-                class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm"
+                class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
             >
               ویرایش متن قرارداد
             </button>

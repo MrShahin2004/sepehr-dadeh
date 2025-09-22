@@ -127,20 +127,6 @@
               </div>
             </div>
 
-            <!-- Bottom selects like the screenshot (placeholders) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              <select
-                class="w-full rounded-lg border border-gray-300 bg-white py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-              >
-                <option>—</option>
-              </select>
-              <select
-                class="w-full rounded-lg border border-gray-300 bg-white py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-              >
-                <option>—</option>
-              </select>
-            </div>
-
             <!-- Actions -->
             <div class="flex items-center gap-3 mt-6">
               <button

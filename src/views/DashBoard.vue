@@ -252,12 +252,12 @@
             <nav
                 class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm mb-4"
             >
-              <a href="#" class="hover:text-blue-600">صفحه اصلی</a>
-              <a href="#" class="hover:text-blue-600">آمارها</a>
-              <a href="#" class="hover:text-blue-600">فراخوانها</a>
-              <a href="#" class="hover:text-blue-600">پیوندها</a>
-              <a href="#" class="hover:text-blue-600">نظرسنجی ها</a>
-              <a href="#" class="hover:text-blue-600">حریم خصوصی</a>
+              <a href="#" class="text-[white] hover:text-blue-600 transition">صفحه اصلی</a>
+              <a href="#" class="text-[white] hover:text-blue-600 transition">آمارها</a>
+              <a href="#" class="text-[white] hover:text-blue-600 transition">فراخوانها</a>
+              <a href="#" class="text-[white] hover:text-blue-600 transition">پیوندها</a>
+              <a href="#" class="text-[white] hover:text-blue-600 transition">نظرسنجی ها</a>
+              <a href="#" class="text-[white] hover:text-blue-600 transition">حریم خصوصی</a>
             </nav>
             <div class="text-center text-xs">
               <p class="mb-1">تعلق دارد ۱۴۰۱ کلیه حقوق این پایگاه به</p>

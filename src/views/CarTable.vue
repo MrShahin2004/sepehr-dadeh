@@ -295,7 +295,7 @@
 import agreements from "@/data/agreements.js";
 
 export default {
-  name: "AdminPanel",
+  name: "CarTable",
   data() {
     return {
       agreements,

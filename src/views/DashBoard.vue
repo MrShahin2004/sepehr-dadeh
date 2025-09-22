@@ -85,6 +85,88 @@
         </div>
       </div>
 
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="bg-blue-500 p-3 rounded-lg">
+                <documenttexticon class="w-8 h-8 text-white"></documenttexticon>
+              </div>
+              <div class="mr-4"><p class="text-sm font-medium text-gray-500 truncate">کل قراردادها</p>
+                <p class="mt-1 text-2xl font-semibold text-gray-900"></p></div>
+            </div>
+          </div>
+          <div class="px-5 py-3 bg-gray-50"><a href="/cartable/all"
+                                               class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end">
+            مشاهده جزئیات
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                 stroke="currentColor" aria-hidden="true" class="w-4 h-4 mr-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </a></div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="bg-green-500 p-3 rounded-lg">
+                <shoppingcarticon class="w-8 h-8 text-white"></shoppingcarticon>
+              </div>
+              <div class="mr-4"><p class="text-sm font-medium text-gray-500 truncate">فروش اموال منقول</p>
+                <p class="mt-1 text-2xl font-semibold text-gray-900"></p></div>
+            </div>
+          </div>
+          <div class="px-5 py-3 bg-gray-50">
+            <a href="/cartable/mq"
+               class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end">
+              مشاهده جزئیات
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                   stroke="currentColor" aria-hidden="true" class="w-4 h-4 mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </a></div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="bg-yellow-500 p-3 rounded-lg">
+                <gavelicon class="w-8 h-8 text-white"></gavelicon>
+              </div>
+              <div class="mr-4"><p class="text-sm font-medium text-gray-500 truncate">فروش اموال غیر منقول</p>
+                <p class="mt-1 text-2xl font-semibold text-gray-900"></p></div>
+            </div>
+          </div>
+          <div class="px-5 py-3 bg-gray-50">
+            <a href="/cartable/qm"
+               class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end">
+              مشاهده جزئیات
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                   stroke="currentColor" aria-hidden="true" class="w-4 h-4 mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </a></div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="bg-purple-500 p-3 rounded-lg">
+                <scaleicon class="w-8 h-8 text-white"></scaleicon>
+              </div>
+              <div class="mr-4"><p class="text-sm font-medium text-gray-500 truncate">اجاره</p>
+                <p class="mt-1 text-2xl font-semibold text-gray-900"></p></div>
+            </div>
+          </div>
+          <div class="px-5 py-3 bg-gray-50">
+            <a href="/cartable/ej"
+               class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end">
+              مشاهده جزئیات
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                   stroke="currentColor" aria-hidden="true" class="w-4 h-4 mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </a></div>
+        </div>
+      </div>
+
       <!-- Contract category cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <KpiCard color="bg-purple-500" title="اجاره"/>

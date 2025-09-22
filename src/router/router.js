@@ -6,7 +6,7 @@ import LogIn from "@/views/LogIn.vue";
 import ContractDetail from "@/views/ContractDetail.vue";
 import SearchPage from "@/views/SearchPage.vue";
 import TransparencyPage from "@/views/TransparencyPage.vue";
-import AdminPanel from "@/views/AdminPanel.vue";
+import CarTable from "@/views/CarTable.vue";
 import NewContract from "@/views/NewContract.vue";
 import DashBoard from "@/views/DashBoard.vue";
 
@@ -16,8 +16,8 @@ const routes = [
     { path: "/contract/:id", component: ContractDetail, name: "ContractDetail", props: true },
     { path: "/search", component: SearchPage, name: "SearchPage", props: true },
     { path: "/transparency", component: TransparencyPage, name: "TransparencyPage" },
-    { path: "/admin", component: AdminPanel, name: "AdminPanel", props: true },
-    { path: "/admin/dashboard", component: DashBoard, name: "DashBoard" }, // NEW
+    { path: "/cartable", component: CarTable, name: "CarTable", props: true },
+    { path: "/admin", component: DashBoard, name: "DashBoard" }, // NEW
     { path: "/new-contract", component: NewContract, name: "NewContract" },
 ];
 

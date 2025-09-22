@@ -42,7 +42,9 @@
             class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6"
         >
           <span class="text-sm">اطلاعیه های اخیر</span>
-        <span class="px-3 py-1 bg-teal-600 rounded text-sm">admin : کارشناس ثبت</span>
+          <span class="px-3 py-1 bg-teal-600 rounded text-sm"
+          >admin : کارشناس ثبت</span
+          >
         </div>
 
         <!-- Action buttons and search bar -->
@@ -67,6 +69,7 @@
 
           <div class="flex gap-3">
             <button
+                @click="GoToCreateUser"
                 class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
             >
               کاربر جدید
@@ -85,45 +88,88 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8"
+        >
           <div class="bg-white rounded-xl shadow-md overflow-hidden">
             <div class="p-5">
               <div class="flex items-center">
                 <div class="bg-blue-500 p-3 rounded-lg">
-                  <documenttexticon class="w-8 h-8 text-white"></documenttexticon>
+                  <documenttexticon
+                      class="w-8 h-8 text-white"
+                  ></documenttexticon>
                 </div>
-                <div class="mr-4"><p class="text-sm font-medium text-gray-500 truncate">کل قراردادها</p>
-                  <p class="mt-1 text-2xl font-semibold text-gray-900"></p></div>
+                <div class="mr-4">
+                  <p class="text-sm font-medium text-gray-500 truncate">
+                    کل قراردادها
+                  </p>
+                  <p class="mt-1 text-2xl font-semibold text-gray-900"></p>
+                </div>
               </div>
             </div>
-            <div class="px-5 py-3 bg-gray-50"><a href="/cartable/all"
-                                                 class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end">
-              مشاهده جزئیات
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                   stroke="currentColor" aria-hidden="true" class="w-4 h-4 mr-1">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </a></div>
+            <div class="px-5 py-3 bg-gray-50">
+              <a
+                  href="/cartable/all"
+                  class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end"
+              >
+                مشاهده جزئیات
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                    class="w-4 h-4 mr-1"
+                >
+                  <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 19l-7-7 7-7"
+                  ></path>
+                </svg>
+              </a>
+            </div>
           </div>
           <div class="bg-white rounded-xl shadow-md overflow-hidden">
             <div class="p-5">
               <div class="flex items-center">
                 <div class="bg-green-500 p-3 rounded-lg">
-                  <shoppingcarticon class="w-8 h-8 text-white"></shoppingcarticon>
+                  <shoppingcarticon
+                      class="w-8 h-8 text-white"
+                  ></shoppingcarticon>
                 </div>
-                <div class="mr-4"><p class="text-sm font-medium text-gray-500 truncate">فروش اموال منقول</p>
-                  <p class="mt-1 text-2xl font-semibold text-gray-900"></p></div>
+                <div class="mr-4">
+                  <p class="text-sm font-medium text-gray-500 truncate">
+                    فروش اموال منقول
+                  </p>
+                  <p class="mt-1 text-2xl font-semibold text-gray-900"></p>
+                </div>
               </div>
             </div>
             <div class="px-5 py-3 bg-gray-50">
-              <a href="/cartable/mq"
-                 class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end">
+              <a
+                  href="/cartable/mq"
+                  class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end"
+              >
                 مشاهده جزئیات
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor" aria-hidden="true" class="w-4 h-4 mr-1">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                    class="w-4 h-4 mr-1"
+                >
+                  <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 19l-7-7 7-7"
+                  ></path>
                 </svg>
-              </a></div>
+              </a>
+            </div>
           </div>
           <div class="bg-white rounded-xl shadow-md overflow-hidden">
             <div class="p-5">
@@ -131,19 +177,37 @@
                 <div class="bg-yellow-500 p-3 rounded-lg">
                   <gavelicon class="w-8 h-8 text-white"></gavelicon>
                 </div>
-                <div class="mr-4"><p class="text-sm font-medium text-gray-500 truncate">فروش اموال غیر منقول</p>
-                  <p class="mt-1 text-2xl font-semibold text-gray-900"></p></div>
+                <div class="mr-4">
+                  <p class="text-sm font-medium text-gray-500 truncate">
+                    فروش اموال غیر منقول
+                  </p>
+                  <p class="mt-1 text-2xl font-semibold text-gray-900"></p>
+                </div>
               </div>
             </div>
             <div class="px-5 py-3 bg-gray-50">
-              <a href="/cartable/qm"
-                 class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end">
+              <a
+                  href="/cartable/qm"
+                  class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end"
+              >
                 مشاهده جزئیات
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor" aria-hidden="true" class="w-4 h-4 mr-1">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                    class="w-4 h-4 mr-1"
+                >
+                  <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 19l-7-7 7-7"
+                  ></path>
                 </svg>
-              </a></div>
+              </a>
+            </div>
           </div>
           <div class="bg-white rounded-xl shadow-md overflow-hidden">
             <div class="p-5">
@@ -151,19 +215,37 @@
                 <div class="bg-purple-500 p-3 rounded-lg">
                   <scaleicon class="w-8 h-8 text-white"></scaleicon>
                 </div>
-                <div class="mr-4"><p class="text-sm font-medium text-gray-500 truncate">اجاره</p>
-                  <p class="mt-1 text-2xl font-semibold text-gray-900"></p></div>
+                <div class="mr-4">
+                  <p class="text-sm font-medium text-gray-500 truncate">
+                    اجاره
+                  </p>
+                  <p class="mt-1 text-2xl font-semibold text-gray-900"></p>
+                </div>
               </div>
             </div>
             <div class="px-5 py-3 bg-gray-50">
-              <a href="/cartable/ej"
-                 class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end">
+              <a
+                  href="/cartable/ej"
+                  class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end"
+              >
                 مشاهده جزئیات
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor" aria-hidden="true" class="w-4 h-4 mr-1">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                    class="w-4 h-4 mr-1"
+                >
+                  <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 19l-7-7 7-7"
+                  ></path>
                 </svg>
-              </a></div>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -209,17 +291,17 @@
                   <tr class="border-b border-gray-100">
                     <td class="py-4 pr-4">—</td>
                     <td class="py-4 px-4">
-                      <span
-                          class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-blue-800 text-xs"
-                      >منقول</span
-                      >
+                        <span
+                            class="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-blue-800 text-xs"
+                        >منقول</span
+                        >
                     </td>
                     <td class="py-4 px-4">۱۴۰۴/۶/۲۹</td>
                     <td class="py-4 pl-4">
-                      <span
-                          class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-gray-800 text-xs"
-                      >در حال اجرا</span
-                      >
+                        <span
+                            class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-gray-800 text-xs"
+                        >در حال اجرا</span
+                        >
                     </td>
                   </tr>
                   </tbody>
@@ -252,22 +334,34 @@
                 class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm mb-4"
             >
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition">صفحه اصلی</a>
+                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                >صفحه اصلی</a
+                >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition">آمارها</a>
+                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                >آمارها</a
+                >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition">فراخوانها</a>
+                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                >فراخوانها</a
+                >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition">پیوندها</a>
+                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                >پیوندها</a
+                >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition">نظرسنجی ها</a>
+                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                >نظرسنجی ها</a
+                >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition">حریم خصوصی</a>
+                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                >حریم خصوصی</a
+                >
               </router-link>
             </nav>
             <div class="text-center text-xs">
@@ -308,8 +402,11 @@ export default {
   methods: {
     GoToCartable() {
       this.$router.push("/cartable");
-    }
-  }
+    },
+    GoToCreateUser() {
+      this.$router.push("/admin/create/user");
+    },
+  },
 };
 </script>
 

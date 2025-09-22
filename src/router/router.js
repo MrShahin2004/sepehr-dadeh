@@ -9,6 +9,7 @@ import TransparencyPage from "@/views/TransparencyPage.vue";
 import CarTable from "@/views/CarTable.vue";
 import NewContract from "@/views/NewContract.vue";
 import DashBoard from "@/views/DashBoard.vue";
+import NewUser from "@/views/NewUser.vue";
 
 const routes = [
     { path: "/", component: HomePage, name: "HomePage" },
@@ -19,6 +20,7 @@ const routes = [
     { path: "/cartable", component: CarTable, name: "CarTable", props: true },
     { path: "/admin", component: DashBoard, name: "DashBoard" }, // NEW
     { path: "/new-contract", component: NewContract, name: "NewContract" },
+    { path: "/admin/create/user", component: NewUser, name: "NewUser" },
 ];
 
 const router = createRouter({

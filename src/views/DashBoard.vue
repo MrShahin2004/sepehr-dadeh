@@ -252,12 +252,24 @@
             <nav
                 class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm mb-4"
             >
-              <a href="#" class="text-[white] hover:text-blue-600 transition">صفحه اصلی</a>
-              <a href="#" class="text-[white] hover:text-blue-600 transition">آمارها</a>
-              <a href="#" class="text-[white] hover:text-blue-600 transition">فراخوانها</a>
-              <a href="#" class="text-[white] hover:text-blue-600 transition">پیوندها</a>
-              <a href="#" class="text-[white] hover:text-blue-600 transition">نظرسنجی ها</a>
-              <a href="#" class="text-[white] hover:text-blue-600 transition">حریم خصوصی</a>
+              <router-link to="/">
+                <a href="#" class="text-[white] hover:text-blue-600 transition">صفحه اصلی</a>
+              </router-link>
+              <router-link to="/">
+                <a href="#" class="text-[white] hover:text-blue-600 transition">آمارها</a>
+              </router-link>
+              <router-link to="/">
+                <a href="#" class="text-[white] hover:text-blue-600 transition">فراخوانها</a>
+              </router-link>
+              <router-link to="/">
+                <a href="#" class="text-[white] hover:text-blue-600 transition">پیوندها</a>
+              </router-link>
+              <router-link to="/">
+                <a href="#" class="text-[white] hover:text-blue-600 transition">نظرسنجی ها</a>
+              </router-link>
+              <router-link to="/">
+                <a href="#" class="text-[white] hover:text-blue-600 transition">حریم خصوصی</a>
+              </router-link>
             </nav>
             <div class="text-center text-xs">
               <p class="mb-1">تعلق دارد ۱۴۰۱ کلیه حقوق این پایگاه به</p>

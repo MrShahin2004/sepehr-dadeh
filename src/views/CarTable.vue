@@ -270,20 +270,32 @@
   <hr/>
   <div class="login-footer">
     <div class="footer-links flex justify-center items-center gap-x-[1rem]">
-      <a class="text-white transition hover:cursor-pointer" href="#"
-      >حریم خصوصی</a
-      >
-      <a class="text-white transition hover:cursor-pointer" href="#"
-      >نظرسنجی‌ها</a
-      >
-      <a class="text-white transition hover:cursor-pointer" href="#">پیوندها</a>
-      <a class="text-white transition hover:cursor-pointer" href="#"
-      >فراخوان‌ها</a
-      >
-      <a class="text-white transition hover:cursor-pointer" href="#">آمارها</a>
-      <a class="text-white transition hover:cursor-pointer" href="#"
-      >صفحه اصلی</a
-      >
+      <router-link to="/">
+        <a class="text-white transition hover:cursor-pointer" href="#"
+        >حریم خصوصی</a
+        >
+      </router-link>
+      <router-link to="/">
+        <a class="text-white transition hover:cursor-pointer" href="#"
+        >نظرسنجی‌ها</a
+        >
+      </router-link>
+      <router-link to="/">
+        <a class="text-white transition hover:cursor-pointer" href="#">پیوندها</a>
+      </router-link>
+      <router-link to="/">
+        <a class="text-white transition hover:cursor-pointer" href="#"
+        >فراخوان‌ها</a
+        >
+      </router-link>
+      <router-link to="/">
+        <a class="text-white transition hover:cursor-pointer" href="#">آمارها</a>
+      </router-link>
+      <router-link to="/">
+        <a class="text-white transition hover:cursor-pointer" href="#"
+        >صفحه اصلی</a
+        >
+      </router-link>
     </div>
     <div class="footer-desc flex justify-center items-center">
       <p class="text-[white]">© کلیه حقوق این پایگاه به سپهر داده تعلق دارد</p>
@@ -327,7 +339,7 @@ export default {
   },
   methods: {
     GoToDashboard() {
-      this.$router.push({ name: "DashBoard" });
+      this.$router.push({name: "DashBoard"});
     }
   }
 };

@@ -119,8 +119,9 @@
                   <select
                     class="w-full rounded-lg border border-gray-300 bg-white py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                   >
-                    <option>User</option>
-                    <option>Admin</option>
+                    <option>مدیر</option>
+                    <option>ثبات</option>
+                    <option>کاربر</option>
                   </select>
                 </div>
               </div>

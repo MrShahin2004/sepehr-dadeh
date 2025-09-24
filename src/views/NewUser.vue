@@ -50,7 +50,6 @@
               ایجاد، مشاهده و مدیریت کاربران سیستم
             </p>
           </div>
-          <span class="text-gray-400 text-sm">کاربر جدید</span>
         </div>
 
         <!-- Card form container -->

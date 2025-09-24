@@ -12,7 +12,7 @@
         </div>
         <div class="text-center text-white leading-relaxed">
           <router-link to="/">
-            <h1 class="main-title text-3xl text-[var(--main-title)]">
+            <h1 class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]">
               پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان
               رضوی
             </h1>
@@ -262,6 +262,14 @@
 <script>
 export default {
   name: "EditContractText",
+  methods: {
+    GoToDashboard() {
+      this.$router.push("/admin");
+    },
+    GoToCartable() {
+      this.$router.push("/cartable");
+    },
+  },
 };
 </script>
 

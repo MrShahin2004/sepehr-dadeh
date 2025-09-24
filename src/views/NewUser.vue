@@ -129,13 +129,13 @@
             <!-- Actions -->
             <div class="flex items-center gap-3 mt-6">
               <button
-                class="px-4 py-2 rounded-lg bg-teal-600 text-white hover:bg-teal-700 text-sm"
+                class="px-4 py-2 rounded-lg bg-teal-600 text-white hover:bg-teal-700 text-sm cursor-pointer"
               >
                 ایجاد کاربر
               </button>
               <router-link to="/admin">
                 <button
-                  class="px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-gray-900 text-sm"
+                  class="px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-gray-900 text-sm cursor-pointer"
                 >
                   بازگشت
                 </button>

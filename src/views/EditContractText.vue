@@ -12,7 +12,9 @@
         </div>
         <div class="text-center text-white leading-relaxed">
           <router-link to="/">
-            <h1 class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]">
+            <h1
+              class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
+            >
               پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان
               رضوی
             </h1>
@@ -47,17 +49,19 @@
         >
           بازگشت
         </button>
-        <button 
+        <button
           class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
         >
           بارگذاری سربرگ
         </button>
-        <button @click="GoToDashboard"
+        <button
+          @click="GoToDashboard"
           class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
         >
           داشبورد
         </button>
-        <button @click="GoToCartable"
+        <button
+          @click="GoToCartable"
           class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
         >
           کارتابل
@@ -69,17 +73,17 @@
         <span class="text-gray-700">نوع قرارداد:</span>
         <div class="flex gap-2">
           <button
-            class="px-4 py-1 rounded-lg bg-blue-100 text-blue-800 text-sm"
+            class="px-4 py-1 rounded-lg bg-blue-100 text-blue-800 text-sm cursor-pointer"
           >
             اموال منقول
           </button>
           <button
-            class="px-4 py-1 rounded-lg bg-gray-100 text-gray-700 text-sm"
+            class="px-4 py-1 rounded-lg bg-gray-100 text-gray-700 text-sm cursor-pointer"
           >
             اموال غیر منقول
           </button>
           <button
-            class="px-4 py-1 rounded-lg bg-gray-100 text-gray-700 text-sm"
+            class="px-4 py-1 rounded-lg bg-gray-100 text-gray-700 text-sm cursor-pointer"
           >
             اجاره
           </button>

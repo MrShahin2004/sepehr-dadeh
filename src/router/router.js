@@ -10,6 +10,7 @@ import CarTable from "@/views/CarTable.vue";
 import NewContract from "@/views/NewContract.vue";
 import DashBoard from "@/views/DashBoard.vue";
 import NewUser from "@/views/NewUser.vue";
+import EditContractText from "@/views/EditContractText.vue";
 
 const routes = [
     { path: "/", component: HomePage, name: "HomePage" },
@@ -19,6 +20,7 @@ const routes = [
     { path: "/transparency", component: TransparencyPage, name: "TransparencyPage" },
     { path: "/cartable", component: CarTable, name: "CarTable", props: true },
     { path: "/admin", component: DashBoard, name: "DashBoard" }, // NEW
+    { path: "/admin/edit/contract/template", component: EditContractText, name: "EditContractText" },
     { path: "/new-contract", component: NewContract, name: "NewContract" },
     { path: "/admin/create/user", component: NewUser, name: "NewUser" },
 ];

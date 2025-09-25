@@ -357,6 +357,10 @@ export default {
         this.showModal = true;
         this.modalMessage = "خطا در پردازش فایل. لطفا دوباره تلاش کنید";
       }
+
+      const idFromForm = this.form?.id || this.form?.trackingCode;
+      const id = idFromForm || String(Math.floor(10000 + Math.random() * 90000)); // 5-digit
+      this.$router.push({ name: "PishfarakhanStep", params: { step: 1, id } });
     },
     fileToBase64(file) {
       return new Promise((resolve, reject) => {

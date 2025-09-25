@@ -150,7 +150,7 @@
             </div>
             <div class="px-5 py-3 bg-gray-50">
               <a
-                href="/cartable/mq"
+                href="/cartable/movable"
                 class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end"
               >
                 مشاهده جزئیات
@@ -188,7 +188,7 @@
             </div>
             <div class="px-5 py-3 bg-gray-50">
               <a
-                href="/cartable/qm"
+                href="/cartable/immovable"
                 class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end"
               >
                 مشاهده جزئیات
@@ -226,7 +226,7 @@
             </div>
             <div class="px-5 py-3 bg-gray-50">
               <a
-                href="/cartable/ej"
+                href="/cartable/rental"
                 class="text-sm font-medium text-teal-600 hover:text-teal-900 flex items-center justify-end"
               >
                 مشاهده جزئیات

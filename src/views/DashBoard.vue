@@ -335,32 +335,32 @@
               class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm mb-4"
             >
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                <a class="text-[white] hover:text-blue-600 transition"
                   >صفحه اصلی</a
                 >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                <a class="text-[white] hover:text-blue-600 transition"
                   >آمارها</a
                 >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                <a class="text-[white] hover:text-blue-600 transition"
                   >فراخوانها</a
                 >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                <a class="text-[white] hover:text-blue-600 transition"
                   >پیوندها</a
                 >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                <a class="text-[white] hover:text-blue-600 transition"
                   >نظرسنجی ها</a
                 >
               </router-link>
               <router-link to="/">
-                <a href="#" class="text-[white] hover:text-blue-600 transition"
+                <a class="text-[white] hover:text-blue-600 transition"
                   >حریم خصوصی</a
                 >
               </router-link>

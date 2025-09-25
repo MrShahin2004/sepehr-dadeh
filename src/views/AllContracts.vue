@@ -307,7 +307,7 @@
   import agreements from "@/data/agreements.js";
   
   export default {
-    name: "CarTable",
+    name: "AllContracts",
     data() {
       return {
         agreements,

@@ -11,6 +11,10 @@ import NewContract from "@/views/NewContract.vue";
 import DashBoard from "@/views/DashBoard.vue";
 import NewUser from "@/views/NewUser.vue";
 import EditContractText from "@/views/EditContractText.vue";
+import AllContracts from "@/views/AllContracts.vue";
+import MovableProperties from "@/views/MovableProperties.vue";
+import ImmovableProperties from "@/views/ImmovableProperties.vue";
+import RentalProperties from "@/views/RentalProperties.vue";
 
 const routes = [
     { path: "/", component: HomePage, name: "HomePage" },
@@ -19,10 +23,14 @@ const routes = [
     { path: "/search", component: SearchPage, name: "SearchPage", props: true },
     { path: "/transparency", component: TransparencyPage, name: "TransparencyPage" },
     { path: "/cartable", component: CarTable, name: "CarTable", props: true },
-    { path: "/admin", component: DashBoard, name: "DashBoard" }, // NEW
-    { path: "/admin/edit/contract/template", component: EditContractText, name: "EditContractText" },
-    { path: "/new-contract", component: NewContract, name: "NewContract" },
-    { path: "/admin/create/user", component: NewUser, name: "NewUser" },
+    { path: "/admin", component: DashBoard, name: "DashBoard", props: true }, // NEW
+    { path: "/admin/edit/contract/template", component: EditContractText, name: "EditContractText", props: true },
+    { path: "/new-contract", component: NewContract, name: "NewContract", props: true },
+    { path: "/admin/create/user", component: NewUser, name: "NewUser", props: true },
+    { path: "/cartable/all", component: AllContracts, name: "AllContracts", props: true },
+    { path: "/cartable/movable", component: MovableProperties, name: "MovableProperties", props: true },
+    { path: "/cartable/immovable", component: ImmovableProperties, name: "ImmovableProperties", props: true },
+    { path: "/cartable/rental", component: RentalProperties, name: "RentalProperties", props: true },
 ];
 
 const router = createRouter({

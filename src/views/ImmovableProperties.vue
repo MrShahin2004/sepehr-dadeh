@@ -307,7 +307,7 @@
   import agreements from "@/data/agreements.js";
   
   export default {
-    name: "MovableProperties",
+    name: "ImmovableProperties",
     data() {
       return {
         agreements,

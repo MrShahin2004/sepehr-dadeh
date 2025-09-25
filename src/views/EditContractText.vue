@@ -56,12 +56,6 @@
           بارگذاری سربرگ
         </button>
         <button
-          @click="GoToDashboard"
-          class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
-        >
-          داشبورد
-        </button>
-        <button
           @click="GoToCartable"
           class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
         >

@@ -1,8 +1,69 @@
 <!-- src/views/pishfarakhan/Pishfarakhan-step-5.vue -->
 <template>
-  <div class="min-h-screen bg-neutral-50" dir="rtl">
-    <main class="mx-auto max-w-7xl px-4 py-10">
-      <StepperHeader :steps="steps" :current="5" />
+  <div class="min-h-screen" dir="rtl">
+    <!-- Header from step-4 -->
+    <header class="relative overflow-hidden">
+      <div class="top-navbar h-32 w-full flex items-center justify-center">
+        <div class="absolute left-4 top-2 flex items-center space-x-2">
+          <img
+            src="@/assets/images/khamenei.png"
+            class="w-50 h-auto object-contain"
+            alt="Iranian figures"
+          />
+        </div>
+        <div class="text-center text-white leading-relaxed">
+          <router-link to="/">
+            <h1
+              class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
+            >
+              پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان
+              رضوی
+            </h1>
+          </router-link>
+        </div>
+        <div class="absolute right-4 top-2 flex flex-col items-center">
+          <img
+            src="@/assets/images/education.svg"
+            class="w-40 h-auto object-contain"
+            alt="Iranian emblem"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="main-container mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl"
+    >
+      <!-- Progress bar from step-4 (current step: 5) -->
+      <section class="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <div class="relative">
+          <div class="absolute top-4 left-0 right-0 h-0.5 bg-gray-200 z-0">
+            <div
+              class="h-full bg-teal-500 z-0"
+              :style="{ width: progressWidth }"
+            ></div>
+          </div>
+          <div class="flex items-center justify-between relative z-10">
+            <div
+              v-for="(s, i) in steps"
+              :key="i"
+              class="flex flex-col items-center"
+            >
+              <div
+                class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
+                :class="
+                  i + 1 === 5
+                    ? 'bg-teal-500 border-teal-500 text-white'
+                    : 'bg-gray-100 border-gray-300 text-gray-500'
+                "
+              >
+                {{ i + 1 }}
+              </div>
+              <span class="text-xs text-center text-gray-600">{{ s }}</span>
+            </div>
+          </div>
+        </div>
+      </section>
       <div class="mt-4 grid grid-cols-1 gap-4">
         <div class="lg:col-span-1">
           <div class="rounded-xl bg-white shadow p-0 overflow-hidden">
@@ -343,6 +404,54 @@
         </div>
       </div>
     </main>
+
+    <!-- Footer from step-4 -->
+    <hr />
+    <div class="login-footer">
+      <div class="footer-links flex justify-center items-center gap-x-[1rem]">
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >حریم خصوصی</a
+          ></router-link
+        >
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >نظرسنجی‌ها</a
+          ></router-link
+        >
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >پیوندها</a
+          ></router-link
+        >
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >فراخوان‌ها</a
+          ></router-link
+        >
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >آمارها</a
+          ></router-link
+        >
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >صفحه اصلی</a
+          ></router-link
+        >
+      </div>
+      <div class="footer-desc flex justify-center items-center">
+        <p class="text-[white]">
+          © کلیه حقوق این پایگاه به سپهر داده تعلق دارد
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -375,30 +484,5 @@ function goNext() {
 </script>
 
 <script>
-export default {
-  components: {
-    StepperHeader: {
-      props: { steps: Array, current: Number },
-      template: `
-        <section class="bg-white rounded-xl shadow border border-gray-100 p-4">
-          <div class="relative h-0.5 bg-gray-200 rounded">
-            <div class="absolute inset-y-0 right-0 bg-teal-500 rounded"
-                 :style="{ width: ((current-1)/(steps.length-1))*100 + '%' }"></div>
-          </div>
-          <ol class="mt-4 grid grid-cols-8 gap-4 text-center">
-            <li v-for="(s, i) in steps" :key="i" class="space-y-1">
-              <div class="mx-auto w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm"
-                   :class="i+1 < current ? 'bg-teal-500 border-teal-500 text-white'
-                        : i+1 === current ? 'bg-white border-teal-500 text-teal-600'
-                        : 'bg-gray-100 border-gray-200 text-gray-400'">
-                {{ i + 1 }}
-              </div>
-              <div class="text-xs text-gray-600">{{ s }}</div>
-            </li>
-          </ol>
-        </section>
-      `,
-    },
-  },
-};
+export default {};
 </script>

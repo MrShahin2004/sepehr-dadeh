@@ -267,22 +267,7 @@
                   placeholder="خراسان رضوی مشهد خیابان امام خمینی"
                 />
               </div>
-              <div class="mt-4">
-                <textarea
-                  rows="3"
-                  class="w-full rounded-md border border-gray-300 px-3 py-2"
-                  placeholder=""
-                ></textarea>
-              </div>
-              <div class="mt-4">
-                <label class="block text-sm text-gray-600 mb-1">یادداشت</label>
-                <textarea
-                  rows="3"
-                  class="w-full rounded-md border border-gray-300 px-3 py-2"
-                  placeholder=""
-                ></textarea>
-              </div>
-              <div class="mt-6 flex justify-end">
+              <div class="mt-6 flex justify-start">
                 <button
                   class="px-5 py-2.5 rounded-lg bg-teal-600 text-white"
                   @click="goNext"

@@ -482,7 +482,3 @@ function goNext() {
   window.location.href = `/pishfarakhan/step-6/${contractId.value}`;
 }
 </script>
-
-<script>
-export default {};
-</script>

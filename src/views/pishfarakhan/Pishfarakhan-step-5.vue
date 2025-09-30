@@ -568,6 +568,14 @@
                     placeholder="خراسان رضوی مشهد خیابان امام خمینی"
                   />
                 </div>
+                <div class="mt-6 flex justify-start">
+                  <button
+                    class="px-5 py-2.5 rounded-lg bg-teal-600 text-white cursor-pointer"
+                    @click="goNext"
+                  >
+                    ثبت
+                  </button>
+                </div>
               </div>
             </section>
           </div>

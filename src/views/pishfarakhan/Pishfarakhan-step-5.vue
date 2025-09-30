@@ -483,4 +483,8 @@ function goNext() {
 }
 </script>
 
-<style></style>
+<style>
+.main-container {
+  margin-bottom: 4rem;
+}
+</style>

@@ -408,14 +408,16 @@
                   />
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-600 mb-1">مرکز اصلی:</label>
+                  <label class="block text-sm text-gray-600 mb-1"
+                    >مرکز اصلی:</label
+                  >
                   <select
                     class="w-full rounded-md border border-gray-300 px-2 py-2 text-sm"
                   >
                     <option value="" disabled>انتخاب کنید</option>
-                    <option value="">مرکز اصلی</option>
-                    <option value="">شعبه 1</option>
-                    <option value="">شعبه 2</option>
+                    <option value="main-center">مرکز اصلی</option>
+                    <option value="affiliate-1">شعبه 1</option>
+                    <option value="affiliate-2">شعبه 2</option>
                   </select>
                 </div>
                 <div>

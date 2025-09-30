@@ -742,7 +742,6 @@ function _isVisible(el) {
 }
 
 function _markInvalid(el) {
-  // visual effect (red border + light bg); Tailwind utility classes
   el.classList.add(
     "border-red-500",
     "bg-red-50",
@@ -750,7 +749,6 @@ function _markInvalid(el) {
     "ring-red-400",
     "focus:ring-red-500"
   );
-  // add help text below (only once)
   if (!el.dataset.requiredMsg) {
     const hint = document.createElement("div");
     hint.className = "mt-1 text-xs text-red-600";
@@ -775,11 +773,35 @@ function _clearInvalid(el) {
   }
 }
 
+/** is this field effectively empty? */
+function _isFieldEmpty(el) {
+  if (!el) return true;
+
+  // Treat SELECT placeholders like "انتخاب کنید" (or disabled first option) as empty
+  if (el.tagName === "SELECT") {
+    const idx = el.selectedIndex;
+    if (idx < 0) return true;
+    const opt = el.options[idx];
+    const val =
+      opt && opt.hasAttribute("value") ? opt.value : opt?.textContent ?? "";
+    const valTrim = (val ?? "").trim();
+
+    const isPlaceholderText = /^(انتخاب|select|choose|--)/i.test(
+      (opt?.textContent ?? "").trim()
+    );
+    const isFirstPlaceholder =
+      idx === 0 && (opt?.disabled || isPlaceholderText);
+
+    return valTrim === "" || isFirstPlaceholder;
+  }
+
+  // Inputs / textareas (file/checkbox/radio are excluded elsewhere)
+  return (el.value ?? "").trim() === "";
+}
+
 function _attachAutoClear(el) {
-  // remove the red effect as soon as the user types/selects a value
   const handler = () => {
-    const v = (el.value ?? "").trim();
-    if (v !== "") _clearInvalid(el);
+    if (!_isFieldEmpty(el)) _clearInvalid(el);
   };
   el.addEventListener("input", handler);
   el.addEventListener("change", handler);
@@ -787,12 +809,11 @@ function _attachAutoClear(el) {
 
 function _collectTextualFieldsInActiveTab() {
   // all visible non-file inputs + textarea + select
-  const all = Array.from(
+  return Array.from(
     document.querySelectorAll(
       'input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), textarea, select'
     )
   ).filter(_isVisible);
-  return all;
 }
 
 function _allFilePickersEmpty() {
@@ -806,11 +827,10 @@ function _allFilePickersEmpty() {
  */
 function validateSteppedPageAllEmpty() {
   const fields = _collectTextualFieldsInActiveTab();
-  const allTextEmpty = fields.every((el) => (el.value ?? "").trim() === "");
+  const allTextEmpty = fields.every(_isFieldEmpty);
   const filesEmpty = _allFilePickersEmpty();
 
   if (allTextEmpty && filesEmpty) {
-    // decorate every (visible) textual field
     fields.forEach((el) => {
       _markInvalid(el);
       _attachAutoClear(el);

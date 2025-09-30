@@ -69,7 +69,7 @@
           <div class="rounded-xl bg-white shadow p-0 overflow-hidden">
             <!-- unique id + section title row -->
             <div
-              class="px-4 sm:px-6 pt-4 pb-2 flex items-center justify-end gap-6 text-sm text-gray-700"
+              class="px-4 sm:px-6 pt-4 pb-2 flex items-center justify-start gap-6 text-sm text-gray-700"
             >
               <div class="flex items-center gap-2">
                 <span
@@ -111,6 +111,18 @@
                 >
                   حقوقی
                 </button>
+              </div>
+              <!-- contract party selector next to tabs -->
+              <div class="flex items-center gap-3 mr-4">
+                <span class="text-sm text-gray-700">طرف قرارداد:</span>
+                <select
+                  v-model="party"
+                  class="w-48 bg-white border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 cursor-pointer"
+                >
+                  <option value="" disabled>انتخاب کنید</option>
+                  <option value="tenant">مستاجر</option>
+                  <option value="buyer">خریدار</option>
+                </select>
               </div>
             </header>
 
@@ -488,6 +500,7 @@ const steps = [
 const route = useRoute();
 const contractId = computed(() => route.params.id ?? "—");
 const activeTab = ref("person");
+const party = ref("");
 
 // navigation to previous step is not presented on this step's UI
 // function goPrev() {

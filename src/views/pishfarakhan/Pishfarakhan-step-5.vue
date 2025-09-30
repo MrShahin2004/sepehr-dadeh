@@ -568,13 +568,6 @@
                     placeholder="خراسان رضوی مشهد خیابان امام خمینی"
                   />
                 </div>
-                <div class="md:col-span-2">
-                  <textarea
-                    rows="3"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="یادداشت"
-                  ></textarea>
-                </div>
               </div>
             </section>
           </div>

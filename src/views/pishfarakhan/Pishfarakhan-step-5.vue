@@ -167,14 +167,6 @@
                   />
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-600 mb-1">ایمیل:</label>
-                  <input
-                    type="email"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="info@sepehr-dad.com"
-                  />
-                </div>
-                <div>
                   <label class="block text-sm text-gray-600 mb-1"
                     >شماره ملی:</label
                   >
@@ -201,16 +193,6 @@
                   </div>
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-600 mb-1"
-                    >تلفن همراه:</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="0915......"
-                  />
-                </div>
-                <div>
                   <label class="block text-sm text-gray-600 mb-1">شغل:</label>
                   <input
                     type="text"
@@ -226,6 +208,24 @@
                     type="text"
                     class="w-full rounded-md border border-gray-300 px-3 py-2"
                     placeholder="0513......"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm text-gray-600 mb-1"
+                    >تلفن همراه:</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full rounded-md border border-gray-300 px-3 py-2"
+                    placeholder="0915......"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm text-gray-600 mb-1">ایمیل:</label>
+                  <input
+                    type="email"
+                    class="w-full rounded-md border border-gray-300 px-3 py-2"
+                    placeholder="info@sepehr-dad.com"
                   />
                 </div>
                 <div>

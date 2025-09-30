@@ -249,37 +249,41 @@
                     class="hidden"
                     @change="onPickGuarantee"
                   />
-                  <button
-                    type="button"
-                    class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
-                    @click="$refs.guaranteeInput.click()"
-                  >
-                    بارگذاری
-                  </button>
-                  <div
-                    v-if="guaranteeChip"
-                    class="mt-2 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
-                  >
+                  <div class="flex items-center gap-3 flex-wrap">
                     <button
                       type="button"
-                      @click="clearGuarantee"
-                      class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
-                      aria-label="حذف فایل"
-                      title="حذف فایل"
+                      class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
+                      @click="$refs.guaranteeInput.click()"
                     >
-                      ✕
+                      بارگذاری
                     </button>
                     <div
-                      class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                      v-if="guaranteeChip"
+                      class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
                     >
-                      <div class="font-medium">{{ guaranteeChip.sizeKB }}</div>
-                      <div>KB</div>
-                    </div>
-                    <div
-                      class="text-sm text-gray-800 truncate max-w-[220px]"
-                      :title="guaranteeChip.name"
-                    >
-                      {{ guaranteeChip.name }}
+                      <button
+                        type="button"
+                        @click="clearGuarantee"
+                        class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                        aria-label="حذف فایل"
+                        title="حذف فایل"
+                      >
+                        ✕
+                      </button>
+                      <div
+                        class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                      >
+                        <div class="font-medium">
+                          {{ guaranteeChip.sizeKB }}
+                        </div>
+                        <div>KB</div>
+                      </div>
+                      <div
+                        class="text-sm text-gray-800 truncate max-w-[220px]"
+                        :title="guaranteeChip.name"
+                      >
+                        {{ guaranteeChip.name }}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -294,39 +298,41 @@
                     class="hidden"
                     @change="onPickNationalCard"
                   />
-                  <button
-                    type="button"
-                    class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
-                    @click="$refs.nationalCardInput.click()"
-                  >
-                    بارگذاری
-                  </button>
-                  <div
-                    v-if="nationalCardChip"
-                    class="mt-2 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
-                  >
+                  <div class="flex items-center gap-3 flex-wrap">
                     <button
                       type="button"
-                      @click="clearNationalCard"
-                      class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
-                      aria-label="حذف فایل"
-                      title="حذف فایل"
+                      class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
+                      @click="$refs.nationalCardInput.click()"
                     >
-                      ✕
+                      بارگذاری
                     </button>
                     <div
-                      class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                      v-if="nationalCardChip"
+                      class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
                     >
-                      <div class="font-medium">
-                        {{ nationalCardChip.sizeKB }}
+                      <button
+                        type="button"
+                        @click="clearNationalCard"
+                        class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                        aria-label="حذف فایل"
+                        title="حذف فایل"
+                      >
+                        ✕
+                      </button>
+                      <div
+                        class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                      >
+                        <div class="font-medium">
+                          {{ nationalCardChip.sizeKB }}
+                        </div>
+                        <div>KB</div>
                       </div>
-                      <div>KB</div>
-                    </div>
-                    <div
-                      class="text-sm text-gray-800 truncate max-w-[220px]"
-                      :title="nationalCardChip.name"
-                    >
-                      {{ nationalCardChip.name }}
+                      <div
+                        class="text-sm text-gray-800 truncate max-w-[220px]"
+                        :title="nationalCardChip.name"
+                      >
+                        {{ nationalCardChip.name }}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -341,7 +347,7 @@
               </div>
               <div class="mt-6 flex justify-start">
                 <button
-                  class="px-5 py-2.5 rounded-lg bg-teal-600 text-white"
+                  class="px-5 py-2.5 rounded-lg bg-teal-600 text-white cursor-pointer"
                   @click="goNext"
                 >
                   ثبت

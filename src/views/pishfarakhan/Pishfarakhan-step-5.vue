@@ -242,21 +242,93 @@
                   <label class="block text-sm text-gray-600 mb-1"
                     >تضمین قرارداد:</label
                   >
+                  <input
+                    ref="guaranteeInput"
+                    type="file"
+                    accept="application/pdf"
+                    class="hidden"
+                    @change="onPickGuarantee"
+                  />
                   <button
-                    class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm"
+                    type="button"
+                    class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
+                    @click="$refs.guaranteeInput.click()"
                   >
                     بارگذاری
                   </button>
+                  <div
+                    v-if="guaranteeChip"
+                    class="mt-2 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
+                  >
+                    <button
+                      type="button"
+                      @click="clearGuarantee"
+                      class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                      aria-label="حذف فایل"
+                      title="حذف فایل"
+                    >
+                      ✕
+                    </button>
+                    <div
+                      class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                    >
+                      <div class="font-medium">{{ guaranteeChip.sizeKB }}</div>
+                      <div>KB</div>
+                    </div>
+                    <div
+                      class="text-sm text-gray-800 truncate max-w-[220px]"
+                      :title="guaranteeChip.name"
+                    >
+                      {{ guaranteeChip.name }}
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
                     >کارت ملی:</label
                   >
+                  <input
+                    ref="nationalCardInput"
+                    type="file"
+                    accept="application/pdf"
+                    class="hidden"
+                    @change="onPickNationalCard"
+                  />
                   <button
-                    class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm"
+                    type="button"
+                    class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
+                    @click="$refs.nationalCardInput.click()"
                   >
                     بارگذاری
                   </button>
+                  <div
+                    v-if="nationalCardChip"
+                    class="mt-2 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
+                  >
+                    <button
+                      type="button"
+                      @click="clearNationalCard"
+                      class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                      aria-label="حذف فایل"
+                      title="حذف فایل"
+                    >
+                      ✕
+                    </button>
+                    <div
+                      class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                    >
+                      <div class="font-medium">
+                        {{ nationalCardChip.sizeKB }}
+                      </div>
+                      <div>KB</div>
+                    </div>
+                    <div
+                      class="text-sm text-gray-800 truncate max-w-[220px]"
+                      :title="nationalCardChip.name"
+                    >
+                      {{ nationalCardChip.name }}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="mt-4">
@@ -486,6 +558,47 @@ const route = useRoute();
 const contractId = computed(() => route.params.id ?? "—");
 const activeTab = ref("person");
 const party = ref("");
+
+// file inputs + chips
+const guaranteeInput = ref(null);
+const nationalCardInput = ref(null);
+const guaranteeChip = ref(null);
+const nationalCardChip = ref(null);
+
+const isPdf = (file) =>
+  !!file && (file.type === "application/pdf" || /\.pdf$/i.test(file.name));
+
+function onPickGuarantee(e) {
+  const f = e.target.files?.[0];
+  if (!f) return;
+  if (!isPdf(f)) {
+    alert("لطفاً فقط فایل PDF انتخاب کنید");
+    e.target.value = "";
+    return;
+  }
+  guaranteeChip.value = { name: f.name, sizeKB: (f.size / 1024).toFixed(2) };
+}
+
+function clearGuarantee() {
+  if (guaranteeInput.value) guaranteeInput.value.value = "";
+  guaranteeChip.value = null;
+}
+
+function onPickNationalCard(e) {
+  const f = e.target.files?.[0];
+  if (!f) return;
+  if (!isPdf(f)) {
+    alert("لطفاً فقط فایل PDF انتخاب کنید");
+    e.target.value = "";
+    return;
+  }
+  nationalCardChip.value = { name: f.name, sizeKB: (f.size / 1024).toFixed(2) };
+}
+
+function clearNationalCard() {
+  if (nationalCardInput.value) nationalCardInput.value.value = "";
+  nationalCardChip.value = null;
+}
 
 // navigation to previous step is not presented on this step's UI
 // function goPrev() {

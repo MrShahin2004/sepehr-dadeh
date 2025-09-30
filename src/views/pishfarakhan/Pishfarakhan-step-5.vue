@@ -379,22 +379,22 @@
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >محل ثبت:</label
-                  >
-                  <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="مشهد"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm text-gray-600 mb-1"
                     >شماره ثبت:</label
                   >
                   <input
                     type="text"
                     class="w-full rounded-md border border-gray-300 px-3 py-2"
                     placeholder="123456"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm text-gray-600 mb-1"
+                    >محل ثبت:</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full rounded-md border border-gray-300 px-3 py-2"
+                    placeholder="مشهد"
                   />
                 </div>
                 <div class="md:col-span-2">

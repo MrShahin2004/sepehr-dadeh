@@ -734,8 +734,99 @@ function clearArticles() {
 //   window.location.href = `/pishfarakhan/step-4/${contractId.value}`;
 // }
 
+// === Required-field helpers (DOM-level; no template changes needed) ===
+const REQUIRED_MSG = "این فیلد الزامی است";
+
+function _isVisible(el) {
+  return !!(el && el.offsetParent !== null);
+}
+
+function _markInvalid(el) {
+  // visual effect (red border + light bg); Tailwind utility classes
+  el.classList.add(
+    "border-red-500",
+    "bg-red-50",
+    "ring-1",
+    "ring-red-400",
+    "focus:ring-red-500"
+  );
+  // add help text below (only once)
+  if (!el.dataset.requiredMsg) {
+    const hint = document.createElement("div");
+    hint.className = "mt-1 text-xs text-red-600";
+    hint.textContent = REQUIRED_MSG;
+    el.insertAdjacentElement("afterend", hint);
+    el.dataset.requiredMsg = "1";
+  }
+}
+
+function _clearInvalid(el) {
+  el.classList.remove(
+    "border-red-500",
+    "bg-red-50",
+    "ring-1",
+    "ring-red-400",
+    "focus:ring-red-500"
+  );
+  if (el.dataset.requiredMsg) {
+    const next = el.nextElementSibling;
+    if (next && next.textContent === REQUIRED_MSG) next.remove();
+    delete el.dataset.requiredMsg;
+  }
+}
+
+function _attachAutoClear(el) {
+  // remove the red effect as soon as the user types/selects a value
+  const handler = () => {
+    const v = (el.value ?? "").trim();
+    if (v !== "") _clearInvalid(el);
+  };
+  el.addEventListener("input", handler);
+  el.addEventListener("change", handler);
+}
+
+function _collectTextualFieldsInActiveTab() {
+  // all visible non-file inputs + textarea + select
+  const all = Array.from(
+    document.querySelectorAll(
+      'input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), textarea, select'
+    )
+  ).filter(_isVisible);
+  return all;
+}
+
+function _allFilePickersEmpty() {
+  const files = Array.from(document.querySelectorAll('input[type="file"]'));
+  return files.every((el) => !el.files || el.files.length === 0);
+}
+
+/**
+ * Returns true if we can proceed; false if blocked and page was decorated.
+ * Blocks only when ALL textual fields are empty AND all file pickers are empty.
+ */
+function validateSteppedPageAllEmpty() {
+  const fields = _collectTextualFieldsInActiveTab();
+  const allTextEmpty = fields.every((el) => (el.value ?? "").trim() === "");
+  const filesEmpty = _allFilePickersEmpty();
+
+  if (allTextEmpty && filesEmpty) {
+    // decorate every (visible) textual field
+    fields.forEach((el) => {
+      _markInvalid(el);
+      _attachAutoClear(el);
+    });
+    alert("لطفاً همه فیلدها را پر کنید.");
+    return false;
+  }
+  return true;
+}
+
 function goNext() {
-  window.location.href = `/pishfarakhan/step-6/${contractId.value}`;
+  if (!validateSteppedPageAllEmpty()) {
+    return;
+  } else {
+    window.location.href = `/pishfarakhan/step-6/${contractId.value}`;
+  }
 }
 </script>
 

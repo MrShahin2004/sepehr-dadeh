@@ -410,11 +410,6 @@
                 <div>
                   <label class="block text-sm text-gray-600 mb-1">شعبه:</label>
                   <div class="flex gap-2">
-                    <select
-                      class="w-28 rounded-md border border-gray-300 px-2 py-2 text-sm"
-                    >
-                      <option>استان</option>
-                    </select>
                     <input
                       type="text"
                       class="flex-1 rounded-md border border-gray-300 px-3 py-2"

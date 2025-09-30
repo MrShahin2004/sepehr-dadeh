@@ -8,8 +8,8 @@
       />
       <router-link to="/">
         <h1
-            class="text-[16px] absolute left-[50%] top-[90px] translate-x-[-50%] translate-y-[-100%] text-shadow-[0_4px_10px_black]"
-            style="font-family: 'B Titr', 'cursive'"
+            class="text-[30px] absolute left-[50%] top-[90px] translate-x-[-50%] translate-y-[-100%] text-shadow-[0_4px_10px_black]"
+            style="font-family: 'IranNastaliq', 'cursive'"
         >
           پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی
         </h1>

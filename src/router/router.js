@@ -12,12 +12,11 @@ import CarTable from "@/views/CarTable.vue";
 import DashBoard from "@/views/DashBoard.vue";
 import EditContractText from "@/views/EditContractText.vue";
 import NewUser from "@/views/NewUser.vue";
-import NewContract from "@/views/NewContract.vue";
+import PishFarakhan from "@/views/pishfarakhan/PishFarakhan.vue";
 import AllContracts from "@/views/AllContracts.vue";
 import MovableProperties from "@/views/MovableProperties.vue";
 import ImmovableProperties from "@/views/ImmovableProperties.vue";
 import RentalProperties from "@/views/RentalProperties.vue";
-import PishfarakhanWizard from "@/views/pishfarakhan/PishfarakhanWizard.vue";
 
 const routes = [
     {path: "/", component: HomePage, name: "HomePage"},
@@ -35,20 +34,13 @@ const routes = [
     {path: "/cartable/rental", component: RentalProperties, name: "RentalProperties", props: true},
 
     // New Contract (source page)
-    {path: "/new-contract", component: NewContract, name: "NewContract"},
-    // NEW: wizard with numeric step and optional id
+    {path: "/pishfarakhan", component: PishFarakhan, name: "PishFarakhan"},
     {
-        path: "/pishfarakhan/step-:step(\\d+)/:id?",
-        name: "PishfarakhanStep",
-        component: PishfarakhanWizard,
-        props: (r) => ({step: Number(r.params.step), id: r.params.id}),
-        beforeEnter(to) {
-            const s = Number(to.params.step);
-            const max = 8;
-            if (!Number.isFinite(s) || s < 1) return {name: "PishfarakhanStep", params: {step: 1, id: to.params.id}};
-            if (s > max) return {name: "PishfarakhanStep", params: {step: max, id: to.params.id}};
-        }
-    },
+        path: '/pishfarakhan/step-:step(\\d+)/:id',
+        name: 'PishfarakhanStep',
+        component: () => import('@/views/pishfarakhan/PishfarakhanStepLoader.vue'),
+        props: true,
+    }
 ];
 
 const router = createRouter({

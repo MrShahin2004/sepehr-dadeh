@@ -499,7 +499,7 @@ function goNext() {
 }
 </script>
 
-<style>
+<style scoped>
 .main-container {
   margin-bottom: 4rem;
 }

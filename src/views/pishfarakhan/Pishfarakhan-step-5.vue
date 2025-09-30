@@ -7,12 +7,12 @@
         <div class="lg:col-span-1">
           <div class="rounded-xl bg-white shadow p-0 overflow-hidden">
             <header
-              class="flex items-center justify-end border-b border-gray-100 px-4 sm:px-6 py-4"
+              class="flex items-center justify-start border-b border-gray-100 px-4 sm:px-6 py-4"
             >
               <div class="inline-flex rounded-full bg-gray-100 p-1">
                 <button
                   type="button"
-                  class="px-4 py-1.5 text-sm rounded-full transition"
+                  class="px-4 py-1.5 text-sm rounded-full transition cursor-pointer"
                   :class="
                     activeTab === 'person'
                       ? 'bg-teal-600 text-white shadow'
@@ -24,7 +24,7 @@
                 </button>
                 <button
                   type="button"
-                  class="px-4 py-1.5 text-sm rounded-full transition"
+                  class="px-4 py-1.5 text-sm rounded-full transition cursor-pointer"
                   :class="
                     activeTab === 'company'
                       ? 'bg-teal-600 text-white shadow'

@@ -67,6 +67,22 @@
       <div class="mt-4 grid grid-cols-1 gap-4">
         <div class="lg:col-span-1">
           <div class="rounded-xl bg-white shadow p-0 overflow-hidden">
+            <!-- unique id + section title row -->
+            <div
+              class="px-4 sm:px-6 pt-4 pb-2 flex items-center justify-end gap-6 text-sm text-gray-700"
+            >
+              <div class="flex items-center gap-2">
+                <span
+                  class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-gray-100 border border-gray-300 text-gray-600"
+                  >i</span
+                >
+                <span>مشخصات طرفین قرارداد</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span>کد شناسه یکتا:</span>
+                <span class="font-semibold">{{ contractId }}</span>
+              </div>
+            </div>
             <header
               class="flex items-center justify-start border-b border-gray-100 px-4 sm:px-6 py-4"
             >

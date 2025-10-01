@@ -6,15 +6,15 @@
       <div class="top-navbar h-32 w-full flex items-center justify-center">
         <div class="absolute left-4 top-2 flex items-center space-x-2">
           <img
-            src="@/assets/images/khamenei.png"
-            class="w-50 h-auto object-contain"
-            alt="Iranian figures"
+              src="@/assets/images/khamenei.png"
+              class="w-50 h-auto object-contain"
+              alt="Iranian figures"
           />
         </div>
         <div class="text-center text-white leading-relaxed">
           <router-link to="/">
             <h1
-              class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
+                class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
             >
               پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان
               رضوی
@@ -23,35 +23,35 @@
         </div>
         <div class="absolute right-4 top-2 flex flex-col items-center">
           <img
-            src="@/assets/images/education.svg"
-            class="w-40 h-auto object-contain"
-            alt="Iranian emblem"
+              src="@/assets/images/education.svg"
+              class="w-40 h-auto object-contain"
+              alt="Iranian emblem"
           />
         </div>
       </div>
     </header>
 
     <main
-      class="main-container mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl"
+        class="main-container mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl"
     >
       <!-- Progress bar from step-4 (current step: 5) -->
       <section class="bg-white rounded-lg shadow-sm p-6 mb-6">
         <div class="relative">
           <div class="absolute top-4 left-0 right-0 h-0.5 bg-gray-200 z-0">
             <div
-              class="h-full bg-teal-500 z-0"
-              :style="{ width: progressWidth }"
+                class="h-full bg-teal-500 z-0"
+                :style="{ width: progressWidth }"
             ></div>
           </div>
           <div class="flex items-center justify-between relative z-10">
             <div
-              v-for="(s, i) in steps"
-              :key="i"
-              class="flex flex-col items-center"
+                v-for="(s, i) in steps"
+                :key="i"
+                class="flex flex-col items-center"
             >
               <div
-                class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
-                :class="
+                  class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
+                  :class="
                   i + 1 === 5
                     ? 'bg-teal-500 border-teal-500 text-white'
                     : 'bg-gray-100 border-gray-300 text-gray-500'
@@ -69,12 +69,12 @@
           <div class="rounded-xl bg-white shadow p-0 overflow-hidden">
             <!-- unique id + section title row -->
             <div
-              class="px-4 sm:px-6 pt-4 pb-2 flex items-center justify-start gap-6 text-sm text-gray-700"
+                class="px-4 sm:px-6 pt-4 pb-2 flex items-center justify-start gap-6 text-sm text-gray-700"
             >
               <div class="flex items-center gap-2">
                 <span
-                  class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-gray-100 border border-gray-300 text-gray-600"
-                  >i</span
+                    class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-gray-100 border border-gray-300 text-gray-600"
+                >i</span
                 >
                 <span>مشخصات طرفین قرارداد</span>
               </div>
@@ -84,30 +84,30 @@
               </div>
             </div>
             <header
-              class="flex items-center justify-start border-b border-gray-100 px-4 sm:px-6 py-4"
+                class="flex items-center justify-start border-b border-gray-100 px-4 sm:px-6 py-4"
             >
               <div class="inline-flex rounded-full bg-gray-100 p-1">
                 <button
-                  type="button"
-                  class="px-4 py-1.5 text-sm rounded-full transition cursor-pointer"
-                  :class="
+                    type="button"
+                    class="px-4 py-1.5 text-sm rounded-full transition cursor-pointer"
+                    :class="
                     activeTab === 'person'
                       ? 'bg-teal-600 text-white shadow'
                       : 'text-gray-700 hover:text-teal-700'
                   "
-                  @click="activeTab = 'person'"
+                    @click="activeTab = 'person'"
                 >
                   حقیقی
                 </button>
                 <button
-                  type="button"
-                  class="px-4 py-1.5 text-sm rounded-full transition cursor-pointer"
-                  :class="
+                    type="button"
+                    class="px-4 py-1.5 text-sm rounded-full transition cursor-pointer"
+                    :class="
                     activeTab === 'company'
                       ? 'bg-teal-600 text-white shadow'
                       : 'text-gray-700 hover:text-teal-700'
                   "
-                  @click="activeTab = 'company'"
+                    @click="activeTab = 'company'"
                 >
                   حقوقی
                 </button>
@@ -116,8 +116,8 @@
               <div class="flex items-center gap-3 mr-4">
                 <span class="text-sm text-gray-700">طرف قرارداد:</span>
                 <select
-                  v-model="party"
-                  class="w-48 bg-white border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 cursor-pointer"
+                    v-model="party"
+                    class="w-48 bg-white border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 cursor-pointer"
                 >
                   <option value="" disabled>انتخاب کنید</option>
                   <option value="tenant">مستاجر</option>
@@ -131,25 +131,25 @@
                 <div>
                   <label class="block text-sm text-gray-600 mb-1">نام:</label>
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="علی"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="علی"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >نام خانوادگی:</label
+                  >نام خانوادگی:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="علیرضاده"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="علیرضاده"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1">جنسیت:</label>
                   <select
-                    class="w-full rounded-md border border-gray-300 px-2 py-2 text-sm"
+                      class="w-full rounded-md border border-gray-300 px-2 py-2 text-sm"
                   >
                     <option>انتخاب کنید</option>
                     <option>مرد</option>
@@ -158,120 +158,120 @@
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >نام پدر:</label
+                  >نام پدر:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="علی"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="علی"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >شماره ملی:</label
+                  >شماره ملی:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="۰۹۲۲۸۸۰۰۰۰"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="۰۹۲۲۸۸۰۰۰۰"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >تاریخ تولد:</label
+                  >تاریخ تولد:</label
                   >
                   <div class="relative">
                     <input
-                      type="text"
-                      class="w-full rounded-md border border-gray-300 px-3 py-2 pr-10"
-                      placeholder="dd-----yyyy"
+                        type="text"
+                        class="w-full rounded-md border border-gray-300 px-3 py-2 pr-10"
+                        placeholder="dd-----yyyy"
                     />
                     <span
-                      class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
-                      >📅</span
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                    >📅</span
                     >
                   </div>
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1">شغل:</label>
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="پیمانکار"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="پیمانکار"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >تلفن ثابت:</label
+                  >تلفن ثابت:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="0513......"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="0513......"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >تلفن همراه:</label
+                  >تلفن همراه:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="0915......"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="0915......"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1">ایمیل:</label>
                   <input
-                    type="email"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="info@sepehr-dad.com"
+                      type="email"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="info@sepehr-dad.com"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >کد پستی:</label
+                  >کد پستی:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="1234567890"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="1234567890"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >تضمین قرارداد:</label
+                  >تضمین قرارداد:</label
                   >
                   <input
-                    ref="guaranteeInput"
-                    type="file"
-                    accept="application/pdf"
-                    class="hidden"
-                    @change="onPickGuarantee"
+                      ref="guaranteeInput"
+                      type="file"
+                      accept="application/pdf"
+                      class="hidden"
+                      @change="onPickGuarantee"
                   />
                   <div class="flex items-center gap-3 flex-wrap">
                     <button
-                      type="button"
-                      class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
-                      @click="$refs.guaranteeInput.click()"
+                        type="button"
+                        class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
+                        @click="$refs.guaranteeInput.click()"
                     >
                       بارگذاری
                     </button>
                     <div
-                      v-if="guaranteeChip"
-                      class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
+                        v-if="guaranteeChip"
+                        class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
                     >
                       <button
-                        type="button"
-                        @click="clearGuarantee"
-                        class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
-                        aria-label="حذف فایل"
-                        title="حذف فایل"
+                          type="button"
+                          @click="clearGuarantee"
+                          class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                          aria-label="حذف فایل"
+                          title="حذف فایل"
                       >
                         ✕
                       </button>
                       <div
-                        class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                          class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
                       >
                         <div class="font-medium">
                           {{ guaranteeChip.sizeKB }}
@@ -279,8 +279,8 @@
                         <div>KB</div>
                       </div>
                       <div
-                        class="text-sm text-gray-800 truncate max-w-[220px]"
-                        :title="guaranteeChip.name"
+                          class="text-sm text-gray-800 truncate max-w-[220px]"
+                          :title="guaranteeChip.name"
                       >
                         {{ guaranteeChip.name }}
                       </div>
@@ -289,38 +289,38 @@
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >کارت ملی:</label
+                  >کارت ملی:</label
                   >
                   <input
-                    ref="nationalCardInput"
-                    type="file"
-                    accept="application/pdf"
-                    class="hidden"
-                    @change="onPickNationalCard"
+                      ref="nationalCardInput"
+                      type="file"
+                      accept="application/pdf"
+                      class="hidden"
+                      @change="onPickNationalCard"
                   />
                   <div class="flex items-center gap-3 flex-wrap">
                     <button
-                      type="button"
-                      class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
-                      @click="$refs.nationalCardInput.click()"
+                        type="button"
+                        class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
+                        @click="$refs.nationalCardInput.click()"
                     >
                       بارگذاری
                     </button>
                     <div
-                      v-if="nationalCardChip"
-                      class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
+                        v-if="nationalCardChip"
+                        class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
                     >
                       <button
-                        type="button"
-                        @click="clearNationalCard"
-                        class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
-                        aria-label="حذف فایل"
-                        title="حذف فایل"
+                          type="button"
+                          @click="clearNationalCard"
+                          class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                          aria-label="حذف فایل"
+                          title="حذف فایل"
                       >
                         ✕
                       </button>
                       <div
-                        class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                          class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
                       >
                         <div class="font-medium">
                           {{ nationalCardChip.sizeKB }}
@@ -328,8 +328,8 @@
                         <div>KB</div>
                       </div>
                       <div
-                        class="text-sm text-gray-800 truncate max-w-[220px]"
-                        :title="nationalCardChip.name"
+                          class="text-sm text-gray-800 truncate max-w-[220px]"
+                          :title="nationalCardChip.name"
                       >
                         {{ nationalCardChip.name }}
                       </div>
@@ -340,15 +340,15 @@
               <div class="mt-4">
                 <label class="block text-sm text-gray-600 mb-1">آدرس:</label>
                 <input
-                  type="text"
-                  class="w-full rounded-md border border-gray-300 px-3 py-2"
-                  placeholder="خراسان رضوی مشهد خیابان امام خمینی"
+                    type="text"
+                    class="w-full rounded-md border border-gray-300 px-3 py-2"
+                    placeholder="خراسان رضوی مشهد خیابان امام خمینی"
                 />
               </div>
               <div class="mt-6 flex justify-start">
                 <button
-                  class="px-5 py-2.5 rounded-lg bg-teal-600 text-white cursor-pointer"
-                  @click="goNext"
+                    class="px-5 py-2.5 rounded-lg bg-teal-600 text-white cursor-pointer"
+                    @click="goNext"
                 >
                   ثبت
                 </button>
@@ -359,60 +359,60 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >نام شرکت:</label
+                  >نام شرکت:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="اداره آموزش پرورش"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="اداره آموزش پرورش"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >شناسه ملی:</label
+                  >شناسه ملی:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="1234567890"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="1234567890"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >شماره ثبت:</label
+                  >شماره ثبت:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="123456"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="123456"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >محل ثبت:</label
+                  >محل ثبت:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="مشهد"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="مشهد"
                   />
                 </div>
                 <div class="md:col-span-2">
                   <label class="block text-sm text-gray-600 mb-1"
-                    >شرح فعالیت:</label
+                  >شرح فعالیت:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="پیمانکار"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="پیمانکار"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >مرکز اصلی:</label
+                  >مرکز اصلی:</label
                   >
                   <select
-                    class="w-full rounded-md border border-gray-300 px-2 py-2 text-sm"
+                      class="w-full rounded-md border border-gray-300 px-2 py-2 text-sm"
                   >
                     <option value="" disabled>انتخاب کنید</option>
                     <option value="main-center">مرکز اصلی</option>
@@ -424,77 +424,77 @@
                   <label class="block text-sm text-gray-600 mb-1">شهر:</label>
                   <div class="flex gap-2">
                     <input
-                      type="text"
-                      class="flex-1 rounded-md border border-gray-300 px-3 py-2"
-                      placeholder="مشهد"
+                        type="text"
+                        class="flex-1 rounded-md border border-gray-300 px-3 py-2"
+                        placeholder="مشهد"
                     />
                   </div>
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >ایمیل شرکت:</label
+                  >ایمیل شرکت:</label
                   >
                   <input
-                    type="email"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="info@sepehr-dad.com"
+                      type="email"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="info@sepehr-dad.com"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1">تلفن:</label>
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="05130000000"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="05130000000"
                   />
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
-                    >کد پستی:</label
+                  >کد پستی:</label
                   >
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="1234567890"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="1234567890"
                   />
                 </div>
                 <div
-                  class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4"
+                    class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
                   <div>
                     <label class="block text-sm text-gray-600 mb-1"
-                      >آخرین آگهی:</label
+                    >آخرین آگهی:</label
                     >
                     <input
-                      ref="lastNoticeInput"
-                      type="file"
-                      accept="application/pdf"
-                      class="hidden"
-                      @change="onPickLastNotice"
+                        ref="lastNoticeInput"
+                        type="file"
+                        accept="application/pdf"
+                        class="hidden"
+                        @change="onPickLastNotice"
                     />
                     <div class="flex items-center gap-3 flex-wrap">
                       <button
-                        type="button"
-                        class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
-                        @click="$refs.lastNoticeInput.click()"
+                          type="button"
+                          class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
+                          @click="$refs.lastNoticeInput.click()"
                       >
                         بارگذاری
                       </button>
                       <div
-                        v-if="lastNoticeChip"
-                        class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
+                          v-if="lastNoticeChip"
+                          class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
                       >
                         <button
-                          type="button"
-                          @click="clearLastNotice"
-                          class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
-                          aria-label="حذف فایل"
-                          title="حذف فایل"
+                            type="button"
+                            @click="clearLastNotice"
+                            class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                            aria-label="حذف فایل"
+                            title="حذف فایل"
                         >
                           ✕
                         </button>
                         <div
-                          class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                            class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
                         >
                           <div class="font-medium">
                             {{ lastNoticeChip.sizeKB }}
@@ -502,8 +502,8 @@
                           <div>KB</div>
                         </div>
                         <div
-                          class="text-sm text-gray-800 truncate max-w-[220px]"
-                          :title="lastNoticeChip.name"
+                            class="text-sm text-gray-800 truncate max-w-[220px]"
+                            :title="lastNoticeChip.name"
                         >
                           {{ lastNoticeChip.name }}
                         </div>
@@ -512,38 +512,38 @@
                   </div>
                   <div>
                     <label class="block text-sm text-gray-600 mb-1"
-                      >اساسنامه:</label
+                    >اساسنامه:</label
                     >
                     <input
-                      ref="articlesInput"
-                      type="file"
-                      accept="application/pdf"
-                      class="hidden"
-                      @change="onPickArticles"
+                        ref="articlesInput"
+                        type="file"
+                        accept="application/pdf"
+                        class="hidden"
+                        @change="onPickArticles"
                     />
                     <div class="flex items-center gap-3 flex-wrap">
                       <button
-                        type="button"
-                        class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
-                        @click="$refs.articlesInput.click()"
+                          type="button"
+                          class="inline-flex items-center rounded-md bg-blue-600 text-white px-3 py-2 text-sm cursor-pointer"
+                          @click="$refs.articlesInput.click()"
                       >
                         بارگذاری
                       </button>
                       <div
-                        v-if="articlesChip"
-                        class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
+                          v-if="articlesChip"
+                          class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
                       >
                         <button
-                          type="button"
-                          @click="clearArticles"
-                          class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
-                          aria-label="حذف فایل"
-                          title="حذف فایل"
+                            type="button"
+                            @click="clearArticles"
+                            class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                            aria-label="حذف فایل"
+                            title="حذف فایل"
                         >
                           ✕
                         </button>
                         <div
-                          class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                            class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
                         >
                           <div class="font-medium">
                             {{ articlesChip.sizeKB }}
@@ -551,8 +551,8 @@
                           <div>KB</div>
                         </div>
                         <div
-                          class="text-sm text-gray-800 truncate max-w-[220px]"
-                          :title="articlesChip.name"
+                            class="text-sm text-gray-800 truncate max-w-[220px]"
+                            :title="articlesChip.name"
                         >
                           {{ articlesChip.name }}
                         </div>
@@ -563,15 +563,15 @@
                 <div class="md:col-span-2">
                   <label class="block text-sm text-gray-600 mb-1">آدرس:</label>
                   <input
-                    type="text"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
-                    placeholder="خراسان رضوی مشهد خیابان امام خمینی"
+                      type="text"
+                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      placeholder="خراسان رضوی مشهد خیابان امام خمینی"
                   />
                 </div>
                 <div class="mt-6 flex justify-start">
                   <button
-                    class="px-5 py-2.5 rounded-lg bg-teal-600 text-white cursor-pointer"
-                    @click="goNext"
+                      class="px-5 py-2.5 rounded-lg bg-teal-600 text-white cursor-pointer"
+                      @click="goNext"
                   >
                     ثبت
                   </button>
@@ -584,44 +584,44 @@
     </main>
 
     <!-- Footer from step-4 -->
-    <hr />
+    <hr/>
     <div class="login-footer">
       <div class="footer-links flex justify-center items-center gap-x-[1rem]">
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >حریم خصوصی</a
-          ></router-link
+        >حریم خصوصی</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >نظرسنجی‌ها</a
-          ></router-link
+        >نظرسنجی‌ها</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >پیوندها</a
-          ></router-link
+        >پیوندها</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >فراخوان‌ها</a
-          ></router-link
+        >فراخوان‌ها</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >آمارها</a
-          ></router-link
+        >آمارها</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >صفحه اصلی</a
-          ></router-link
+        >صفحه اصلی</a
+        ></router-link
         >
       </div>
       <div class="footer-desc flex justify-center items-center">
@@ -634,8 +634,8 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
-import { useRoute } from "vue-router";
+import {computed, ref} from "vue";
+import {useRoute} from "vue-router";
 
 const steps = [
   "مجوز اداره کل",
@@ -663,7 +663,7 @@ const lastNoticeChip = ref(null);
 const articlesChip = ref(null);
 
 const isPdf = (file) =>
-  !!file && (file.type === "application/pdf" || /\.pdf$/i.test(file.name));
+    !!file && (file.type === "application/pdf" || /\.pdf$/i.test(file.name));
 
 function onPickGuarantee(e) {
   const f = e.target.files?.[0];
@@ -673,7 +673,7 @@ function onPickGuarantee(e) {
     e.target.value = "";
     return;
   }
-  guaranteeChip.value = { name: f.name, sizeKB: (f.size / 1024).toFixed(2) };
+  guaranteeChip.value = {name: f.name, sizeKB: (f.size / 1024).toFixed(2)};
 }
 
 function clearGuarantee() {
@@ -689,7 +689,7 @@ function onPickNationalCard(e) {
     e.target.value = "";
     return;
   }
-  nationalCardChip.value = { name: f.name, sizeKB: (f.size / 1024).toFixed(2) };
+  nationalCardChip.value = {name: f.name, sizeKB: (f.size / 1024).toFixed(2)};
 }
 
 function clearNationalCard() {
@@ -705,7 +705,7 @@ function onPickLastNotice(e) {
     e.target.value = "";
     return;
   }
-  lastNoticeChip.value = { name: f.name, sizeKB: (f.size / 1024).toFixed(2) };
+  lastNoticeChip.value = {name: f.name, sizeKB: (f.size / 1024).toFixed(2)};
 }
 
 function clearLastNotice() {
@@ -721,7 +721,7 @@ function onPickArticles(e) {
     e.target.value = "";
     return;
   }
-  articlesChip.value = { name: f.name, sizeKB: (f.size / 1024).toFixed(2) };
+  articlesChip.value = {name: f.name, sizeKB: (f.size / 1024).toFixed(2)};
 }
 
 function clearArticles() {
@@ -743,11 +743,11 @@ function _isVisible(el) {
 
 function _markInvalid(el) {
   el.classList.add(
-    "border-red-500",
-    "bg-red-50",
-    "ring-1",
-    "ring-red-400",
-    "focus:ring-red-500"
+      "border-red-500",
+      "bg-red-50",
+      "ring-1",
+      "ring-red-400",
+      "focus:ring-red-500"
   );
   if (!el.dataset.requiredMsg) {
     const hint = document.createElement("div");
@@ -760,11 +760,11 @@ function _markInvalid(el) {
 
 function _clearInvalid(el) {
   el.classList.remove(
-    "border-red-500",
-    "bg-red-50",
-    "ring-1",
-    "ring-red-400",
-    "focus:ring-red-500"
+      "border-red-500",
+      "bg-red-50",
+      "ring-1",
+      "ring-red-400",
+      "focus:ring-red-500"
   );
   if (el.dataset.requiredMsg) {
     const next = el.nextElementSibling;
@@ -777,27 +777,38 @@ function _clearInvalid(el) {
 function _isFieldEmpty(el) {
   if (!el) return true;
 
-  // Treat SELECT placeholders like "انتخاب کنید" (or disabled first option) as empty
+  // فایل‌پیکر: خالی یا غیر PDF => خالی محسوب شود
+  if (el.tagName === "INPUT" && el.type === "file") {
+    const files = el.files ?? [];
+    if (!files.length) return true;
+    // همه فایل‌ها باید PDF باشند
+    return !Array.from(files).every(
+        (f) => f?.type === "application/pdf" || /\.pdf$/i.test(f?.name ?? "")
+    );
+  }
+
+  // SELECT: اولین گزینه‌ی placeholder یا مقدار خالی => خالی
   if (el.tagName === "SELECT") {
     const idx = el.selectedIndex;
     if (idx < 0) return true;
     const opt = el.options[idx];
     const val =
-      opt && opt.hasAttribute("value") ? opt.value : opt?.textContent ?? "";
+        opt && opt.hasAttribute("value") ? opt.value : opt?.textContent ?? "";
     const valTrim = (val ?? "").trim();
 
     const isPlaceholderText = /^(انتخاب|select|choose|--)/i.test(
-      (opt?.textContent ?? "").trim()
+        (opt?.textContent ?? "").trim()
     );
     const isFirstPlaceholder =
-      idx === 0 && (opt?.disabled || isPlaceholderText);
+        idx === 0 && (opt?.disabled || isPlaceholderText);
 
     return valTrim === "" || isFirstPlaceholder;
   }
 
-  // Inputs / textareas (file/checkbox/radio are excluded elsewhere)
+  // سایر input/textarea
   return (el.value ?? "").trim() === "";
 }
+
 
 function _attachAutoClear(el) {
   const handler = () => {
@@ -810,32 +821,45 @@ function _attachAutoClear(el) {
 function _collectTextualFieldsInActiveTab() {
   // all visible non-file inputs + textarea + select
   return Array.from(
-    document.querySelectorAll(
-      'input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), textarea, select'
-    )
+      document.querySelectorAll(
+          'input:not([type="file"]):not([type="checkbox"]):not([type="radio"]), textarea, select'
+      )
   ).filter(_isVisible);
 }
 
 function _allFilePickersEmpty() {
-  const files = Array.from(document.querySelectorAll('input[type="file"]'));
+  // فقط فایل‌پیکرهای قابل‌مشاهده (یعنی متعلق به تب فعال)
+  const files = Array.from(document.querySelectorAll('input[type="file"]')).filter(_isVisible);
+  // اگر حتی یکی هم فایل معتبر PDF نداشت، این تابع "true" برنمی‌گرداند؛
+  // ولی چون از این تابع دیگر برای شمارش استفاده نمی‌کنیم، حفظش برای سازگاری است.
   return files.every((el) => !el.files || el.files.length === 0);
 }
+
 
 /**
  * Returns true if we can proceed; false if blocked and page was decorated.
  * Blocks only when ALL textual fields are empty AND all file pickers are empty.
  */
 function validateSteppedPageAllEmpty() {
+  // فیلدهای متنیِ تب فعال
   const fields = _collectTextualFieldsInActiveTab();
-  const allTextEmpty = fields.every(_isFieldEmpty);
-  const filesEmpty = _allFilePickersEmpty();
+  // فایل‌پیکرهای تب فعال
+  const filePickers = Array.from(
+      document.querySelectorAll('input[type="file"]')
+  ).filter(_isVisible);
 
-  if (allTextEmpty && filesEmpty) {
-    fields.forEach((el) => {
+  // هر فیلد/فایل‌پیکری که خالی یا نامعتبر است
+  const invalidText = fields.filter(_isFieldEmpty);
+  const invalidFiles = filePickers.filter(_isFieldEmpty); // چون _isFieldEmpty برای file هم به‌روز شد
+
+  const invalid = [...invalidText, ...invalidFiles];
+
+  if (invalid.length > 0) {
+    invalid.forEach((el) => {
       _markInvalid(el);
-      _attachAutoClear(el);
+      _attachAutoClear(el); // با تغییر/اینپوت پاک می‌شود
     });
-    alert("لطفاً همه فیلدها را پر کنید.");
+    alert("لطفاً همه فیلدها را تکمیل کرده و برای آپلودها فایل PDF انتخاب کنید.");
     return false;
   }
   return true;

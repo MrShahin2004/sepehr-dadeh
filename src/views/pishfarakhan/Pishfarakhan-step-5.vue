@@ -777,36 +777,32 @@ function _clearInvalid(el) {
 function _isFieldEmpty(el) {
   if (!el) return true;
 
-  // فایل‌پیکر: خالی یا غیر PDF => خالی محسوب شود
-  if (el.tagName === "INPUT" && el.type === "file") {
-    const files = el.files ?? [];
-    if (!files.length) return true;
-    // همه فایل‌ها باید PDF باشند
-    return !Array.from(files).every(
-        (f) => f?.type === "application/pdf" || /\.pdf$/i.test(f?.name ?? "")
+  // File picker: must have at least one file and all must be PDF
+  if (el.tagName === 'INPUT' && el.type === 'file') {
+    const files = el.files || [];
+    if (files.length === 0) return true;
+    // treat as empty/invalid if ANY file is not a PDF
+    const allPdf = Array.from(files).every(
+        f => f?.type === 'application/pdf' || /\.pdf$/i.test(f?.name || '')
     );
+    return !allPdf;
   }
 
-  // SELECT: اولین گزینه‌ی placeholder یا مقدار خالی => خالی
-  if (el.tagName === "SELECT") {
+  // Select: empty or placeholder => empty
+  if (el.tagName === 'SELECT') {
     const idx = el.selectedIndex;
     if (idx < 0) return true;
     const opt = el.options[idx];
-    const val =
-        opt && opt.hasAttribute("value") ? opt.value : opt?.textContent ?? "";
-    const valTrim = (val ?? "").trim();
-
+    const value = (opt?.value ?? opt?.textContent ?? '').trim();
     const isPlaceholderText = /^(انتخاب|select|choose|--)/i.test(
-        (opt?.textContent ?? "").trim()
+        (opt?.textContent ?? '').trim()
     );
-    const isFirstPlaceholder =
-        idx === 0 && (opt?.disabled || isPlaceholderText);
-
-    return valTrim === "" || isFirstPlaceholder;
+    const isFirstPlaceholder = idx === 0 && (opt?.disabled || isPlaceholderText);
+    return value === '' || isFirstPlaceholder;
   }
 
-  // سایر input/textarea
-  return (el.value ?? "").trim() === "";
+  // Other inputs / textarea
+  return (el.value ?? '').trim() === '';
 }
 
 
@@ -827,42 +823,34 @@ function _collectTextualFieldsInActiveTab() {
   ).filter(_isVisible);
 }
 
-function _allFilePickersEmpty() {
-  // فقط فایل‌پیکرهای قابل‌مشاهده (یعنی متعلق به تب فعال)
-  const files = Array.from(document.querySelectorAll('input[type="file"]')).filter(_isVisible);
-  // اگر حتی یکی هم فایل معتبر PDF نداشت، این تابع "true" برنمی‌گرداند؛
-  // ولی چون از این تابع دیگر برای شمارش استفاده نمی‌کنیم، حفظش برای سازگاری است.
-  return files.every((el) => !el.files || el.files.length === 0);
-}
-
 
 /**
  * Returns true if we can proceed; false if blocked and page was decorated.
  * Blocks only when ALL textual fields are empty AND all file pickers are empty.
  */
 function validateSteppedPageAllEmpty() {
-  // فیلدهای متنیِ تب فعال
-  const fields = _collectTextualFieldsInActiveTab();
-  // فایل‌پیکرهای تب فعال
-  const filePickers = Array.from(
-      document.querySelectorAll('input[type="file"]')
-  ).filter(_isVisible);
+  // collect only visible fields in the active tab
+  const textFields = _collectTextualFieldsInActiveTab(); // (uses your existing helper)
+  const filePickers = Array
+      .from(document.querySelectorAll('input[type="file"]'))
+      .filter(_isVisible); // your existing visibility check
 
-  // هر فیلد/فایل‌پیکری که خالی یا نامعتبر است
-  const invalidText = fields.filter(_isFieldEmpty);
-  const invalidFiles = filePickers.filter(_isFieldEmpty); // چون _isFieldEmpty برای file هم به‌روز شد
-
-  const invalid = [...invalidText, ...invalidFiles];
+  // anything empty/invalid?
+  const invalid = [
+    ...textFields.filter(_isFieldEmpty),
+    ...filePickers.filter(_isFieldEmpty),
+  ];
 
   if (invalid.length > 0) {
-    invalid.forEach((el) => {
-      _markInvalid(el);
-      _attachAutoClear(el); // با تغییر/اینپوت پاک می‌شود
+    invalid.forEach(el => {
+      _markInvalid(el);     // your existing styler
+      _attachAutoClear(el); // your existing listener to clear error on change/input
     });
-    alert("لطفاً همه فیلدها را تکمیل کرده و برای آپلودها فایل PDF انتخاب کنید.");
-    return false;
+    alert('لطفاً همه فیلدها را تکمیل کرده و برای آپلودها فایل PDF انتخاب کنید.');
+    return false; // prevent going to next page
   }
-  return true;
+
+  return true; // everything is valid -> allow next step
 }
 
 function goNext() {

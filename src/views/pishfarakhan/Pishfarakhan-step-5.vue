@@ -181,15 +181,18 @@
                   >تاریخ تولد:</label
                   >
                   <div class="relative">
-                    <input
-                        type="text"
-                        class="w-full rounded-md border border-gray-300 px-3 py-2 pr-10"
-                        placeholder="dd-----yyyy"
-                    />
-                    <span
-                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
-                    >📅</span
-                    >
+<!--                    <DatePicker-->
+<!--                        v-model="forms.haghighi.birthDate"-->
+<!--                        :type="'date'"-->
+<!--                        :format="'jYYYY/jMM/jDD'"-->
+<!--                        :display-format="'jYYYY/jMM/jDD'"-->
+<!--                        :auto-submit="true"-->
+<!--                        :editable="false"-->
+<!--                        input-class="w-full h-12 rounded-xl border border-slate-300 px-4 focus:outline-none"-->
+<!--                        input-id="birthDate"-->
+<!--                        input-name="birthDate"-->
+<!--                        placeholder="تاریخ تولد"-->
+<!--                    />-->
                   </div>
                 </div>
                 <div>
@@ -636,7 +639,14 @@
 <script setup>
 import {computed, reactive, ref} from "vue";
 import {useRoute} from "vue-router";
-import Vue3PersianDatetimePicker from 'vue3-persian-datetime-picker'
+// import DatePicker from "vue3-persian-datetime-picker"
+//
+// const forms = reactive({
+//   haghighi: {birthDate: ''},
+// })
+
+const TestObject = reactive({});
+console.log(TestObject);
 
 const steps = [
   "مجوز اداره کل",

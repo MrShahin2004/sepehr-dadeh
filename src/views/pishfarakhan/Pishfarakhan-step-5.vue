@@ -653,7 +653,7 @@ watch(() => forms.haghighi.birthDate, (value) => {
 
   console.log(`The raw value of date picker: ${value}`);
 
-  let m = moment.from(value, "fa", "jYYYY/jMM/jDD");
+  const m = moment(value, 'jYYYY/jMM/jDD');
   console.log({
     jalali: {
       formatted: value,

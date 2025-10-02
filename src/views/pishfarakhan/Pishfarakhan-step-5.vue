@@ -181,18 +181,18 @@
                   >تاریخ تولد:</label
                   >
                   <div class="relative">
-<!--                    <DatePicker-->
-<!--                        v-model="forms.haghighi.birthDate"-->
-<!--                        :type="'date'"-->
-<!--                        :format="'jYYYY/jMM/jDD'"-->
-<!--                        :display-format="'jYYYY/jMM/jDD'"-->
-<!--                        :auto-submit="true"-->
-<!--                        :editable="false"-->
-<!--                        input-class="w-full h-12 rounded-xl border border-slate-300 px-4 focus:outline-none"-->
-<!--                        input-id="birthDate"-->
-<!--                        input-name="birthDate"-->
-<!--                        placeholder="تاریخ تولد"-->
-<!--                    />-->
+                    <DatePicker
+                        v-model="forms.haghighi.birthDate"
+                        :type="'date'"
+                        :format="'jYYYY/jMM/jDD'"
+                        :display-format="'jYYYY/jMM/jDD'"
+                        :auto-submit="true"
+                        :editable="false"
+                        input-class="w-full h-12 rounded-xl border border-slate-300 px-4 focus:outline-none"
+                        input-id="birthDate"
+                        input-name="birthDate"
+                        placeholder="تاریخ تولد"
+                    />
                   </div>
                 </div>
                 <div>
@@ -639,11 +639,11 @@
 <script setup>
 import {computed, reactive, ref} from "vue";
 import {useRoute} from "vue-router";
-// import DatePicker from "vue3-persian-datetime-picker"
-//
-// const forms = reactive({
-//   haghighi: {birthDate: ''},
-// })
+import DatePicker from "vue3-persian-datetime-picker"
+
+const forms = reactive({
+  haghighi: {birthDate: ''},
+})
 
 const TestObject = reactive({});
 console.log(TestObject);

@@ -11,6 +11,8 @@
     "core-js": "^3.8.3",
     "dayjs": "^1.11.18",
     "jwt-decode": "^4.0.0",
+    "moment": "^2.30.1",
+    "moment-jalaali": "^0.10.4",
     "vue": "^3.2.13",
     "vue-router": "^4.5.1",
     "vue3-persian-datetime-picker": "file:../../Cloned Projects/vue3-persian-datetime-picker"

@@ -637,13 +637,40 @@
 </template>
 
 <script setup>
-import {computed, reactive, ref} from "vue";
+import {computed, reactive, ref, watch} from "vue";
 import {useRoute} from "vue-router";
-import DatePicker from "vue3-persian-datetime-picker"
+import DatePicker from "vue3-persian-datetime-picker";
+import moment from "moment-jalaali";
 
 const forms = reactive({
   haghighi: {birthDate: ''},
 })
+
+watch(() => forms.haghighi.birthDate, (value) => {
+  if (!value) {
+    return;
+  }
+
+  console.log(`The raw value of date picker: ${value}`);
+
+  let m = moment.from(value, "fa", "jYYYY/jMM/jDD");
+  console.log({
+    jalali: {
+      formatted: value,
+      year: m.jYear(),
+      month: m.jMonth() + 1,   // 1..12
+      day: m.jDate(),          // 1..31
+      weekday: m.format("dddd")
+    },
+    gregorian: {
+      iso: m.format('YYYY-MM-DD'),
+      year: m.year(),
+      month: m.month() + 1,    // 1..12
+      day: m.date(),           // 1..31
+    },
+    unixMs: m.valueOf()
+  });
+});
 
 const steps = [
   "مجوز اداره کل",

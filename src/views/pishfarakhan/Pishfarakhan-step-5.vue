@@ -645,9 +645,6 @@ const forms = reactive({
   haghighi: {birthDate: ''},
 })
 
-const TestObject = reactive({});
-console.log(TestObject);
-
 const steps = [
   "مجوز اداره کل",
   "نامه کارشناسی",

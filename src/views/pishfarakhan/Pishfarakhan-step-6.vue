@@ -201,8 +201,12 @@
             <div class="pt-2">
               <button
                   type="button"
-                  @click="saveAndNext"
-                  class="w-full rounded-md bg-indigo-300 hover:bg-indigo-400 transition text-white py-2 text-sm tracking-wide"
+                  :disabled="!isFormComplete"
+                  @click="handleSubmit"
+                  :class="[
+                  'w-full rounded-md text-white py-2 text-sm tracking-wide transition',
+                  isFormComplete ? 'bg-[#154ec1] cursor-pointer' : 'bg-[#a3b3ff] cursor-not-allowed'
+                ]"
               >
                 ثبت اطلاعات
               </button>
@@ -240,7 +244,7 @@
                   <span class="text-sm font-medium text-gray-800">{{ preview.rentMonthly || '---' }}</span>
                 </div>
 
-                <!-- مدت قرارداد (range text: fromDate تا toDate) -->
+                <!-- مدت قرارداد -->
                 <div class="flex items-center justify-between px-5 py-3 text-gray-600">
                   <span class="text-sm">مدت قرارداد:</span>
                   <span class="text-sm font-medium text-gray-800">{{ preview.duration }}</span>
@@ -313,7 +317,6 @@ const subjectOptions = ['فروش', 'اجاره']
 
 const form = reactive({
   subject: '',
-  title: '',
   // dynamic money fields
   saleTotal: '',
   salePart: '',
@@ -330,7 +333,7 @@ const guaranteeOptions = ["ضمانت نامه بانکی", "حساب سپرده
 
 const preview = reactive({
   subject: '',
-  duration: '--- تا ---', // default range text
+  duration: '--- تا ---',
   supervisor: '',
   guarantee: '',
   saleTotal: '',
@@ -345,7 +348,6 @@ const progressWidth = computed(() => `${(6 - 1) / (steps.length - 1) * 100}%`)
 const toJ = (val) => {
   try {
     if (!val) return ''
-    // try strict parse in j-format first
     let m = moment(val, 'jYYYY/jMM/jDD', true)
     if (!m.isValid()) {
       m = moment(val)
@@ -356,7 +358,6 @@ const toJ = (val) => {
   }
 }
 
-// keep preview in sync with inputs (live)
 watch(
     () => ({
       subject: form.subject,
@@ -378,18 +379,44 @@ watch(
       preview.rentTotal = v.rentTotal
       preview.rentMonthly = v.rentMonthly
 
-      // >>> RANGE TEXT FOR "مدت قرارداد": "{from} تا {to}"
       const fromStr = toJ(v.fromDate) || '---'
       const toStr = toJ(v.toDate) || '---'
-      // Important: in RTL, writing "from تا to" shows from on the RIGHT and to on the LEFT.
       preview.duration = `${fromStr} تا ${toStr}`
     },
     {immediate: true, deep: true}
 )
 
+/* ======== ENABLE/DISABLE LOGIC FOR BUTTON ======== */
+const isNonEmpty = (v) => (v !== null && v !== undefined && String(v).trim() !== '')
+const isFormComplete = computed(() => {
+  // always require subject selection
+  if (!isNonEmpty(form.subject)) return false
+
+  // fields common to both modes
+  const common = ['fromDate', 'toDate', 'supervisor', 'guarantee']
+  if (!common.every((k) => isNonEmpty(form[k]))) return false
+
+  // dynamic fields by subject
+  if (form.subject === 'فروش') {
+    return ['saleTotal', 'salePart'].every((k) => isNonEmpty(form[k]))
+  }
+  if (form.subject === 'اجاره') {
+    return ['rentTotal', 'rentMonthly'].every((k) => isNonEmpty(form[k]))
+  }
+  return false
+})
+
 function saveAndNext() {
   const id = route.params.id
   router.push(`/pishfarakhan/step-7/${id}`)
+}
+
+function handleSubmit() {
+  if (!isFormComplete.value) {
+    return;
+  } else {
+    saveAndNext()
+  }
 }
 </script>
 

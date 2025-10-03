@@ -105,17 +105,6 @@
                   </div>
                 </div>
 
-                <!-- عنوان قرارداد -->
-                <div>
-                  <label class="block text-sm text-gray-600 mb-2">عنوان قرارداد</label>
-                  <input
-                      v-model="form.title"
-                      type="text"
-                      class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      placeholder=""
-                  />
-                </div>
-
                 <!-- تاریخ‌ها -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>

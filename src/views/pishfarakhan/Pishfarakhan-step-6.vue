@@ -1,51 +1,29 @@
-<!-- src/views/pishfarakhan/Pishfarakhan-step-6.vue -->
 <template>
   <div class="min-h-screen" dir="rtl">
-    <!-- ==== Header (exactly the same markup used in previous steps) ==== -->
+    <!-- ==== Header (unchanged) ==== -->
     <header class="relative overflow-hidden">
       <div class="top-navbar h-32 w-full flex items-center justify-center">
         <div class="absolute left-4 top-2 flex items-center space-x-2">
-          <img
-              src="@/assets/images/khamenei.png"
-              class="w-50 h-auto object-contain"
-              alt="Iranian figures"
-          />
+          <img src="@/assets/images/khamenei.png" class="w-50 h-auto object-contain" alt="Iranian figures"/>
         </div>
 
         <div class="text-center text-white leading-relaxed">
           <router-link to="/">
-            <h1
-                class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
-            >
-              پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان
-              رضوی
+            <h1 class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]">
+              پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان رضوی
             </h1>
           </router-link>
         </div>
 
         <div class="absolute right-4 top-2 flex flex-col items-center">
-          <img
-              src="@/assets/images/education.svg"
-              class="w-40 h-auto object-contain"
-              alt="Iranian emblem"
-          />
+          <img src="@/assets/images/education.svg" class="w-40 h-auto object-contain" alt="Iranian emblem"/>
         </div>
       </div>
     </header>
 
     <!-- ==== Main ==== -->
     <main class="main-container mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl">
-      <!-- Admin info bar -->
-      <div
-          class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6 mx-auto max-w-[98%] px-4"
-      >
-        <span class="text-sm">اطلاعیه های اخیر</span>
-        <span class="px-3 py-1 bg-teal-600 rounded text-sm"
-        >admin : کارشناس ثبت</span
-        >
-      </div>
-
-      <!-- ==== Progress bar (same style as previous steps) | Current step: 6 ==== -->
+      <!-- ==== Progress bar (unchanged; current step 6) ==== -->
       <section class="bg-white rounded-lg shadow-sm p-6 mb-6">
         <div class="relative">
           <div class="absolute top-4 left-0 right-0 h-0.5 bg-gray-200 z-0">
@@ -53,16 +31,10 @@
           </div>
 
           <div class="flex items-center justify-between relative z-10">
-            <div
-                v-for="(step, index) in steps"
-                :key="index"
-                class="flex flex-col items-center"
-            >
+            <div v-for="(step, index) in steps" :key="index" class="flex flex-col items-center">
               <div
                   class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
-                  :class="index + 1 === 6
-                  ? 'bg-teal-500 border-teal-500 text-white'
-                  : 'bg-gray-100 border-gray-300 text-gray-500'"
+                  :class="index + 1 === 6 ? 'bg-teal-500 border-teal-500 text-white' : 'bg-gray-100 border-gray-300 text-gray-500'"
               >
                 {{ index + 1 }}
               </div>
@@ -72,20 +44,18 @@
         </div>
       </section>
 
-      <!-- ==== Content card (exactly as in your third screenshot) ==== -->
+      <!-- ==== Content ==== -->
       <section class="bg-white rounded-lg shadow-sm p-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <!-- Left: Preview panel -->
-          <!-- Right: Form -->
+          <!-- Left preview -->
+          <!-- Right form -->
           <div class="lg:col-span-7 space-y-5">
             <!-- اطلاعات قرارداد -->
             <div class="rounded-xl border border-gray-200">
-              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">
-                اطلاعات قرارداد
-              </div>
+              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">اطلاعات قرارداد</div>
 
               <div class="p-5 space-y-5">
-                <!-- موضوع قرارداد -->
+                <!-- موضوع قرارداد (select with فروش / اجاره) -->
                 <div>
                   <label class="block text-sm text-gray-600 mb-2">عنوان قرارداد</label>
                   <div class="relative">
@@ -98,12 +68,56 @@
                     </select>
                     <svg
                         class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
                     >
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </div>
                 </div>
+
+                <!-- ===== DYNAMIC MONEY FIELDS (what you asked for) ===== -->
+                <!-- When 'فروش' -->
+                <div v-if="form.subject === 'فروش'" class="rounded-xl border border-gray-200 p-5 space-y-4">
+                  <div>
+                    <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ کل قرارداد (ریال)</label>
+                    <input
+                        v-model="form.saleTotal"
+                        type="text"
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ جزء (ریال)</label>
+                    <input
+                        v-model="form.salePart"
+                        type="text"
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                </div>
+
+                <!-- When 'اجاره' -->
+                <div v-if="form.subject === 'اجاره'" class="rounded-xl border border-gray-200 p-5 space-y-4">
+                  <div>
+                    <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ کل اجاره (ریال)</label>
+                    <input
+                        v-model="form.rentTotal"
+                        type="text"
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ اجاره ماهیانه (ریال)</label>
+                    <input
+                        v-model="form.rentMonthly"
+                        type="text"
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                </div>
+                <!-- ===== END dynamic section ===== -->
 
                 <!-- تاریخ‌ها -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -146,9 +160,7 @@
 
             <!-- ناظر قرارداد -->
             <div class="rounded-xl border border-gray-200">
-              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">
-                ناظر قرارداد
-              </div>
+              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">ناظر قرارداد</div>
               <div class="p-5">
                 <label class="block text-sm text-gray-600 mb-2">نام ناظر</label>
                 <input
@@ -172,7 +184,9 @@
                 </select>
                 <svg
                     class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                 >
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
@@ -193,37 +207,63 @@
 
           <div class="lg:col-span-5">
             <div class="rounded-xl border border-gray-200">
-              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">
-                پیش نمایش اطلاعات قرارداد
-              </div>
+              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">پیش نمایش اطلاعات قرارداد</div>
 
               <div class="divide-y divide-gray-200">
+                <!-- موضوع قرارداد -->
                 <div class="flex items-center justify-between px-5 py-3 text-gray-600">
                   <span class="text-sm">موضوع قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">
-                    {{ preview.subject || '---' }}
-                  </span>
+                  <span class="text-sm font-medium text-gray-800">{{ preview.subject || '---' }}</span>
                 </div>
 
+                <!-- فروش: مبالغ -->
+                <div
+                    v-if="form.subject === 'فروش'"
+                    class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
+                  <span class="text-sm">مبلغ کل قرارداد:</span>
+                  <span class="text-sm font-medium text-gray-800">{{ preview.saleTotal || '---' }}</span>
+                </div>
+                <div
+                    v-if="form.subject === 'فروش'"
+                    class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
+                  <span class="text-sm">مبلغ جزء:</span>
+                  <span class="text-sm font-medium text-gray-800">{{ preview.salePart || '---' }}</span>
+                </div>
+
+                <!-- اجاره: مبالغ -->
+                <div
+                    v-if="form.subject === 'اجاره'"
+                    class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
+                  <span class="text-sm">مبلغ کل اجاره:</span>
+                  <span class="text-sm font-medium text-gray-800">{{ preview.rentTotal || '---' }}</span>
+                </div>
+                <div
+                    v-if="form.subject === 'اجاره'"
+                    class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
+                  <span class="text-sm">مبلغ اجاره ماهیانه:</span>
+                  <span class="text-sm font-medium text-gray-800">{{ preview.rentMonthly || '---' }}</span>
+                </div>
+
+                <!-- مدت قرارداد -->
                 <div class="flex items-center justify-between px-5 py-3 text-gray-600">
                   <span class="text-sm">مدت قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">
-                    {{ preview.duration || '---' }}
-                  </span>
+                  <span class="text-sm font-medium text-gray-800">{{ preview.duration || '---' }}</span>
                 </div>
 
+                <!-- ناظر -->
                 <div class="flex items-center justify-between px-5 py-3 text-gray-600">
                   <span class="text-sm">ناظر قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">
-                    {{ preview.supervisor || '---' }}
-                  </span>
+                  <span class="text-sm font-medium text-gray-800">{{ preview.supervisor || '---' }}</span>
                 </div>
 
+                <!-- نوع تضمین -->
                 <div class="flex items-center justify-between px-5 py-3 text-gray-600">
                   <span class="text-sm">نوع تضمین:</span>
-                  <span class="text-sm font-medium text-gray-800">
-                    {{ preview.guarantee || '---' }}
-                  </span>
+                  <span class="text-sm font-medium text-gray-800">{{ preview.guarantee || '---' }}</span>
                 </div>
               </div>
             </div>
@@ -232,7 +272,7 @@
       </section>
     </main>
 
-    <!-- ==== Footer (exactly the same markup used in previous steps) ==== -->
+    <!-- ==== Footer (unchanged) ==== -->
     <hr/>
     <div class="login-footer">
       <div class="footer-links flex justify-center items-center gap-x-[1rem]">
@@ -276,38 +316,65 @@ const steps = [
   'قرارداد'
 ]
 
+// only the two options used for the dynamic behavior you requested
+const subjectOptions = ['فروش', 'اجاره']
+
 const form = reactive({
   subject: '',
   title: '',
+  // dynamic money fields
+  saleTotal: '',
+  salePart: '',
+  rentTotal: '',
+  rentMonthly: '',
+  // dates & other fields
   fromDate: '',
   toDate: '',
   supervisor: '',
   guarantee: ''
 })
 
-const subjectOptions = ["فروش", "اجاره"];
-const guaranteeOptions = ["ضمانت نامه بانکی", "حساب سپرده", "سایر"]
+const guaranteeOptions = ['چک تضمینی', 'ضمانت‌نامه بانکی', 'سفته', 'ودیعه نقدی', 'سایر']
 
 const preview = reactive({
   subject: '',
   duration: '',
   supervisor: '',
-  guarantee: ''
+  guarantee: '',
+  saleTotal: '',
+  salePart: '',
+  rentTotal: '',
+  rentMonthly: ''
 })
 
 const progressWidth = computed(() => `${(6 - 1) / (steps.length - 1) * 100}%`)
 
+// keep preview in sync with inputs (live)
 watch(
-    () => [form.subject, form.supervisor, form.guarantee, form.fromDate, form.toDate],
-    () => {
-      preview.subject = form.subject
-      preview.supervisor = form.supervisor
-      preview.guarantee = form.guarantee
+    () => ({
+      subject: form.subject,
+      supervisor: form.supervisor,
+      guarantee: form.guarantee,
+      fromDate: form.fromDate,
+      toDate: form.toDate,
+      saleTotal: form.saleTotal,
+      salePart: form.salePart,
+      rentTotal: form.rentTotal,
+      rentMonthly: form.rentMonthly
+    }),
+    v => {
+      preview.subject = v.subject
+      preview.supervisor = v.supervisor
+      preview.guarantee = v.guarantee
+      preview.saleTotal = v.saleTotal
+      preview.salePart = v.salePart
+      preview.rentTotal = v.rentTotal
+      preview.rentMonthly = v.rentMonthly
 
-      if (form.fromDate && form.toDate) {
+      if (v.fromDate && v.toDate) {
         try {
-          const start = moment(form.fromDate, 'jYYYY/jMM/jDD')
-          const end = moment(form.toDate, 'jYYYY/jMM/jDD')
+          const start = moment(v.fromDate, 'jYYYY/jMM/jDD')
+          const end = moment(v.toDate, 'jYYYY/jMM/jDD')
           const days = end.diff(start, 'days')
           preview.duration = days > -1 ? `${days} روز` : '---'
         } catch {
@@ -317,7 +384,7 @@ watch(
         preview.duration = '---'
       }
     },
-    {immediate: true}
+    {immediate: true, deep: true}
 )
 
 function saveAndNext() {

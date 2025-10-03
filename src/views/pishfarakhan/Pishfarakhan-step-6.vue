@@ -87,7 +87,7 @@
               <div class="p-5 space-y-5">
                 <!-- موضوع قرارداد -->
                 <div>
-                  <label class="block text-sm text-gray-600 mb-2">موضوع قرارداد</label>
+                  <label class="block text-sm text-gray-600 mb-2">عنوان قرارداد</label>
                   <div class="relative">
                     <select
                         v-model="form.subject"

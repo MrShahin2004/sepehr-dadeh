@@ -34,6 +34,16 @@
     <main
       class="main-container mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl"
     >
+      <!-- Admin info bar -->
+      <div
+          class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6 mx-auto max-w-[98%] px-4"
+      >
+        <span class="text-sm">اطلاعیه های اخیر</span>
+        <span class="px-3 py-1 bg-teal-600 rounded text-sm"
+        >admin : کارشناس ثبت</span
+        >
+      </div>
+
       <!-- Step indicators with progress bar (current step: 4) -->
       <section class="bg-white rounded-lg shadow-sm p-6 mb-6">
         <div class="relative">

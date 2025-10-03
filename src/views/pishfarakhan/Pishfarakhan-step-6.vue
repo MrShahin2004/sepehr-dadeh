@@ -76,44 +76,6 @@
       <section class="bg-white rounded-lg shadow-sm p-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <!-- Left: Preview panel -->
-          <div class="lg:col-span-5">
-            <div class="rounded-xl border border-gray-200">
-              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">
-                پیش نمایش اطلاعات قرارداد
-              </div>
-
-              <div class="divide-y divide-gray-200">
-                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
-                  <span class="text-sm">موضوع قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">
-                    {{ preview.subject || '---' }}
-                  </span>
-                </div>
-
-                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
-                  <span class="text-sm">مدت قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">
-                    {{ preview.duration || '---' }}
-                  </span>
-                </div>
-
-                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
-                  <span class="text-sm">ناظر قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">
-                    {{ preview.supervisor || '---' }}
-                  </span>
-                </div>
-
-                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
-                  <span class="text-sm">نوع تضمین:</span>
-                  <span class="text-sm font-medium text-gray-800">
-                    {{ preview.guarantee || '---' }}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <!-- Right: Form -->
           <div class="lg:col-span-7 space-y-5">
             <!-- اطلاعات قرارداد -->
@@ -237,6 +199,44 @@
               >
                 ثبت اطلاعات
               </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-xl border border-gray-200">
+              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">
+                پیش نمایش اطلاعات قرارداد
+              </div>
+
+              <div class="divide-y divide-gray-200">
+                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
+                  <span class="text-sm">موضوع قرارداد:</span>
+                  <span class="text-sm font-medium text-gray-800">
+                    {{ preview.subject || '---' }}
+                  </span>
+                </div>
+
+                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
+                  <span class="text-sm">مدت قرارداد:</span>
+                  <span class="text-sm font-medium text-gray-800">
+                    {{ preview.duration || '---' }}
+                  </span>
+                </div>
+
+                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
+                  <span class="text-sm">ناظر قرارداد:</span>
+                  <span class="text-sm font-medium text-gray-800">
+                    {{ preview.supervisor || '---' }}
+                  </span>
+                </div>
+
+                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
+                  <span class="text-sm">نوع تضمین:</span>
+                  <span class="text-sm font-medium text-gray-800">
+                    {{ preview.guarantee || '---' }}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

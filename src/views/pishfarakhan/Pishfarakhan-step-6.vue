@@ -326,7 +326,7 @@ const form = reactive({
   guarantee: ''
 })
 
-const guaranteeOptions = ['چک تضمینی', 'ضمانت‌نامه بانکی', 'سفته', 'ودیعه نقدی', 'سایر']
+const guaranteeOptions = ["ضمانت نامه بانکی", "حساب سپرده", "سایر"]
 
 const preview = reactive({
   subject: '',

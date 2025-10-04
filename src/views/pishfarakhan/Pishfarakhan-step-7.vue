@@ -62,7 +62,7 @@
         </div>
       </section>
 
-      <!-- ==== Main content (like screenshot) ==== -->
+      <!-- ==== Main content ==== -->
       <section class="bg-white rounded-lg shadow-sm p-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <!-- LEFT: PDF Viewer -->
@@ -70,15 +70,9 @@
             <div class="rounded-xl border border-gray-200 p-0">
               <div class="h-[520px] w-full">
                 <template v-if="pdfUrl">
-                  <!-- Show selected PDF -->
-                  <embed
-                      :src="pdfUrl"
-                      type="application/pdf"
-                      class="w-full h-full rounded-xl"
-                  />
+                  <embed :src="pdfUrl" type="application/pdf" class="w-full h-full rounded-xl"/>
                 </template>
                 <template v-else>
-                  <!-- Placeholder when nothing is uploaded -->
                   <div class="w-full h-full flex items-center justify-center text-gray-400">
                     مدرکی برای نمایش وجود ندارد
                   </div>
@@ -120,19 +114,41 @@
                 />
                 <button
                     type="button"
-                    class="px-4 py-2 rounded-md bg-indigo-500 hover:bg-indigo-600 text-white transition cursor-pointer"
+                    class="px-4 py-2 rounded-md bg-indigo-500 hover:bg-indigo-600 text-white transition"
                     @click="triggerFile"
                 >
                   بارگذاری
                 </button>
-
                 <span v-if="fileName" class="text-xs text-gray-600 truncate" :title="fileName">
                   {{ fileName }}
                 </span>
               </div>
+
+              <!-- File chip (name + size + close) -->
+              <div v-if="fileName" class="mt-4 flex justify-start">
+                <div class="inline-flex items-stretch max-w-full flex-row-reverse">
+                  <!-- Red close button (on the right) -->
+                  <button
+                      type="button"
+                      @click="clearFile"
+                      class="px-3 rounded-r-full rounded-l-none bg-red-500 hover:bg-red-600 text-white flex items-center justify-center"
+                      aria-label="حذف فایل"
+                      title="حذف فایل"
+                  >
+                    ✕
+                  </button>
+                  <!-- Body of chip -->
+                  <div
+                      class="flex items-center gap-4 px-4 py-2 border border-gray-200 bg-white shadow-sm rounded-l-full rounded-r-none max-w-[28rem]"
+                  >
+                    <span class="text-xs text-gray-500 whitespace-nowrap">{{ fileSize }}</span>
+                    <span class="truncate text-gray-700">{{ fileName }}</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- Installments toggle -->
+            <!-- Installments toggle (fixed knob) -->
             <div class="rounded-xl border border-gray-200 p-4">
               <div class="flex items-center justify-between">
                 <span class="text-gray-700">امکان قسط بندی پرداخت</span>
@@ -142,11 +158,9 @@
                     role="switch"
                     :aria-checked="installments ? 'true' : 'false'"
                     @click="installments = !installments"
-                    class="relative inline-flex h-7 w-12 rounded-full p-1 overflow-hidden
-                     transition-colors duration-200 cursor-pointer"
+                    class="relative inline-flex h-7 w-12 rounded-full p-1 overflow-hidden transition-colors duration-200"
                     :class="installments ? 'bg-teal-500' : 'bg-gray-300'"
                 >
-                  <!-- knob -->
                   <span
                       class="absolute top-1 left-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-200"
                       :class="installments ? 'translate-x-5' : 'translate-x-0'"
@@ -223,7 +237,7 @@ import {useRoute, useRouter} from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
-/* ---------- Progress bar data (same order as other steps) ---------- */
+/* ---------- Progress bar data ---------- */
 const steps = [
   'مجوز اداره کل',
   'نامه کارشناسی',
@@ -241,12 +255,25 @@ const recordId = computed(() => route.params.id || '')
 
 const fileInput = ref(null)
 const fileName = ref('')
+const fileSize = ref('')
 const pdfUrl = ref('')
 let objectUrl = '' // for URL.revokeObjectURL
 const installments = ref(false)
 
 function triggerFile() {
   fileInput.value?.click()
+}
+
+function formatBytes(bytes) {
+  if (!bytes && bytes !== 0) return ''
+  const units = ['B', 'KB', 'MB', 'GB', 'TB']
+  let i = 0
+  let val = bytes
+  while (val >= 1024 && i < units.length - 1) {
+    val /= 1024
+    i++
+  }
+  return `${val.toFixed(2)} ${units[i]}`
 }
 
 function onFileChange(e) {
@@ -258,16 +285,28 @@ function onFileChange(e) {
     return
   }
   fileName.value = file.name
+  fileSize.value = formatBytes(file.size)
   if (objectUrl) URL.revokeObjectURL(objectUrl)
   objectUrl = URL.createObjectURL(file)
   pdfUrl.value = objectUrl
+}
+
+function clearFile() {
+  if (fileInput.value) fileInput.value.value = ''
+  fileName.value = ''
+  fileSize.value = ''
+  pdfUrl.value = ''
+  if (objectUrl) {
+    URL.revokeObjectURL(objectUrl)
+    objectUrl = ''
+  }
 }
 
 onBeforeUnmount(() => {
   if (objectUrl) URL.revokeObjectURL(objectUrl)
 })
 
-/* Enable submit only if a PDF is chosen (matches the screenshot behavior) */
+/* Enable submit only if a PDF is chosen */
 const canSubmit = computed(() => !!pdfUrl.value)
 
 function goNext() {

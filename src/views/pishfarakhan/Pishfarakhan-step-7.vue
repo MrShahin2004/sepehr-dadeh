@@ -189,14 +189,14 @@
                     :key="item.id"
                     class="flex items-center gap-2"
                 >
-                  <!-- delete -->
+                  <!-- delete (close) -->
                   <button
                       type="button"
-                      class="text-red-500 hover:text-red-600 px-1"
+                      class="w-8 h-8 flex items-center justify-center rounded-full bg-red-500 text-white hover:bg-red-600"
                       title="حذف"
                       @click="removeInstallment(item.id)"
                   >
-                    <i class="fa-solid fa-trash"></i>
+                    ✕
                   </button>
 
                   <!-- date picker -->

@@ -5,7 +5,7 @@
     <header class="relative overflow-hidden">
       <div class="top-navbar h-32 w-full flex items-center justify-center">
         <div class="absolute left-4 top-2 flex items-center space-x-2">
-          <img src="@/assets/images/khamenei.png" class="w-50 h-auto object-contain" alt="Iranian figures" />
+          <img src="@/assets/images/khamenei.png" class="w-50 h-auto object-contain" alt="Iranian figures"/>
         </div>
 
         <div class="text-center text-white leading-relaxed">
@@ -17,7 +17,7 @@
         </div>
 
         <div class="absolute right-4 top-2 flex flex-col items-center">
-          <img src="@/assets/images/education.svg" class="w-40 h-auto object-contain" alt="Iranian emblem" />
+          <img src="@/assets/images/education.svg" class="w-40 h-auto object-contain" alt="Iranian emblem"/>
         </div>
       </div>
     </header>
@@ -51,9 +51,9 @@
           <!-- LEFT: PDF Tabs + Viewer -->
           <div class="lg:col-span-8">
             <div class="rounded-xl border border-gray-200 p-0">
-              <!-- Tabs -->
-              <div class="px-3 py-2 border-b border-gray-200 bg-gray-50 rounded-t-xl">
-                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar">
+              <!-- Tabs: now horizontally scrollable when overflowing -->
+              <div class="px-3 py-2 border-b border-gray-200 bg-gray-50 rounded-t-xl overflow-x-auto">
+                <div class="inline-flex items-center gap-2 whitespace-nowrap min-w-max">
                   <template v-if="files.length">
                     <button
                         v-for="(f, idx) in files"
@@ -72,7 +72,7 @@
               <!-- Viewer -->
               <div class="h-[500px] w-full">
                 <template v-if="selectedPdfUrl">
-                  <embed :src="selectedPdfUrl" type="application/pdf" class="w-full h-full rounded-b-xl" />
+                  <embed :src="selectedPdfUrl" type="application/pdf" class="w-full h-full rounded-b-xl"/>
                 </template>
                 <template v-else>
                   <div class="w-full h-full flex items-center justify-center text-gray-400">
@@ -203,15 +203,21 @@
     </main>
 
     <!-- ==== Footer (same as step 6) ==== -->
-    <hr />
+    <hr/>
     <div class="login-footer">
       <div class="footer-links flex justify-center items-center gap-x-[1rem]">
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">حریم خصوصی</a></router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">نظرسنجی‌ها</a></router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">پیوندها</a></router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">فراخوان‌ها</a></router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">آمارها</a></router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">صفحه اصلی</a></router-link>
+        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">حریم خصوصی</a>
+        </router-link>
+        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">نظرسنجی‌ها</a>
+        </router-link>
+        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">پیوندها</a>
+        </router-link>
+        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">فراخوان‌ها</a>
+        </router-link>
+        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">آمارها</a>
+        </router-link>
+        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">صفحه اصلی</a>
+        </router-link>
       </div>
       <div class="footer-desc flex justify-center items-center">
         <p class="text-[white]">© کلیه حقوق این پایگاه به سپهر داده تعلق دارد</p>
@@ -221,8 +227,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onBeforeUnmount } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import {computed, onBeforeUnmount, ref} from 'vue';
+import {useRoute, useRouter} from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
@@ -310,12 +316,5 @@ function goNext() {
 <style scoped>
 .main-container {
   margin-bottom: 4rem;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
 }
 </style>

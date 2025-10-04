@@ -120,8 +120,8 @@
                   بارگذاری
                 </button>
                 <span v-if="fileName" class="text-xs text-gray-600 truncate" :title="fileName">
-      {{ fileName }}
-    </span>
+                    {{ fileName }}
+                </span>
               </div>
 
               <!-- ==== CHIP (exact look) ==== -->

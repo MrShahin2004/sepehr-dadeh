@@ -120,7 +120,7 @@
                   بارگذاری
                 </button>
                 <span v-if="fileName" class="text-xs text-gray-600 truncate" :title="fileName">
-                    {{ fileName }}
+                  {{ fileName }}
                 </span>
               </div>
 

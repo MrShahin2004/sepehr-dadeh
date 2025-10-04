@@ -120,29 +120,36 @@
                   بارگذاری
                 </button>
                 <span v-if="fileName" class="text-xs text-gray-600 truncate" :title="fileName">
-                  {{ fileName }}
-                </span>
+      {{ fileName }}
+    </span>
               </div>
 
-              <!-- File chip (name + size + close) -->
+              <!-- ==== CHIP (exact look) ==== -->
               <div v-if="fileName" class="mt-4 flex justify-start">
-                <div class="inline-flex items-stretch max-w-full flex-row-reverse">
-                  <!-- Red close button (on the right) -->
+                <div
+                    class="inline-flex items-center flex-row-reverse rounded-full border border-gray-200 bg-white shadow-sm overflow-hidden"
+                >
+                  <!-- Close button (right side) -->
                   <button
                       type="button"
                       @click="clearFile"
-                      class="px-3 rounded-r-full rounded-l-none bg-red-500 hover:bg-red-600 text-white flex items-center justify-center"
+                      class="w-9 h-9 flex items-center justify-center rounded-full mx-2 text-white"
+                      style="background-color:#ff4d4f"
                       aria-label="حذف فایل"
                       title="حذف فایل"
                   >
                     ✕
                   </button>
-                  <!-- Body of chip -->
-                  <div
-                      class="flex items-center gap-4 px-4 py-2 border border-gray-200 bg-white shadow-sm rounded-l-full rounded-r-none max-w-[28rem]"
-                  >
-                    <span class="text-xs text-gray-500 whitespace-nowrap">{{ fileSize }}</span>
-                    <span class="truncate text-gray-700">{{ fileName }}</span>
+
+                  <!-- Size (two lines) -->
+                  <div class="px-2 py-2 text-xs leading-4 text-gray-600 text-center">
+                    <div class="font-medium">{{ fileSizeNum }}</div>
+                    <div class="uppercase">KB</div>
+                  </div>
+
+                  <!-- Filename (truncate left side visually in RTL) -->
+                  <div class="px-4 py-2 max-w-[28rem]">
+                    <span class="truncate block text-gray-700">{{ fileName }}</span>
                   </div>
                 </div>
               </div>
@@ -255,25 +262,13 @@ const recordId = computed(() => route.params.id || '')
 
 const fileInput = ref(null)
 const fileName = ref('')
-const fileSize = ref('')
+const fileSizeNum = ref('')
 const pdfUrl = ref('')
 let objectUrl = '' // for URL.revokeObjectURL
 const installments = ref(false)
 
 function triggerFile() {
   fileInput.value?.click()
-}
-
-function formatBytes(bytes) {
-  if (!bytes && bytes !== 0) return ''
-  const units = ['B', 'KB', 'MB', 'GB', 'TB']
-  let i = 0
-  let val = bytes
-  while (val >= 1024 && i < units.length - 1) {
-    val /= 1024
-    i++
-  }
-  return `${val.toFixed(2)} ${units[i]}`
 }
 
 function onFileChange(e) {
@@ -285,7 +280,7 @@ function onFileChange(e) {
     return
   }
   fileName.value = file.name
-  fileSize.value = formatBytes(file.size)
+  fileSizeNum.value = (file.size / 1024).toFixed(2) // always KB to match sample
   if (objectUrl) URL.revokeObjectURL(objectUrl)
   objectUrl = URL.createObjectURL(file)
   pdfUrl.value = objectUrl
@@ -294,7 +289,7 @@ function onFileChange(e) {
 function clearFile() {
   if (fileInput.value) fileInput.value.value = ''
   fileName.value = ''
-  fileSize.value = ''
+  fileSizeNum.value = ''
   pdfUrl.value = ''
   if (objectUrl) {
     URL.revokeObjectURL(objectUrl)

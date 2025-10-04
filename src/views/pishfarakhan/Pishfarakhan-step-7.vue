@@ -51,7 +51,7 @@
           <!-- LEFT: PDF Tabs + Viewer -->
           <div class="lg:col-span-8">
             <div class="rounded-xl border border-gray-200 p-0">
-              <!-- Tabs: now horizontally scrollable when overflowing -->
+              <!-- Tabs: horizontally scrollable when overflowing -->
               <div class="px-3 py-2 border-b border-gray-200 bg-gray-50 rounded-t-xl overflow-x-auto">
                 <div class="inline-flex items-center gap-2 whitespace-nowrap min-w-max">
                   <template v-if="files.length">
@@ -162,7 +162,7 @@
               </div>
             </div>
 
-            <!-- Installments toggle -->
+            <!-- Installments toggle + dynamic items -->
             <div class="rounded-xl border border-gray-200 p-4">
               <div class="flex items-center justify-between">
                 <span class="text-gray-700">امکان قسط بندی پرداخت</span>
@@ -173,13 +173,64 @@
                     :aria-checked="installments ? 'true' : 'false'"
                     @click="installments = !installments"
                     class="relative inline-flex h-7 w-12 rounded-full p-1 overflow-hidden transition-colors duration-200"
-                    :class="installments ? 'bg-teal-500' : 'bg-gray-300'"
+                    :class="installments ? 'bg-[#154ec1]' : 'bg-gray-300'"
                 >
                   <span
                       class="absolute top-1 left-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-200"
                       :class="installments ? 'translate-x-5' : 'translate-x-0'"
                   />
                 </button>
+              </div>
+
+              <!-- Dynamic installments list -->
+              <div v-if="installments" class="mt-3 space-y-2">
+                <div
+                    v-for="(item) in installmentItems"
+                    :key="item.id"
+                    class="flex items-center gap-2"
+                >
+                  <!-- delete -->
+                  <button
+                      type="button"
+                      class="text-red-500 hover:text-red-600 px-1"
+                      title="حذف"
+                      @click="removeInstallment(item.id)"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+
+                  <!-- date picker -->
+                  <DatePicker
+                      v-model="item.date"
+                      format="jYYYY/jMM/jDD"
+                      display-format="jYYYY/jMM/jDD"
+                      :auto-submit="true"
+                      :editable="true"
+                      :input-class="'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500'"
+                      class="w-full"
+                  />
+
+                  <!-- amount -->
+                  <input
+                      v-model.number="item.amount"
+                      type="number"
+                      min="0"
+                      class="w-36 rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 text-left"
+                      placeholder="0"
+                      dir="ltr"
+                  />
+                </div>
+
+                <!-- add new -->
+                <div class="text-center pt-2">
+                  <button
+                      type="button"
+                      class="text-[#154ec1] hover:underline"
+                      @click="addInstallment"
+                  >
+                    افزودن قسط جدید
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -229,6 +280,7 @@
 <script setup>
 import {computed, onBeforeUnmount, ref} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
+import DatePicker from 'vue3-persian-datetime-picker';
 
 const route = useRoute();
 const router = useRouter();
@@ -310,6 +362,23 @@ function goNext() {
   if (!canSubmit.value) return;
   const id = route.params.id;
   router.push(`/pishfarakhan/step-8/${id}`);
+}
+
+/* ===== Installments (dynamic rows) ===== */
+const installmentItems = ref([]); // [{id, date, amount}]
+let nextInstallmentId = 1;
+
+function addInstallment() {
+  installmentItems.value.push({
+    id: nextInstallmentId++,
+    date: '',
+    amount: 0
+  });
+}
+
+function removeInstallment(id) {
+  const idx = installmentItems.value.findIndex(x => x.id === id);
+  if (idx !== -1) installmentItems.value.splice(idx, 1);
 }
 </script>
 

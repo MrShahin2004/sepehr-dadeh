@@ -209,7 +209,7 @@
                   @click="goNext"
                   :class="[
                   'w-full rounded-md text-white py-2 text-sm tracking-wide transition',
-                  canSubmit ? 'bg-[#154ec1] hover:bg-[#154ec1]/90' : 'bg-[#a3b3ff] cursor-not-allowed'
+                  canSubmit ? 'bg-[#154ec1] hover:bg-[#154ec1]/90 cursor-pointer' : 'bg-[#a3b3ff] cursor-not-allowed'
                 ]"
               >
                 ثبت

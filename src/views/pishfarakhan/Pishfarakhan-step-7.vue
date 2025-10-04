@@ -48,41 +48,6 @@
       <!-- Content -->
       <section class="bg-white rounded-lg shadow-sm p-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <!-- LEFT: PDF Tabs + Viewer -->
-          <div class="lg:col-span-8">
-            <div class="rounded-xl border border-gray-200 p-0">
-              <!-- Tabs: horizontally scrollable when overflowing -->
-              <div class="px-3 py-2 border-b border-gray-200 bg-gray-50 rounded-t-xl overflow-x-auto">
-                <div class="inline-flex items-center gap-2 whitespace-nowrap min-w-max">
-                  <template v-if="files.length">
-                    <button
-                        v-for="(f, idx) in files"
-                        :key="f.id"
-                        type="button"
-                        class="shrink-0 px-3 py-1.5 rounded-full text-sm transition cursor-pointer"
-                        :class="isActive(f) ? 'bg-[#154ec1] text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'"
-                        @click="selectFile(f)"
-                    >
-                      سند پرداخت {{ idx + 1 }}
-                    </button>
-                  </template>
-                </div>
-              </div>
-
-              <!-- Viewer -->
-              <div class="h-[600px] w-full">
-                <template v-if="selectedPdfUrl">
-                  <embed :src="selectedPdfUrl" type="application/pdf" class="w-full h-full rounded-b-xl"/>
-                </template>
-                <template v-else>
-                  <div class="w-full h-full flex items-center justify-center text-gray-400">
-                    مدرکی برای نمایش وجود ندارد
-                  </div>
-                </template>
-              </div>
-            </div>
-          </div>
-
           <!-- RIGHT: Controls -->
           <div class="lg:col-span-4 space-y-5">
             <!-- Unique Code -->
@@ -249,6 +214,41 @@
               >
                 ثبت
               </button>
+            </div>
+          </div>
+
+          <!-- LEFT: PDF Tabs + Viewer -->
+          <div class="lg:col-span-8">
+            <div class="rounded-xl border border-gray-200 p-0">
+              <!-- Tabs: horizontally scrollable when overflowing -->
+              <div class="px-3 py-2 border-b border-gray-200 bg-gray-50 rounded-t-xl overflow-x-auto">
+                <div class="inline-flex items-center gap-2 whitespace-nowrap min-w-max">
+                  <template v-if="files.length">
+                    <button
+                        v-for="(f, idx) in files"
+                        :key="f.id"
+                        type="button"
+                        class="shrink-0 px-3 py-1.5 rounded-full text-sm transition cursor-pointer"
+                        :class="isActive(f) ? 'bg-[#154ec1] text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'"
+                        @click="selectFile(f)"
+                    >
+                      سند پرداخت {{ idx + 1 }}
+                    </button>
+                  </template>
+                </div>
+              </div>
+
+              <!-- Viewer -->
+              <div class="h-[600px] w-full">
+                <template v-if="selectedPdfUrl">
+                  <embed :src="selectedPdfUrl" type="application/pdf" class="w-full h-full rounded-b-xl"/>
+                </template>
+                <template v-else>
+                  <div class="w-full h-full flex items-center justify-center text-gray-400">
+                    مدرکی برای نمایش وجود ندارد
+                  </div>
+                </template>
+              </div>
             </div>
           </div>
         </div>

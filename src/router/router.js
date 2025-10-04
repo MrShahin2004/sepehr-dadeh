@@ -40,6 +40,12 @@ const routes = [
         name: 'PishfarakhanStep',
         component: () => import('@/views/pishfarakhan/PishfarakhanStepLoader.vue'),
         props: true,
+    },
+    {
+        path: '/pishfarakhan/step-8-edit/:id',
+        name: 'PishfarakhanStep8Edit',
+        component: () => import('@/views/pishfarakhan/Pishfarakhan-step-8-edit.vue'),
+        props: true
     }
 ];
 

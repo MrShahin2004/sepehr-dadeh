@@ -48,12 +48,31 @@
       <!-- Content -->
       <section class="bg-white rounded-lg shadow-sm p-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <!-- LEFT: PDF Viewer -->
+          <!-- LEFT: PDF Tabs + Viewer -->
           <div class="lg:col-span-8">
-            <div class="rounded-xl border border-gray-200">
-              <div class="h-[520px] w-full">
+            <div class="rounded-xl border border-gray-200 p-0">
+              <!-- Tabs -->
+              <div class="px-3 py-2 border-b border-gray-200 bg-gray-50 rounded-t-xl">
+                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar">
+                  <template v-if="files.length">
+                    <button
+                        v-for="(f, idx) in files"
+                        :key="f.id"
+                        type="button"
+                        class="shrink-0 px-3 py-1.5 rounded-full text-sm transition"
+                        :class="isActive(f) ? 'bg-[#154ec1] text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'"
+                        @click="selectFile(f)"
+                    >
+                      سند پرداخت {{ idx + 1 }}
+                    </button>
+                  </template>
+                </div>
+              </div>
+
+              <!-- Viewer -->
+              <div class="h-[500px] w-full">
                 <template v-if="selectedPdfUrl">
-                  <embed :src="selectedPdfUrl" type="application/pdf" class="w-full h-full rounded-xl" />
+                  <embed :src="selectedPdfUrl" type="application/pdf" class="w-full h-full rounded-b-xl" />
                 </template>
                 <template v-else>
                   <div class="w-full h-full flex items-center justify-center text-gray-400">
@@ -133,7 +152,7 @@
                     <button
                         type="button"
                         class="px-4 py-2 max-w-[26rem] text-right hover:opacity-90"
-                        @click="selectedPdfUrl = f.url"
+                        @click="selectFile(f)"
                         :title="f.name"
                     >
                       <span class="truncate block text-gray-700">{{ f.name }}</span>
@@ -249,7 +268,7 @@ function onFileChange(e) {
       url
     };
     files.value.push(item);
-    selectedPdfUrl.value = url;
+    selectedPdfUrl.value = url; // auto-select newest
   });
 
   if (fileInput.value) fileInput.value.value = '';
@@ -265,6 +284,14 @@ function removeFile(id) {
   if (selectedPdfUrl.value === removed.url) {
     selectedPdfUrl.value = files.value.length ? files.value[files.value.length - 1].url : '';
   }
+}
+
+function selectFile(f) {
+  selectedPdfUrl.value = f.url;
+}
+
+function isActive(f) {
+  return selectedPdfUrl.value === f.url;
 }
 
 onBeforeUnmount(() => {
@@ -283,5 +310,12 @@ function goNext() {
 <style scoped>
 .main-container {
   margin-bottom: 4rem;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
 }
 </style>

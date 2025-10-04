@@ -59,7 +59,7 @@
                         v-for="(f, idx) in files"
                         :key="f.id"
                         type="button"
-                        class="shrink-0 px-3 py-1.5 rounded-full text-sm transition"
+                        class="shrink-0 px-3 py-1.5 rounded-full text-sm transition cursor-pointer"
                         :class="isActive(f) ? 'bg-[#154ec1] text-white' : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'"
                         @click="selectFile(f)"
                     >
@@ -70,7 +70,7 @@
               </div>
 
               <!-- Viewer -->
-              <div class="h-[500px] w-full">
+              <div class="h-[600px] w-full">
                 <template v-if="selectedPdfUrl">
                   <embed :src="selectedPdfUrl" type="application/pdf" class="w-full h-full rounded-b-xl"/>
                 </template>
@@ -113,7 +113,7 @@
                 />
                 <button
                     type="button"
-                    class="px-4 py-2 rounded-md bg-indigo-500 hover:bg-indigo-600 text-white transition"
+                    class="px-4 py-2 rounded-md bg-indigo-500 hover:bg-indigo-600 text-white transition cursor-pointer"
                     @click="triggerFile"
                 >
                   بارگذاری
@@ -134,7 +134,7 @@
                     <button
                         type="button"
                         @click="removeFile(f.id)"
-                        class="w-9 h-9 flex items-center justify-center rounded-full mx-2 text-white"
+                        class="w-9 h-9 flex items-center justify-center rounded-full mx-2 text-white cursor-pointer"
                         style="background-color:#ff4d4f"
                         aria-label="حذف فایل"
                         title="حذف فایل"
@@ -172,7 +172,8 @@
                     role="switch"
                     :aria-checked="installments ? 'true' : 'false'"
                     @click="installments = !installments"
-                    class="relative inline-flex h-7 w-12 rounded-full p-1 overflow-hidden transition-colors duration-200"
+                    class="relative inline-flex h-7 w-12 rounded-full p-1 overflow-hidden
+                     transition-colors duration-200 cursor-pointer"
                     :class="installments ? 'bg-[#154ec1]' : 'bg-gray-300'"
                 >
                   <span
@@ -192,7 +193,8 @@
                   <!-- delete (close) -->
                   <button
                       type="button"
-                      class="w-8 h-8 flex items-center justify-center rounded-full bg-red-500 text-white hover:bg-red-600"
+                      class="w-8 h-8 flex items-center justify-center rounded-full
+                       bg-red-500 text-white hover:bg-red-600 cursor-pointer"
                       title="حذف"
                       @click="removeInstallment(item.id)"
                   >
@@ -225,7 +227,7 @@
                 <div class="text-center pt-2">
                   <button
                       type="button"
-                      class="text-[#154ec1] hover:underline"
+                      class="text-[#154ec1] hover:underline cursor-pointer"
                       @click="addInstallment"
                   >
                     افزودن قسط جدید

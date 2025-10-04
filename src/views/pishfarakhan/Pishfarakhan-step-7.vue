@@ -196,7 +196,7 @@
                       title="حذف"
                       @click="removeInstallment(item.id)"
                   >
-                    ✕
+                    <i class="fas fa-trash"></i>
                   </button>
 
                   <!-- date picker -->

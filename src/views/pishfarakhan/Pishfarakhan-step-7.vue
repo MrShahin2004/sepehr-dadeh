@@ -142,12 +142,14 @@
                     role="switch"
                     :aria-checked="installments ? 'true' : 'false'"
                     @click="installments = !installments"
-                    class="relative inline-flex h-6 w-11 items-center rounded-full transition"
+                    class="relative inline-flex h-7 w-12 rounded-full p-1 overflow-hidden
+                     transition-colors duration-200 cursor-pointer"
                     :class="installments ? 'bg-teal-500' : 'bg-gray-300'"
                 >
+                  <!-- knob -->
                   <span
-                      class="inline-block h-4 w-4 transform rounded-full bg-white transition"
-                      :class="installments ? 'translate-x-5' : 'translate-x-1'"
+                      class="absolute top-1 left-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-200"
+                      :class="installments ? 'translate-x-5' : 'translate-x-0'"
                   />
                 </button>
               </div>

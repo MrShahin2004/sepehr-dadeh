@@ -373,7 +373,7 @@ const canSubmit = computed(() => files.value.length > 0);
 function goNext() {
   if (!canSubmit.value) return;
   const id = route.params.id;
-  router.push(`/pishfarakhan/step-8/${id}`);
+  router.push(`/pishfarakhan/step-8-edit/${id}`);
 }
 
 /* ===== Installments (dynamic rows) ===== */

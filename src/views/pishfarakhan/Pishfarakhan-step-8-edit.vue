@@ -50,18 +50,30 @@
       <!-- Editor -->
       <section class="bg-white rounded-lg shadow-sm p-6">
         <div class="border rounded-lg">
-          <!-- very light toolbar -->
           <div class="flex items-center gap-3 p-2 border-b">
-            <button class="px-2 py-1 hover:bg-gray-100 rounded" @click="cmd('bold')"><strong>B</strong></button>
-            <button class="px-2 py-1 hover:bg-gray-100 rounded" @click="cmd('italic')"><em>I</em></button>
-            <button class="px-2 py-1 hover:bg-gray-100 rounded" @click="cmd('underline')"><u>U</u></button>
+            <button @mousedown.prevent @click="cmd('bold')" class="px-2 py-1 hover:bg-gray-100 rounded">
+              <strong>B</strong></button>
+            <button @mousedown.prevent @click="cmd('italic')" class="px-2 py-1 hover:bg-gray-100 rounded"><em>I</em>
+            </button>
+            <button @mousedown.prevent @click="cmd('underline')" class="px-2 py-1 hover:bg-gray-100 rounded"><u>U</u>
+            </button>
             <div class="h-6 w-px bg-gray-300 mx-1"></div>
-            <button class="px-2 py-1 text-sm hover:bg-gray-100 rounded" @click="cmd('insertOrderedList')">1.</button>
-            <button class="px-2 py-1 text-sm hover:bg-gray-100 rounded" @click="cmd('insertUnorderedList')">•</button>
+            <button @mousedown.prevent @click="cmd('insertOrderedList')"
+                    class="px-2 py-1 text-sm hover:bg-gray-100 rounded">1.
+            </button>
+            <button @mousedown.prevent @click="cmd('insertUnorderedList')"
+                    class="px-2 py-1 text-sm hover:bg-gray-100 rounded">•
+            </button>
             <div class="h-6 w-px bg-gray-300 mx-1"></div>
-            <button class="px-2 py-1 text-sm hover:bg-gray-100 rounded" @click="cmd('justifyRight')">↦</button>
-            <button class="px-2 py-1 text-sm hover:bg-gray-100 rounded" @click="cmd('justifyCenter')">↔︎</button>
-            <button class="px-2 py-1 text-sm hover:bg-gray-100 rounded" @click="cmd('justifyLeft')">↤</button>
+            <button @mousedown.prevent @click="cmd('justifyRight')" class="px-2 py-1 text-sm hover:bg-gray-100 rounded">
+              ↦
+            </button>
+            <button @mousedown.prevent @click="cmd('justifyCenter')"
+                    class="px-2 py-1 text-sm hover:bg-gray-100 rounded">↔︎
+            </button>
+            <button @mousedown.prevent @click="cmd('justifyLeft')" class="px-2 py-1 text-sm hover:bg-gray-100 rounded">
+              ↤
+            </button>
             <div class="ml-auto text-sm text-gray-500">
               B Tit:
               <select v-model="fontSel" class="border rounded px-2 py-1">
@@ -72,12 +84,16 @@
             </div>
           </div>
 
-          <div ref="editor" class="min-h-[220px] p-4 focus:outline-none" contenteditable @input="onInput"/>
+          <div
+              ref="editor"
+              class="min-h-[220px] p-4 focus:outline-none"
+              contenteditable
+              @input="onInput"
+          />
         </div>
 
         <div class="mt-6">
-          <button @click="saveAndGo" class="w-full py-3 rounded-lg bg-blue-600
-           hover:bg-blue-700 text-white cursor-pointer">
+          <button @click="saveAndGo" class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white">
             ذخیره و PDF
           </button>
         </div>
@@ -112,19 +128,30 @@ import {computed, onMounted, ref} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 
 const steps = [
-  'مجوز اداره کل', 'نامه کارشناسی', 'فرآیند درخواست', 'نتایج مزایده',
-  'مشخصات', 'اطلاعات قرارداد', 'مستندات پرداخت', 'قرارداد'
+  'مجوز اداره کل',
+  'نامه کارشناسی',
+  'فرآیند درخواست',
+  'نتایج مزایده',
+  'مشخصات',
+  'اطلاعات قرارداد',
+  'مستندات پرداخت',
+  'قرارداد'
 ]
-const route = useRoute()
-const router = useRouter()
-
 const editor = ref(null)
 const rawText = ref('')
 const fontSel = ref('normal')
+const route = useRoute()
+const router = useRouter()
 const progressWidth = computed(() => ((8 - 1) / (steps.length - 1)) * 100 + '%')
 
+function focusEditor() {
+  editor.value?.focus()
+}
+
 function cmd(name) {
-  document.execCommand(name, false, null)
+  focusEditor();
+  document.execCommand(name, false, null);
+  onInput()
 }
 
 function onInput() {

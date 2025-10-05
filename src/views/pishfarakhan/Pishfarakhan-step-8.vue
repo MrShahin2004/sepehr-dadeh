@@ -57,11 +57,11 @@
         <div class="mt-6 flex gap-3">
           <router-link
               class="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300"
-              :to="{ name: 'PishfarakhanStep8Edit', params: { id: $route.params.id } }">
+              :to="{ name: 'PishfarakhanStep8Edit', params: { id: $route.params.id } }"
+          >
             ویرایش
           </router-link>
-          <button class="px-4 py-2 rounded-md bg-teal-600 hover:bg-teal-700
-            text-white cursor-pointer" @click="submitFrm">
+          <button class="px-4 py-2 rounded-md bg-teal-600 hover:bg-teal-700 text-white" @click="submitFrm">
             ثبت
           </button>
         </div>
@@ -94,70 +94,77 @@
 <script setup>
 import {computed, onBeforeUnmount, onMounted, ref} from 'vue'
 import {useRoute} from 'vue-router'
+import pdfMake from 'pdfmake/build/pdfmake'
 
-const steps = [
-  'مجوز اداره کل', 'نامه کارشناسی', 'فرآیند درخواست', 'نتایج مزایده',
-  'مشخصات', 'اطلاعات قرارداد', 'مستندات پرداخت', 'قرارداد'
-]
+// Import YekanBakh TTFs as URLs (Vite/webpack will copy them and give us URLs)
+import yekanRegUrl from '@/assets/fonts/Yekan/YekanBakh-Regular.ttf?url'
+import yekanBoldUrl from '@/assets/fonts/Yekan/YekanBakh-Bold.ttf?url'
+
 const route = useRoute()
 const fileUrl = ref(null)
+const steps = ['مجوز اداره کل', 'نامه کارشناسی', 'فرآیند درخواست', 'نتایج مزایده', 'مشخصات', 'اطلاعات قرارداد', 'مستندات پرداخت', 'قرارداد']
 const progressWidth = computed(() => ((8 - 1) / (steps.length - 1)) * 100 + '%')
 
-/* Tiny no-dependency PDF generator (plain text, single font) */
-function makeSimplePdf(text) {
-  function esc(s) {
-    return s.replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)')
-  }
-
-  const maxChars = 80
-  const rawLines = (text || '').split(/\r?\n/)
-  const lines = []
-  for (const ln of rawLines) {
-    if (!ln) {
-      lines.push('');
-      continue
-    }
-    for (let i = 0; i < ln.length; i += maxChars) lines.push(ln.slice(i, i + maxChars))
-  }
-
-  const objs = []
-  objs.push('1 0 obj<< /Type /Catalog /Pages 2 0 R >>endobj\n')
-  objs.push('2 0 obj<< /Type /Pages /Count 1 /Kids [3 0 R] >>endobj\n')
-  objs.push('3 0 obj<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>endobj\n')
-  const startX = 72, startY = 770, leading = 18, fontSize = 12
-  let content = 'BT\n/F1 ' + fontSize + ' Tf\n1 0 0 1 ' + startX + ' ' + startY + ' Tm\n'
-  let first = true
-  for (const L of lines) {
-    if (!first) content += '0 -' + leading + ' Td\n'
-    content += '(' + esc(L) + ') Tj\n'
-    first = false
-  }
-  content += 'ET\n'
-  const len = content.length
-  objs.push('4 0 obj<< /Length ' + len + ' >>stream\n' + content + 'endstream endobj\n')
-  objs.push('5 0 obj<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>endobj\n')
-
-  let pdf = '%PDF-1.4\n', xref = 'xref\n0 ' + (objs.length + 1) + '\n0000000000 65535 f \n', off = pdf.length
-  for (const o of objs) {
-    xref += String(off).padStart(10, '0') + ' 00000 n \n';
-    pdf += o;
-    off += o.length
-  }
-  pdf += xref + 'trailer<< /Root 1 0 R /Size ' + (objs.length + 1) + ' >>\nstartxref\n' + off + '\n%%EOF'
-  return new Blob([pdf], {type: 'application/pdf'})
+// Convert ArrayBuffer -> base64 for pdfmake vfs
+function ab2b64(ab) {
+  let s = '', bytes = new Uint8Array(ab)
+  for (let i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i])
+  return btoa(s)
 }
 
-onMounted(() => {
+async function ensureYekanFont() {
+  // load once
+  if (pdfMake.vfs && pdfMake.vfs['YekanBakh-Regular.ttf']) return
+
+  const [regBuf, boldBuf] = await Promise.all([
+    fetch(yekanRegUrl).then(r => r.arrayBuffer()),
+    fetch(yekanBoldUrl).then(r => r.arrayBuffer()),
+  ])
+
+  pdfMake.vfs = pdfMake.vfs || {}
+  pdfMake.vfs['YekanBakh-Regular.ttf'] = ab2b64(regBuf)
+  pdfMake.vfs['YekanBakh-Bold.ttf'] = ab2b64(boldBuf)
+
+  pdfMake.fonts = {
+    YekanBakh: {
+      normal: 'YekanBakh-Regular.ttf',
+      bold: 'YekanBakh-Bold.ttf',
+      italics: 'YekanBakh-Regular.ttf',
+      bolditalics: 'YekanBakh-Bold.ttf'
+    }
+  }
+}
+
+async function makePdfWithYekan(text) {
+  await ensureYekanFont()
+
+  const dd = {
+    pageSize: 'A4',
+    pageMargins: [72, 72, 72, 72],
+    pageDirection: 'rtl',                 // critical for RTL layout
+    defaultStyle: {font: 'YekanBakh', fontSize: 12},
+    content: [
+      {text: text || ' ', alignment: 'right'} // preserve RTL & align right
+    ]
+  }
+
+  return new Promise(resolve => {
+    pdfMake.createPdf(dd).getBlob(resolve)
+  })
+}
+
+onMounted(async () => {
   const txt = localStorage.getItem('pf_s8_txt_' + (route.params.id || '')) || ''
-  const blob = makeSimplePdf(txt || ' ')
+  const blob = await makePdfWithYekan(txt)
   fileUrl.value = URL.createObjectURL(blob)
 })
+
 onBeforeUnmount(() => {
   if (fileUrl.value) URL.revokeObjectURL(fileUrl.value)
 })
 
 function submitFrm() {
-  alert('ثبت شد.')
+  alert('ثبت شد')
 }
 </script>
 

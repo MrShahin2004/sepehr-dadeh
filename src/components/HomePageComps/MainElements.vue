@@ -87,6 +87,27 @@
         <div
             class="agreement-search w-[100%] h-[100%] flex flex-col justify-start items-center"
         >
+          <a
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              href="#"
+          >
+            <router-link
+                class="w-full h-full text-center"
+                :to="{ name: 'CarTable' }"
+            >کارتابل
+            </router-link>
+          </a>
+
+          <a
+              class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
+              href="#"
+          >
+            <router-link
+                class="w-full h-full text-center"
+                :to="{ name: 'ContractsReport' }"
+            >گزارش قراردادها
+            </router-link>
+          </a>
           <router-link
               class="text-center flex justify-center items-center text-[white] w-[65%] h-fit bg-[#00bba7] rounded-lg hover:bg-[#005f5a] transition"
               :to="{ name: 'SearchPage' }"

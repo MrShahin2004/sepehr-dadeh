@@ -96,7 +96,7 @@ import {computed, onBeforeUnmount, onMounted, ref} from 'vue'
 import {useRoute} from 'vue-router'
 import pdfMake from 'pdfmake/build/pdfmake'
 
-// Import YekanBakh TTFs as URLs (Vite/webpack will copy them and give us URLs)
+// your font imports (unchanged)
 import yekanRegUrl from '@/assets/fonts/Yekan/YekanBakh-Regular.ttf?url'
 import yekanBoldUrl from '@/assets/fonts/Yekan/YekanBakh-Bold.ttf?url'
 
@@ -105,26 +105,21 @@ const fileUrl = ref(null)
 const steps = ['مجوز اداره کل', 'نامه کارشناسی', 'فرآیند درخواست', 'نتایج مزایده', 'مشخصات', 'اطلاعات قرارداد', 'مستندات پرداخت', 'قرارداد']
 const progressWidth = computed(() => ((8 - 1) / (steps.length - 1)) * 100 + '%')
 
-// Convert ArrayBuffer -> base64 for pdfmake vfs
 function ab2b64(ab) {
-  let s = '', bytes = new Uint8Array(ab)
-  for (let i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i])
+  let s = '', b = new Uint8Array(ab);
+  for (let i = 0; i < b.length; i++) s += String.fromCharCode(b[i]);
   return btoa(s)
 }
 
 async function ensureYekanFont() {
-  // load once
   if (pdfMake.vfs && pdfMake.vfs['YekanBakh-Regular.ttf']) return
-
   const [regBuf, boldBuf] = await Promise.all([
     fetch(yekanRegUrl).then(r => r.arrayBuffer()),
     fetch(yekanBoldUrl).then(r => r.arrayBuffer()),
   ])
-
   pdfMake.vfs = pdfMake.vfs || {}
   pdfMake.vfs['YekanBakh-Regular.ttf'] = ab2b64(regBuf)
   pdfMake.vfs['YekanBakh-Bold.ttf'] = ab2b64(boldBuf)
-
   pdfMake.fonts = {
     YekanBakh: {
       normal: 'YekanBakh-Regular.ttf',
@@ -138,19 +133,22 @@ async function ensureYekanFont() {
 async function makePdfWithYekan(text) {
   await ensureYekanFont()
 
+  // split editor content into paragraphs (keeps spacing sane)
+  const paras = (text || '').split(/\r?\n/)
+      .map(t => ({text: t || ' ', style: 'rtl', margin: [0, 0, 0, 8]}))
+
   const dd = {
     pageSize: 'A4',
     pageMargins: [72, 72, 72, 72],
-    pageDirection: 'rtl',                 // critical for RTL layout
+    pageDirection: 'rtl',                 // <— document is RTL
     defaultStyle: {font: 'YekanBakh', fontSize: 12},
-    content: [
-      {text: text || ' ', alignment: 'right'} // preserve RTL & align right
-    ]
+    styles: {
+      rtl: {rtl: true, alignment: 'right'} // <— paragraphs are RTL + right aligned
+    },
+    content: paras.length ? paras : [{text: ' ', style: 'rtl'}]
   }
 
-  return new Promise(resolve => {
-    pdfMake.createPdf(dd).getBlob(resolve)
-  })
+  return new Promise(resolve => pdfMake.createPdf(dd).getBlob(resolve))
 }
 
 onMounted(async () => {
@@ -158,7 +156,6 @@ onMounted(async () => {
   const blob = await makePdfWithYekan(txt)
   fileUrl.value = URL.createObjectURL(blob)
 })
-
 onBeforeUnmount(() => {
   if (fileUrl.value) URL.revokeObjectURL(fileUrl.value)
 })

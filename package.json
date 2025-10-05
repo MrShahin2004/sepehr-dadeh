@@ -13,6 +13,7 @@
     "jwt-decode": "^4.0.0",
     "moment": "^2.30.1",
     "moment-jalaali": "^0.10.4",
+    "pdfmake": "^0.2.20",
     "vue": "^3.2.13",
     "vue-router": "^4.5.1",
     "vue3-persian-datetime-picker": "file:../../Cloned Projects/vue3-persian-datetime-picker"

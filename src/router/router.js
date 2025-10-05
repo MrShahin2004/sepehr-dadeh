@@ -4,6 +4,7 @@ import {createRouter, createWebHistory} from "vue-router";
 
 // existing views
 import HomePage from "@/views/HomePage.vue";
+import ContractsReport from "@/views/ContractsReport.vue";
 import LogIn from "@/views/LogIn.vue";
 import ContractDetail from "@/views/ContractDetail.vue";
 import SearchPage from "@/views/SearchPage.vue";

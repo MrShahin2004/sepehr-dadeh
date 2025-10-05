@@ -96,7 +96,7 @@ import {computed, onBeforeUnmount, onMounted, ref} from 'vue'
 import {useRoute} from 'vue-router'
 import pdfMake from 'pdfmake/build/pdfmake'
 
-// your font imports (unchanged)
+// فونت‌های فارسی داخل پروژه
 import yekanRegUrl from '@/assets/fonts/Yekan/YekanBakh-Regular.ttf?url'
 import yekanBoldUrl from '@/assets/fonts/Yekan/YekanBakh-Bold.ttf?url'
 
@@ -105,12 +105,14 @@ const fileUrl = ref(null)
 const steps = ['مجوز اداره کل', 'نامه کارشناسی', 'فرآیند درخواست', 'نتایج مزایده', 'مشخصات', 'اطلاعات قرارداد', 'مستندات پرداخت', 'قرارداد']
 const progressWidth = computed(() => ((8 - 1) / (steps.length - 1)) * 100 + '%')
 
+// ArrayBuffer → base64 برای pdfMake.vfs
 function ab2b64(ab) {
-  let s = '', b = new Uint8Array(ab);
-  for (let i = 0; i < b.length; i++) s += String.fromCharCode(b[i]);
+  let s = '', b = new Uint8Array(ab)
+  for (let i = 0; i < b.length; i++) s += String.fromCharCode(b[i])
   return btoa(s)
 }
 
+// فونت فارسی را داخل vfs امبد کن تا در PDF استفاده شود
 async function ensureYekanFont() {
   if (pdfMake.vfs && pdfMake.vfs['YekanBakh-Regular.ttf']) return
   const [regBuf, boldBuf] = await Promise.all([
@@ -130,20 +132,22 @@ async function ensureYekanFont() {
   }
 }
 
+// متن خام را به پاراگراف‌های RTL تبدیل و PDF بساز
 async function makePdfWithYekan(text) {
   await ensureYekanFont()
 
-  // split editor content into paragraphs (keeps spacing sane)
-  const paras = (text || '').split(/\r?\n/)
+  // هر خط یک پاراگراف
+  const paras = (text || '')
+      .split(/\r?\n/)
       .map(t => ({text: t || ' ', style: 'rtl', margin: [0, 0, 0, 8]}))
 
   const dd = {
     pageSize: 'A4',
     pageMargins: [72, 72, 72, 72],
-    pageDirection: 'rtl',                 // <— document is RTL
+    pageDirection: 'rtl',                        // ← کل سند راست‌به‌چپ
     defaultStyle: {font: 'YekanBakh', fontSize: 12},
     styles: {
-      rtl: {rtl: true, alignment: 'right'} // <— paragraphs are RTL + right aligned
+      rtl: {rtl: true, alignment: 'right'}     // ← پاراگراف‌ها RTL + راست‌چین
     },
     content: paras.length ? paras : [{text: ' ', style: 'rtl'}]
   }
@@ -152,10 +156,12 @@ async function makePdfWithYekan(text) {
 }
 
 onMounted(async () => {
+  // متن ذخیره‌شده از صفحهٔ ادیت
   const txt = localStorage.getItem('pf_s8_txt_' + (route.params.id || '')) || ''
   const blob = await makePdfWithYekan(txt)
   fileUrl.value = URL.createObjectURL(blob)
 })
+
 onBeforeUnmount(() => {
   if (fileUrl.value) URL.revokeObjectURL(fileUrl.value)
 })

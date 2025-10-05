@@ -161,9 +161,9 @@
                   <select
                       class="w-full rounded-md border border-gray-300 px-2 py-2 text-sm"
                   >
-                    <option>انتخاب کنید</option>
-                    <option>مرد</option>
-                    <option>زن</option>
+                    <option value="choose" disabled>انتخاب کنید</option>
+                    <option value="male">مرد</option>
+                    <option value="female">زن</option>
                   </select>
                 </div>
                 <div>

@@ -89,6 +89,7 @@
               class="min-h-[220px] p-4 focus:outline-none"
               contenteditable
               @input="onInput"
+              style="direction: rtl; text-align: right; unicode-bidi: plaintext; white-space: pre-wrap;"
           />
         </div>
 

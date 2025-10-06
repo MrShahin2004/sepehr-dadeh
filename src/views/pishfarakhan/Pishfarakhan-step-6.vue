@@ -309,7 +309,7 @@ const vNumeric = {
     const sanitize = (value) => {
       if (value == null) return '';
       let v = toEnglishDigits(String(value));
-      v = v.replace(/[^\d]/g, ''); // keep digits only (no negatives)
+      v = v.replace(/\D/g, ''); // keep digits only (no negatives)
       return v;
     };
     const onInput = (e) => {

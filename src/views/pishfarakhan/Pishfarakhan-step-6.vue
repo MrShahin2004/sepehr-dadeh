@@ -90,7 +90,7 @@
                   <div>
                     <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ کل قرارداد (ریال)</label>
                     <input
-                        v-model="form.saleTotal"
+                        v-model="form.saleTotal" v-numeric inputmode="numeric"
                         type="text"
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                     />
@@ -98,7 +98,7 @@
                   <div>
                     <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ جزء (ریال)</label>
                     <input
-                        v-model="form.salePart"
+                        v-model="form.salePart" v-numeric inputmode="numeric"
                         type="text"
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                     />
@@ -110,7 +110,7 @@
                   <div>
                     <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ کل اجاره (ریال)</label>
                     <input
-                        v-model="form.rentTotal"
+                        v-model="form.rentTotal" v-numeric inputmode="numeric"
                         type="text"
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                     />
@@ -118,7 +118,7 @@
                   <div>
                     <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ اجاره ماهیانه (ریال)</label>
                     <input
-                        v-model="form.rentMonthly"
+                        v-model="form.rentMonthly" v-numeric inputmode="numeric"
                         type="text"
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                     />
@@ -297,6 +297,36 @@ import {computed, reactive, watch} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 import DatePicker from 'vue3-persian-datetime-picker'
 import moment from 'moment-jalaali'
+
+// === Directive: v-numeric (non-negative, Persian/Arabic digits supported) ===
+const vNumeric = {
+  beforeMount(el) {
+    const persian = '۰۱۲۳۴۵۶۷۸۹';
+    const arabic = '٠١٢٣٤٥٦٧٨٩';
+    const toEnglishDigits = (str) => str
+        .replace(/[۰-۹]/g, d => String(persian.indexOf(d)))
+        .replace(/[٠-٩]/g, d => String(arabic.indexOf(d)));
+    const sanitize = (value) => {
+      if (value == null) return '';
+      let v = toEnglishDigits(String(value));
+      v = v.replace(/[^\d]/g, ''); // keep digits only (no negatives)
+      return v;
+    };
+    const onInput = (e) => {
+      const cleaned = sanitize(el.value);
+      if (el.value !== cleaned) {
+        el.value = cleaned;
+        // ensure v-model updates
+        el.dispatchEvent(new Event('input', {bubbles: true}));
+      }
+    };
+    el.addEventListener('input', onInput);
+    el._numericCleanup = () => el.removeEventListener('input', onInput);
+  },
+  unmounted(el) {
+    if (el._numericCleanup) el._numericCleanup();
+  }
+};
 
 const route = useRoute()
 const router = useRouter()

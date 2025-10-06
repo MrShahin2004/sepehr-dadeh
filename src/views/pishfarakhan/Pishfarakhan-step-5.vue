@@ -656,6 +656,17 @@ const forms = reactive({
   haghighi: {birthDate: ''},
 })
 
+const nationalCodeError = computed(() => {
+  const v = forms.haghighi.nationalCode
+  return !!(v && !/^\d{10}$/.test(v));
+})
+
+// فقط عدد بگیرد (و حداکثر 10 رقم)
+function handleNationalCodeInput(e) {
+  const digits = String(e.target.value || "").replace(/\D/g, "").slice(0, 10);
+  forms.haghighi.nationalCode = digits;
+}
+
 watch(() => forms.haghighi.birthDate, (value) => {
   if (!value) {
     return;

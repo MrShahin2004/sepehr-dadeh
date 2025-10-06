@@ -402,7 +402,7 @@ function goNext() {
   const hasMinutes = !!auctionMinutesChip.value;
   if (!hasResults || !hasMinutes) {
     alert(
-      "لطفاً هر دو فایل 'نتایج مزایده' و 'صورتجلسه مزایده' را بارگذاری کنید."
+      "لطفاً هر دو فایل 'نتایج مزایده' و 'صورت جلسه مزایده' را بارگذاری کنید."
     );
     return;
   }

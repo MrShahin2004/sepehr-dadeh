@@ -312,7 +312,7 @@ const vNumeric = {
       v = v.replace(/\D/g, ''); // keep digits only (no negatives)
       return v;
     };
-    const onInput = (e) => {
+    const onInput = () => {
       const cleaned = sanitize(el.value);
       if (el.value !== cleaned) {
         el.value = cleaned;

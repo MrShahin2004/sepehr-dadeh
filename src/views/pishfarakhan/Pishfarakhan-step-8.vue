@@ -128,7 +128,14 @@ async function ensureYekanFont() {
       normal: 'YekanBakh-Regular.ttf',
       bold: 'YekanBakh-Bold.ttf',
       italics: 'YekanBakh-Regular.ttf',
-      bolditalics: 'YekanBakh-Bold.ttf'
+      bolditalics: 'YekanBakh-Bold.ttf',
+    },
+    // ← alias لازم برای باندل pdfmake-rtl
+    Nillima: {
+      normal: 'YekanBakh-Regular.ttf',
+      bold: 'YekanBakh-Bold.ttf',
+      italics: 'YekanBakh-Regular.ttf',
+      bolditalics: 'YekanBakh-Bold.ttf',
     }
   }
 }

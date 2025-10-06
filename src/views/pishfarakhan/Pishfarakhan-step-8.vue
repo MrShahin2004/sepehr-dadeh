@@ -94,8 +94,9 @@
 <script setup>
 import {computed, onBeforeUnmount, onMounted, ref} from 'vue'
 import {useRoute} from 'vue-router'
-import pdfMake from 'pdfmake/build/pdfmake'
-import ArabicReshaper from 'arabic-reshaper' // New import for reshaping Persian text
+import pdfMake from "@digicole/pdfmake-rtl/build/pdfmake"
+// import pdfMake from 'pdfmake/build/pdfmake'
+// import ArabicReshaper from 'arabic-reshaper' // New import for reshaping Persian text
 // فونت‌های فارسی داخل پروژه
 import yekanRegUrl from '@/assets/fonts/Yekan/YekanBakh-Regular.ttf?url'
 import yekanBoldUrl from '@/assets/fonts/Yekan/YekanBakh-Bold.ttf?url'
@@ -134,34 +135,27 @@ async function ensureYekanFont() {
 
 // متن خام را به پاراگراف‌های RTL تبدیل و PDF بساز
 async function makePdfWithYekan(text) {
-  await ensureYekanFont()
+  await ensureYekanFont(); // همان تابعی که TTF‌ها را به vfs می‌ریزد
 
-  // هر خط یک پاراگراف، اما حالا reshape + reverse برای فیکس RTL
-  const lines = (text || '').split(/\r?\n/)
-  const paras = lines.map(line => {
-    if (!line.trim()) return {text: ' ', style: 'persian', margin: [0, 0, 0, 8]}
-
-    // Step 1: Reshape به presentation forms برای اتصال حروف
-    const reshaped = ArabicReshaper.convertArabic(line)
-
-    // Step 2: Reverse کاراکترها برای visual order (چون pdfMake bidi نداره)
-    const reversed = reshaped.split('').reverse().join('')
-
-    return {text: reversed, style: 'persian', margin: [0, 0, 0, 8]}
-  })
+  const lines = (text || '').split(/\r?\n/);
+  const content = lines.map(l => ({
+    text: l && l.trim() ? l : ' ',
+    style: 'persian',
+    margin: [0, 0, 0, 8],
+  }));
 
   const dd = {
     pageSize: 'A4',
     pageMargins: [72, 72, 72, 72],
-    // دیگه pageDirection: 'rtl' لازم نیست، چون حالا visual order داریم
-    defaultStyle: {font: 'YekanBakh', fontSize: 12, alignment: 'right'},  // Default alignment right برای RTL visual
+    pageDirection: 'rtl',                // جهت صفحه
+    defaultStyle: {font: 'YekanBakh', fontSize: 12},
     styles: {
-      persian: {alignment: 'right'}  // No rtl: true; حالا LTR با reverse کار میکنه
+      persian: {alignment: 'right', rtl: true} // rtl برای خود متن
     },
-    content: paras.length ? paras : [{text: ' ', style: 'persian'}]
-  }
+    content
+  };
 
-  return new Promise(resolve => pdfMake.createPdf(dd).getBlob(resolve))
+  return new Promise(resolve => pdfMake.createPdf(dd).getBlob(resolve));
 }
 
 onMounted(async () => {

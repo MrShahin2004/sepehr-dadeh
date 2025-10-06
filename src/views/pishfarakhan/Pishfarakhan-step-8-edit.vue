@@ -94,7 +94,7 @@
         </div>
 
         <div class="mt-6">
-          <button @click="saveAndGo" class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white">
+          <button @click="saveAndGo" class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white cursor-pointer">
             ذخیره و PDF
           </button>
         </div>

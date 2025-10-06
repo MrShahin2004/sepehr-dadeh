@@ -1013,6 +1013,25 @@ function _collectTextualFieldsInActiveTab() {
   ).filter(_isVisible);
 }
 
+// Check regex-based field errors in the active tab (only when the field has a value)
+function _hasSpecificFieldErrorsInActiveTab() {
+  if (activeTab.value === 'person') {
+    return Boolean(
+        (forms.haghighi.landline && landlineError.value) ||
+        (forms.haghighi.mobile && mobileError.value)   ||
+        (forms.haghighi.email && emailError.value)     ||
+        (forms.haghighi.nationalCode && nationalCodeError.value) ||
+        (forms.haghighi.postalCode && postalCodeError.value)
+    );
+  } else if (activeTab.value === 'company') {
+    return Boolean(
+        (forms.company.landline && companyLandlineError.value) ||
+        (forms.company.email && companyEmailError.value)       ||
+        (forms.company.postalCode && companyPostalCodeError.value)
+    );
+  }
+  return false;
+}
 
 /**
  * Returns true if we can proceed; false if blocked and page was decorated.
@@ -1038,6 +1057,12 @@ function validateSteppedPageAllEmpty() {
     });
     alert('لطفاً همه فیلدها را تکمیل کرده و برای آپلودها فایل PDF انتخاب کنید.');
     return false; // prevent going to next page
+  }
+
+  // If any field with a specific validation rule has an error, block next step
+  if (_hasSpecificFieldErrorsInActiveTab()) {
+    alert('لطفاً خطاهای مشخص‌شده را برطرف کنید.');
+    return false;
   }
 
   return true; // everything is valid -> allow next step

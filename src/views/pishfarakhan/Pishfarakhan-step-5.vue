@@ -224,24 +224,43 @@
                   />
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-600 mb-1"
-                  >تلفن ثابت:</label
-                  >
+                  <label class="block text-sm text-gray-600 mb-1">تلفن ثابت:</label>
                   <input
                       type="text"
-                      class="w-full rounded-md border border-gray-300 px-3 py-2"
-                      placeholder="0513......"
+                      v-model="forms.haghighi.landline"
+                      @input="handleLandlineInput"
+                      inputmode="numeric"
+                      pattern="\d*"
+                      :class="[
+                               'w-full rounded-md border px-3 py-2',
+                               landlineError ? 'border-red-500 bg-red-50 ring-1 ring-red-400 focus:ring-red-500' : 'border-gray-300'
+                               ]"
+                      placeholder="051......."
                   />
+                  <p v-if="forms.haghighi.landline && landlineError" class="mt-1 text-xs text-red-600">
+                    تلفن ثابت باید با 051 شروع شود و فقط شامل عدد باشد.
+                  </p>
+
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-600 mb-1"
-                  >تلفن همراه:</label
-                  >
+                  <label class="block text-sm text-gray-600 mb-1">تلفن همراه:</label>
                   <input
                       type="text"
-                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      v-model="forms.haghighi.mobile"
+                      @input="handleMobileInput"
+                      inputmode="numeric"
+                      pattern="\d*"
+                      maxlength="11"
+                      :class="[
+                               'w-full rounded-md border px-3 py-2',
+                               mobileError ? 'border-red-500 bg-red-50 ring-1 ring-red-400 focus:ring-red-500' : 'border-gray-300'
+                               ]"
                       placeholder="0915......"
                   />
+                  <p v-if="mobileError" class="mt-1 text-xs text-red-600">
+                    تلفن همراه باید با 09 شروع شود و دقیقاً 11 رقم باشد.
+                  </p>
+
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1">ایمیل:</label>
@@ -676,6 +695,29 @@ function handleNationalCodeInput(e) {
   const digits = String(e.target.value || "").replace(/\D/g, "").slice(0, 10);
   forms.haghighi.nationalCode = digits;
 }
+
+// Landline: only digits, must start with 051 (error only if has value & not matching)
+const landlineError = computed(() => {
+  const v = forms.haghighi.landline;
+  return !!(v && !/^051\d*$/.test(v));
+});
+
+function handleLandlineInput(e) {
+  const digits = String(e.target.value || "").replace(/\D/g, "");
+  forms.haghighi.landline = digits;
+}
+
+// Mobile: only digits, exactly 11 digits, must start with 09
+const mobileError = computed(() => {
+  const v = forms.haghighi.mobile;
+  return !!(v && !/^09\d{9}$/.test(v));
+});
+
+function handleMobileInput(e) {
+  const digits = String(e.target.value || "").replace(/\D/g, "").slice(0, 11);
+  forms.haghighi.mobile = digits;
+}
+
 
 watch(() => forms.haghighi.birthDate, (value) => {
   if (!value) {

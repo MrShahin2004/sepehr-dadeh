@@ -234,7 +234,7 @@
                       :class="[
                                'w-full rounded-md border px-3 py-2',
                                landlineError ? 'border-red-500 bg-red-50 ring-1 ring-red-400 focus:ring-red-500' : 'border-gray-300'
-                               ]"
+                              ]"
                       placeholder="051......."
                   />
                   <p v-if="forms.haghighi.landline && landlineError" class="mt-1 text-xs text-red-600">
@@ -254,7 +254,7 @@
                       :class="[
                                'w-full rounded-md border px-3 py-2',
                                mobileError ? 'border-red-500 bg-red-50 ring-1 ring-red-400 focus:ring-red-500' : 'border-gray-300'
-                               ]"
+                              ]"
                       placeholder="0915......"
                   />
                   <p v-if="mobileError" class="mt-1 text-xs text-red-600">
@@ -266,9 +266,18 @@
                   <label class="block text-sm text-gray-600 mb-1">ایمیل:</label>
                   <input
                       type="email"
-                      class="w-full rounded-md border border-gray-300 px-3 py-2"
-                      placeholder="info@sepehr-dad.com"
+                      v-model="forms.haghighi.email"
+                      @input="handleEmailInput"
+                      autocomplete="email"
+                      :class="[
+                               'w-full rounded-md border px-3 py-2',
+                               emailError ? 'border-red-500 bg-red-50 ring-1 ring-red-400 focus:ring-red-500' : 'border-gray-300'
+                              ]"
+                      placeholder="info@example.com"
                   />
+                  <p v-if="emailError" class="mt-1 text-xs text-red-600">
+                    ایمیل نامعتبر است.
+                  </p>
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
@@ -718,6 +727,17 @@ function handleMobileInput(e) {
   forms.haghighi.mobile = digits;
 }
 
+// Email: basic validation and strip spaces
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const emailError = computed(() => {
+  const v = forms.haghighi.email;
+  return !!(v && !emailRegex.test(v));
+});
+
+function handleEmailInput(e) {
+  const val = String(e.target.value || "").replace(/\s+/g, "");
+  forms.haghighi.email = val;
+}
 
 watch(() => forms.haghighi.birthDate, (value) => {
   if (!value) {

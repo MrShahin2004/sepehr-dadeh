@@ -706,8 +706,7 @@ const nationalCodeError = computed(() => {
 
 // فقط عدد بگیرد (و حداکثر 10 رقم)
 function handleNationalCodeInput(e) {
-  const digits = String(e.target.value || "").replace(/\D/g, "").slice(0, 10);
-  forms.haghighi.nationalCode = digits;
+  forms.haghighi.nationalCode = String(e.target.value || "").replace(/\D/g, "").slice(0, 10);
 }
 
 // Landline: only digits, must start with 051 (error only if has value & not matching)
@@ -717,8 +716,7 @@ const landlineError = computed(() => {
 });
 
 function handleLandlineInput(e) {
-  const digits = String(e.target.value || "").replace(/\D/g, "");
-  forms.haghighi.landline = digits;
+  forms.haghighi.landline = String(e.target.value || "").replace(/\D/g, "");
 }
 
 // Mobile: only digits, exactly 11 digits, must start with 09
@@ -728,8 +726,7 @@ const mobileError = computed(() => {
 });
 
 function handleMobileInput(e) {
-  const digits = String(e.target.value || "").replace(/\D/g, "").slice(0, 11);
-  forms.haghighi.mobile = digits;
+  forms.haghighi.mobile = String(e.target.value || "").replace(/\D/g, "").slice(0, 11);
 }
 
 // Email: basic validation and strip spaces
@@ -740,8 +737,7 @@ const emailError = computed(() => {
 });
 
 function handleEmailInput(e) {
-  const val = String(e.target.value || "").replace(/\s+/g, "");
-  forms.haghighi.email = val;
+  forms.haghighi.email = String(e.target.value || "").replace(/\s+/g, "");
 }
 
 // regex + computed error
@@ -754,8 +750,7 @@ const postalCodeError = computed(() => {
 // input handler
 function handlePostalCodeInput(e) {
   const raw = String(e.target.value || '');
-  const cleaned = raw.replace(/[^0-9\- ]+/g, '').slice(0, 11);
-  forms.haghighi.postalCode = cleaned;
+  forms.haghighi.postalCode = raw.replace(/[^0-9\- ]+/g, '').slice(0, 11);
 }
 
 watch(() => forms.haghighi.birthDate, (value) => {

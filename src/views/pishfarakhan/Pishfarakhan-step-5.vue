@@ -177,14 +177,24 @@
                   />
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-600 mb-1"
-                  >شماره ملی:</label
-                  >
+                  <label class="block text-sm text-gray-600 mb-1">شماره ملی:</label>
                   <input
                       type="text"
-                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      v-model="forms.haghighi.nationalCode"
+                      @input="handleNationalCodeInput"
+                      inputmode="numeric"
+                      pattern="\d*"
+                      maxlength="10"
+                      :class="[
+                             'w-full rounded-md border px-3 py-2',
+                             nationalCodeError ? 'border-red-500 bg-red-50 ring-1 ring-red-400 focus:ring-red-500' : 'border-gray-300'
+                             ]"
                       placeholder="۰۹۲۲۸۸۰۰۰۰"
                   />
+                  <p v-if="nationalCodeError" class="mt-1 text-xs text-red-600">
+                    شماره ملی باید 10 رقم باشد.
+                  </p>
+
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"

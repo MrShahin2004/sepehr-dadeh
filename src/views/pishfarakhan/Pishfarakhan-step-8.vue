@@ -178,6 +178,7 @@ onBeforeUnmount(() => {
 
 function submitFrm() {
   alert('ثبت شد');
+  window.location.href = "/cartable";
 }
 </script>
 

@@ -177,7 +177,7 @@ onBeforeUnmount(() => {
 })
 
 function submitFrm() {
-  alert('ثبت شد')
+  alert('ثبت شد');
 }
 </script>
 

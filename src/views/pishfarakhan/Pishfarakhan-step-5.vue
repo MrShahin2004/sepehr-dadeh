@@ -487,32 +487,50 @@
                   </div>
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-600 mb-1"
-                  >ایمیل شرکت:</label
-                  >
+                  <label class="block text-sm text-gray-600 mb-1">ایمیل شرکت:</label>
                   <input
                       type="email"
-                      class="w-full rounded-md border border-gray-300 px-3 py-2"
+                      v-model="forms.company.email"
+                      @input="handleCompanyEmailInput"
+                      :class="[
+           'w-full rounded-md border px-3 py-2',
+           companyEmailError ? 'border-red-500 bg-red-50 ring-1 ring-red-400 focus:ring-red-500' : 'border-gray-300'
+          ]"
                       placeholder="info@sepehr-dad.com"
                   />
+                  <p v-if="companyEmailError" class="mt-1 text-xs text-red-600">ایمیل نامعتبر است.</p>
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1">تلفن:</label>
                   <input
                       type="text"
-                      class="w-full rounded-md border border-gray-300 px-3 py-2"
-                      placeholder="05130000000"
+                      v-model="forms.company.landline"
+                      @input="handleCompanyLandlineInput"
+                      inputmode="numeric"
+                      pattern="\d*"
+                      :class="[
+                               'w-full rounded-md border px-3 py-2',
+                               (forms.company.landline && companyLandlineError) ? 'border-red-500 bg-red-50 ring-1 ring-red-400' +
+                                ' focus:ring-red-500' : 'border-gray-300'
+                              ]"
+                      placeholder="051......."
                   />
+                  <p v-if="forms.company.landline && companyLandlineError" class="mt-1 text-xs text-red-600">تلفن ثابت
+                    باید با 051 شروع شود و فقط شامل عدد باشد.</p>
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-600 mb-1"
-                  >کد پستی:</label
-                  >
+                  <label class="block text-sm text-gray-600 mb-1">کد پستی:</label>
                   <input
                       type="text"
-                      class="w-full rounded-md border border-gray-300 px-3 py-2"
-                      placeholder="1234567890"
+                      v-model="forms.company.postalCode"
+                      @input="handleCompanyPostalCodeInput"
+                      :class="[
+                               'w-full rounded-md border px-3 py-2',
+                               companyPostalCodeError ? 'border-red-500 bg-red-50 ring-1 ring-red-400 focus:ring-red-500' : 'border-gray-300'
+                              ]"
+                      placeholder="12345-67890"
                   />
+                  <p v-if="companyPostalCodeError" class="mt-1 text-xs text-red-600">کد پستی نامعتبر است.</p>
                 </div>
                 <div
                     class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4"
@@ -697,6 +715,7 @@ import moment from "moment-jalaali";
 
 const forms = reactive({
   haghighi: {birthDate: '', postalCode: ''},
+  company: {email: '', landline: '', postalCode: ''},
 })
 
 const nationalCodeError = computed(() => {
@@ -738,6 +757,35 @@ const emailError = computed(() => {
 
 function handleEmailInput(e) {
   forms.haghighi.email = String(e.target.value || "").replace(/\s+/g, "");
+}
+
+// Company: errors mirror حقیقی
+const companyLandlineError = computed(() => {
+  const v = forms.company.landline;
+  return !!(v && !/^051\d*$/.test(v));
+});
+const companyEmailError = computed(() => {
+  const v = forms.company.email;
+  return !!(v && !emailRegex.test(v));
+});
+const companyPostalCodeError = computed(() => {
+  const v = forms.company.postalCode;
+  return !!(v && !/^[13456789]{5}[- ]?\d{5}$/.test(v));
+});
+
+function handleCompanyLandlineInput(e) {
+  forms.company.landline = String(e.target.value || "").replace(/\D/g, "");
+}
+
+function handleCompanyEmailInput(e) {
+  const val = String(e.target.value || "").replace(/\s+/g, "");
+  forms.company.email = val;
+}
+
+function handleCompanyPostalCodeInput(e) {
+  const raw = String(e.target.value || '');
+  const cleaned = raw.replace(/[^0-9\- ]+/g, '').slice(0, 11);
+  forms.company.postalCode = cleaned;
 }
 
 // regex + computed error

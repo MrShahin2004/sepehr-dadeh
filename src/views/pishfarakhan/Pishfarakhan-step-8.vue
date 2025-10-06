@@ -135,7 +135,7 @@ async function ensureYekanFont() {
 
 // متن خام را به پاراگراف‌های RTL تبدیل و PDF بساز
 async function makePdfWithYekan(text) {
-  await ensureYekanFont(); // همان تابعی که TTF‌ها را به vfs می‌ریزد
+  await ensureYekanFont(); // همان تابعی که TTFها را به vfs می‌ریزد
 
   const lines = (text || '').split(/\r?\n/);
   const content = lines.map(l => ({

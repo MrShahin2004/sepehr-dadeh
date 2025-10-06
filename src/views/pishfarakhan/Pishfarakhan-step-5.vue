@@ -280,14 +280,19 @@
                   </p>
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-600 mb-1"
-                  >کد پستی:</label
-                  >
+                  <label class="block text-sm text-gray-600 mb-1">کد پستی:</label>
                   <input
                       type="text"
-                      class="w-full rounded-md border border-gray-300 px-3 py-2"
-                      placeholder="1234567890"
+                      v-model="forms.haghighi.postalCode"
+                      @input="handlePostalCodeInput"
+                      :class="[
+                               'w-full rounded-md border px-3 py-2',
+                               postalCodeError ? 'border-red-500 bg-red-50 ring-1 ring-red-400 focus:ring-red-500' : 'border-gray-300'
+                              ]"
+                      placeholder="12345-67890"
                   />
+                  <p v-if="postalCodeError" class="mt-1 text-xs text-red-600">کد پستی نامعتبر است.</p>
+
                 </div>
                 <div>
                   <label class="block text-sm text-gray-600 mb-1"
@@ -691,7 +696,7 @@ import DatePicker from "vue3-persian-datetime-picker";
 import moment from "moment-jalaali";
 
 const forms = reactive({
-  haghighi: {birthDate: ''},
+  haghighi: {birthDate: '', postalCode: ''},
 })
 
 const nationalCodeError = computed(() => {
@@ -737,6 +742,20 @@ const emailError = computed(() => {
 function handleEmailInput(e) {
   const val = String(e.target.value || "").replace(/\s+/g, "");
   forms.haghighi.email = val;
+}
+
+// regex + computed error
+const postalCodeRegex = /^[13456789]{5}[- ]?\d{5}$/;
+const postalCodeError = computed(() => {
+  const v = forms.haghighi.postalCode;
+  return !!(v && !postalCodeRegex.test(v));
+});
+
+// input handler
+function handlePostalCodeInput(e) {
+  const raw = String(e.target.value || '');
+  const cleaned = raw.replace(/[^0-9\- ]+/g, '').slice(0, 11);
+  forms.haghighi.postalCode = cleaned;
 }
 
 watch(() => forms.haghighi.birthDate, (value) => {

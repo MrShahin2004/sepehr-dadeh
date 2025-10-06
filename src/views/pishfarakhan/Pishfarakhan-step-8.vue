@@ -61,7 +61,7 @@
           >
             ویرایش
           </router-link>
-          <button class="px-4 py-2 rounded-md bg-teal-600 hover:bg-teal-700 text-white" @click="submitFrm">
+          <button class="px-4 py-2 rounded-md bg-teal-600 hover:bg-teal-700 text-white cursor-pointer" @click="submitFrm">
             ثبت
           </button>
         </div>

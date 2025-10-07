@@ -5,15 +5,15 @@
       <div class="top-navbar h-32 w-full flex items-center justify-center">
         <div class="absolute left-4 top-2 flex items-center">
           <img
-            src="@/assets/images/khamenei.png"
-            class="w-50 h-auto object-contain"
-            alt="header-left"
+              src="@/assets/images/khamenei.png"
+              class="w-50 h-auto object-contain"
+              alt="header-left"
           />
         </div>
         <div class="text-center text-white leading-relaxed">
           <router-link to="/">
             <h1
-              class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
+                class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
             >
               پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان
               رضوی
@@ -22,9 +22,9 @@
         </div>
         <div class="absolute right-4 top-2 flex flex-col items-center">
           <img
-            src="@/assets/images/education.svg"
-            class="w-40 h-auto object-contain"
-            alt="header-right"
+              src="@/assets/images/education.svg"
+              class="w-40 h-auto object-contain"
+              alt="header-right"
           />
         </div>
       </div>
@@ -33,54 +33,54 @@
     <main class="mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl">
       <!-- Admin info bar -->
       <div
-        class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6"
+          class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6"
       >
         <span class="text-sm">اطلاعیه های اخیر</span>
         <span class="px-3 py-1 bg-teal-600 rounded text-sm"
-          >admin : کارشناس ثبت</span
+        >admin : کارشناس ثبت</span
         >
       </div>
 
       <!-- Toolbar -->
       <div class="flex items-center justify-end gap-3 mb-4">
         <button
-          class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
-          @click="$router.back()"
+            class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
+            @click="$router.back()"
         >
           بازگشت
         </button>
         <button
-          class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
-          @click="triggerFilePicker"
+            class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
+            @click="triggerFilePicker"
         >
           بارگذاری سربرگ
         </button>
         <button
-          @click="GoToCartable"
-          class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
+            @click="GoToCartable"
+            class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm cursor-pointer"
         >
           کارتابل
         </button>
         <!-- Hidden file input for PDF upload -->
         <input
-          ref="headerFileInput"
-          type="file"
-          accept="application/pdf"
-          class="hidden"
-          @change="onFileSelected"
+            ref="headerFileInput"
+            type="file"
+            accept="application/pdf"
+            class="hidden"
+            @change="onFileSelected"
         />
       </div>
 
       <!-- Selected file preview (kept under toolbar without shifting layout) -->
       <div v-if="selectedHeaderFile" class="flex justify-end mb-4">
         <div
-          class="bg-white rounded-lg shadow p-3 flex items-center justify-center gap-3 w-[260px]"
+            class="bg-white rounded-lg shadow p-3 flex items-center justify-center gap-3 w-[260px]"
         >
           <button
-            @click="clearSelectedFile"
-            class="bg-red-500 hover:bg-red-600 text-white rounded p-1 leading-none cursor-pointer"
-            aria-label="حذف فایل"
-            title="حذف فایل"
+              @click="clearSelectedFile"
+              class="bg-red-500 hover:bg-red-600 text-white rounded p-1 leading-none cursor-pointer"
+              aria-label="حذف فایل"
+              title="حذف فایل"
           >
             ✕
           </button>
@@ -88,8 +88,8 @@
             {{ selectedHeaderFile.sizeKB }} KB
           </div>
           <div
-            class="text-sm text-gray-800 truncate"
-            :title="selectedHeaderFile.name"
+              class="text-sm text-gray-800 truncate"
+              :title="selectedHeaderFile.name"
           >
             {{ selectedHeaderFile.name }}
           </div>
@@ -101,8 +101,8 @@
         <span class="text-gray-700">نوع قرارداد:</span>
         <div class="flex gap-2">
           <button
-            @click="activeTab = 'movable'"
-            :class="[
+              @click="activeTab = 'movable'"
+              :class="[
               'px-4 py-1 rounded-lg text-sm cursor-pointer',
               activeTab === 'movable'
                 ? 'bg-blue-100 text-blue-800'
@@ -112,8 +112,8 @@
             اموال منقول
           </button>
           <button
-            @click="activeTab = 'immovable'"
-            :class="[
+              @click="activeTab = 'immovable'"
+              :class="[
               'px-4 py-1 rounded-lg text-sm cursor-pointer',
               activeTab === 'immovable'
                 ? 'bg-blue-100 text-blue-800'
@@ -123,8 +123,8 @@
             اموال غیر منقول
           </button>
           <button
-            @click="activeTab = 'rent'"
-            :class="[
+              @click="activeTab = 'rent'"
+              :class="[
               'px-4 py-1 rounded-lg text-sm cursor-pointer',
               activeTab === 'rent'
                 ? 'bg-blue-100 text-blue-800'
@@ -141,8 +141,8 @@
         <!-- Movable tab content (primary) -->
         <template v-if="activeTab === 'movable'">
           <article
-            class="prose prose-lg max-w-none leading-8 text-justify"
-            v-pre
+              class="prose prose-lg max-w-none leading-8 text-justify"
+              v-pre
           >
             <h2 class="text-center text-2xl font-semibold mb-6">
               قرارداد اجاره
@@ -165,7 +165,7 @@
               موجر: اداره کل آموزش و پرورش خراسان رضوی به نمایندگی سید امیر
               شوشتری به آدرس مشهد، خیابان امام خمینی(ره)، میدان شهدا
             </p>
-            <br />
+            <br/>
             <p>مستأجر: {{ full_name }}</p>
 
             <h3 class="font-semibold mt-10 mb-2">ماده 2) مورد اجاره</h3>
@@ -403,7 +403,7 @@
                 دولت ضبط خواهد شد و ادامه قرارداد منوط به سپردن مجدد تضمین خواهد
                 بود.
               </span>
-              <br />
+              <br/>
               <span>
                 ب – بابت تضمین تخلیه و تحویل مورد اجاره، خسارات احتمالی وارده و
                 هرگونه خسارت مالی یا جانی ناشی از مورد قرارداد علاوه بر تضمین
@@ -419,7 +419,7 @@
                 تعهدات موجود در قرارداد ( اعم از خسارات احتمالی ، عدم تخلیه و
                 تحویل درموعد مقرر و ... ) اخذ گردد .
               </span>
-              <br />
+              <br/>
               <span>
                 ج – تضامین مذکوردر صورت وصول اجاره، تخلیه و تحویل مورد اجاره و
                 نیز تسویه بدهی و تایید ناظرقرارداد مبنی برتحویل کامل مکان بدون
@@ -498,7 +498,8 @@
 
         <div class="mt-8">
           <button
-            class="w-full py-3 rounded-lg bg-blue-700 text-white hover:bg-blue-800 cursor-pointer"
+              @click="SaveText"
+              class="w-full py-3 rounded-lg bg-blue-700 text-white hover:bg-blue-800 cursor-pointer"
           >
             ذخیره
           </button>
@@ -509,37 +510,37 @@
       <footer class="mt-10">
         <div class="footer-navbar text-white rounded-lg px-6 py-8">
           <nav
-            class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm mb-4"
+              class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm mb-4"
           >
             <router-link to="/"
-              ><a class="text-[white] hover:text-blue-600 transition"
-                >صفحه اصلی</a
-              ></router-link
+            ><a class="text-[white] hover:text-blue-600 transition"
+            >صفحه اصلی</a
+            ></router-link
             >
             <router-link to="/"
-              ><a class="text-[white] hover:text-blue-600 transition"
-                >آمارها</a
-              ></router-link
+            ><a class="text-[white] hover:text-blue-600 transition"
+            >آمارها</a
+            ></router-link
             >
             <router-link to="/"
-              ><a class="text-[white] hover:text-blue-600 transition"
-                >فراخوانها</a
-              ></router-link
+            ><a class="text-[white] hover:text-blue-600 transition"
+            >فراخوانها</a
+            ></router-link
             >
             <router-link to="/"
-              ><a class="text-[white] hover:text-blue-600 transition"
-                >پیوندها</a
-              ></router-link
+            ><a class="text-[white] hover:text-blue-600 transition"
+            >پیوندها</a
+            ></router-link
             >
             <router-link to="/"
-              ><a class="text-[white] hover:text-blue-600 transition"
-                >نظرسنجی ها</a
-              ></router-link
+            ><a class="text-[white] hover:text-blue-600 transition"
+            >نظرسنجی ها</a
+            ></router-link
             >
             <router-link to="/"
-              ><a class="text-[white] hover:text-blue-600 transition"
-                >حریم خصوصی</a
-              ></router-link
+            ><a class="text-[white] hover:text-blue-600 transition"
+            >حریم خصوصی</a
+            ></router-link
             >
           </nav>
           <div class="text-center text-xs">
@@ -553,6 +554,8 @@
 </template>
 
 <script>
+import {toast} from "vue3-toastify";
+
 export default {
   name: "EditContractText",
   data() {
@@ -575,17 +578,17 @@ export default {
     },
     onFileSelected(event) {
       const file =
-        event.target.files && event.target.files[0]
-          ? event.target.files[0]
-          : null;
+          event.target.files && event.target.files[0]
+              ? event.target.files[0]
+              : null;
       if (!file) {
         this.selectedHeaderFile = null;
         return;
       }
       // Only accept PDFs
       if (
-        file.type !== "application/pdf" &&
-        !file.name.toLowerCase().endsWith(".pdf")
+          file.type !== "application/pdf" &&
+          !file.name.toLowerCase().endsWith(".pdf")
       ) {
         // reset and ignore
         event.target.value = null;
@@ -593,13 +596,16 @@ export default {
         return;
       }
       const sizeKB = (file.size / 1024).toFixed(2);
-      this.selectedHeaderFile = { name: file.name, sizeKB, file };
+      this.selectedHeaderFile = {name: file.name, sizeKB, file};
     },
     clearSelectedFile() {
       const input = this.$refs.headerFileInput;
       if (input) input.value = null;
       this.selectedHeaderFile = null;
     },
+    SaveText() {
+      toast.success("قالب با موفقیت ذخیره شد.", {position: "top-right"});
+    }
   },
 };
 </script>
@@ -608,13 +614,14 @@ export default {
 .main-title {
   font-family: IranNastaliq, sans-serif;
 }
+
 .top-navbar,
 .footer-navbar {
   background: #0059e7;
   background: radial-gradient(
-    circle,
-    rgba(0, 89, 231, 1) 0%,
-    rgba(43, 16, 88, 1) 100%
+      circle,
+      rgba(0, 89, 231, 1) 0%,
+      rgba(43, 16, 88, 1) 100%
   );
 }
 </style>

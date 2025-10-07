@@ -220,6 +220,7 @@
 <script>
 import ModalPopup from "@/components/ModalPopup.vue";
 import agreements from "@/data/agreements.js";
+import {toast} from 'vue3-toastify';
 
 export default {
   name: "NewContract",
@@ -275,28 +276,33 @@ export default {
       this.modalMessage = "";
     },
     async submitContract() {
-      // Validate inputs
-      if (!this.contractTitle.trim()) {
-        this.titleError = true;
-        return;
-      }
-      if (!this.contractSubject.trim()) {
-        this.subjectError = true;
-        return;
-      }
-      if (!this.selectedFile) {
-        this.showModal = true;
-        this.modalMessage = "لطفا یک فایل PDF انتخاب کنید";
+      if (!this.contractTitle.trim() && !this.contractSubject.trim() && !this.selectedFile) {
+        toast.error('لطفاً همه فیلدها را پر کنید.');
         return;
       }
 
-      // Check file size (limit to 5MB for localStorage)
-      const maxFileSize = 20 * 1024 * 1024; // 5MB in bytes
-      if (this.selectedFile.size > maxFileSize) {
-        this.showModal = true;
-        this.modalMessage = "حجم فایل انتخاب شده باید حداکثر 20 مگابایت باشد";
-        return;
-      }
+      // Validate inputs
+      // if (!this.contractTitle.trim()) {
+      //   this.titleError = true;
+      //   return;
+      // }
+      // if (!this.contractSubject.trim()) {
+      //   this.subjectError = true;
+      //   return;
+      // }
+      // if (!this.selectedFile) {
+      //   this.showModal = true;
+      //   this.modalMessage = "لطفا یک فایل PDF انتخاب کنید";
+      //   return;
+      // }
+      //
+      // // Check file size (limit to 5MB for localStorage)
+      // const maxFileSize = 20 * 1024 * 1024; // 5MB in bytes
+      // if (this.selectedFile.size > maxFileSize) {
+      //   this.showModal = true;
+      //   this.modalMessage = "حجم فایل انتخاب شده باید حداکثر 20 مگابایت باشد";
+      //   return;
+      // }
 
       try {
         // Determine next incremental ID based on both static and user contracts

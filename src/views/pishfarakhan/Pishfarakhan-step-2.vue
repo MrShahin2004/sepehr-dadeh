@@ -216,6 +216,7 @@
 <script setup>
 import {computed, ref} from "vue";
 import {useRoute} from "vue-router";
+import {toast} from "vue3-toastify";
 
 // Steps (same as step-1)
 const steps = [
@@ -267,7 +268,7 @@ function onPick(e) {
 
 function goNext() {
   if (!pdfUrl.value) {
-    alert("لطفاً یک فایل PDF بارگذاری کنید.");
+    toast.error("هیچ مدرکی بارگذاری نشده است.", {position: "top-right"});
   } else {
     window.location.href = `/pishfarakhan/step-3/${encodeURIComponent(
         contractId.value

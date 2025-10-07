@@ -298,6 +298,7 @@
 <script setup>
 import {computed, ref} from "vue";
 import {useRoute} from "vue-router";
+import {toast} from "vue3-toastify";
 
 const route = useRoute();
 const contractId = computed(() => route.params.id ?? "—");
@@ -359,7 +360,7 @@ function onPickAuctionResults(e) {
   const f = e.target.files?.[0];
   if (!f) return;
   if (!isPdf(f)) {
-    alert("لطفاً فقط فایل PDF انتخاب کنید");
+    toast.error("لطفاً فقط فایل PDF انتخاب کنید", {position: "top-right"});
     e.target.value = "";
     return;
   }
@@ -377,7 +378,7 @@ function onPickAuctionMinutes(e) {
   const f = e.target.files?.[0];
   if (!f) return;
   if (!isPdf(f)) {
-    alert("لطفاً فقط فایل PDF انتخاب کنید");
+    toast.error("لطفاً فقط فایل PDF انتخاب کنید", {position: "top-right"});
     e.target.value = "";
     return;
   }
@@ -413,8 +414,8 @@ function goNext() {
   const hasResults = !!auctionResultsChip.value;
   const hasMinutes = !!auctionMinutesChip.value;
   if (!hasResults || !hasMinutes) {
-    alert(
-        "لطفاً هر دو فایل 'نتایج مزایده' و 'صورت جلسه مزایده' را بارگذاری کنید."
+    toast.error(
+        "لطفاً هر دو فایل 'نتایج مزایده' و 'صورت جلسه مزایده' را بارگذاری کنید.", {position: "top-right"}
     );
     return;
   }

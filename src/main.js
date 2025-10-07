@@ -15,7 +15,9 @@ app.use(router);
 app.use(Vue3Toastify, {
     autoClose: 3000,
     rtl: true,
-    position: toast.POSITION.TOP_RIGHT
+    position: toast.POSITION.TOP_RIGHT,
+    toastClassName: "toastify-rtl-font",
+    bodyClassName: "toastify-rtl-font"
 });
 
 app.mount('#app');

@@ -7,3 +7,8 @@
   );
   font-family: YekanBakh, sans-serif;
 }
+
+/* Toastify font override */
+.toastify-rtl-font {
+    font-family: "YekanBakh", sans-serif !important; /* or 'IranNastaliq' */
+}

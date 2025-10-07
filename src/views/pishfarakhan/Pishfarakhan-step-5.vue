@@ -60,10 +60,10 @@
                 class="flex flex-col items-center"
             >
               <component
-                  :is="index + 1 < 5 ? 'router-link' : 'div'"
-                  :to="index + 1 < 5 ? { name: 'PishfarakhanStep', params: { step: index + 1, id: $route.params.id } } : undefined"
-                  class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
-                  :class="index + 1 === 5 ? 'bg-teal-500 border-teal-500 text-white' : 'bg-gray-100 border-gray-300 text-gray-500'"
+                  :is="index + 1 < currentStep ? 'router-link' : 'div'"
+                  :to="index + 1 < currentStep ? { name: 'PishfarakhanStep', params: { step: index + 1, id: $route.params.id } } : undefined"
+                  class="step-dot"
+                  :class="dotClass(index + 1)"
                   style="text-decoration: none"
               >
                 {{ index + 1 }}
@@ -842,6 +842,20 @@ const steps = [
 ];
 const route = useRoute();
 const contractId = computed(() => route.params.id ?? "—");
+
+const currentStep = computed(() => {
+  const s = Number(route.params.step)
+  if (Number.isFinite(s)) return s
+  return route.name === 'PishfarakhanStep8Edit' ? 8 : 1
+})
+
+// Class resolver for each dot (1..8)
+function dotClass(n) {
+  if (n < currentStep.value) return 'step-dot--done'
+  if (n === currentStep.value) return 'step-dot--current'
+  return 'step-dot--todo'
+}
+
 const activeTab = ref("person");
 const party = ref("");
 
@@ -1083,5 +1097,42 @@ function goNext() {
 <style scoped>
 .main-container {
   margin-bottom: 4rem;
+}
+
+.step-dot {
+  width: 2rem; /* 32px */
+  height: 2rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem; /* text-sm */
+  position: relative;
+  transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
+}
+
+/* 1) PASSED steps – like screenshot #1 (green filled, white number) */
+.step-dot--done {
+  background-color: #16a34a; /* tailwind emerald-600-ish */
+  color: #fff;
+  border: 2px solid transparent;
+}
+
+/* 2) UPCOMING steps – like screenshot #2 (soft gray) */
+.step-dot--todo {
+  background-color: #e9eff5; /* soft gray fill */
+  color: #8795a1; /* muted number */
+  border: 2px solid #d6dee6; /* subtle ring */
+}
+
+/* 3) CURRENT step – like screenshot #3 (teal with double ring) */
+.step-dot--current {
+  background-color: #2fb7c2; /* teal fill */
+  color: #fff;
+  /* two rings: a thin white inner, then teal outer */
+  box-shadow: 0 0 0 3px #ffffff,
+  0 0 0 7px rgba(47, 183, 194, 0.85);
+  transform: translateZ(0); /* crisp edges */
 }
 </style>

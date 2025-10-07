@@ -141,16 +141,7 @@ export default {
       this.ReceivedCode = code;
     },
     SendRequest() {
-      let IsTypeEmpty = !this.ReceivedType?.toString().trim();
-      let IsUserEmpty = !this.ReceivedUser?.toString().trim();
-      let IsPassEmpty = !this.ReceivedPass?.toString().trim();
-      let IsCodeEmpty = !this.ReceivedCode?.toString().trim();
-
-      if (IsTypeEmpty || IsUserEmpty || IsPassEmpty || IsCodeEmpty) {
-        toast.error("لطفاً همه فیلدها را پر کنید.");
-      } else {
-        this.$router.push({name: "CarTable"});
-      }
+      this.$router.push({name: "CarTable"});
     },
     OpenSignIn() {
       this.$router.push({

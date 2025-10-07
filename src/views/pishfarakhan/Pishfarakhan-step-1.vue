@@ -308,7 +308,7 @@ function clearSelectedFile() {
 function goNext() {
   // Only proceed if a PDF has been chosen (viewer URL is set)
   if (!pdfUrl.value) {
-    alert("لطفاً ابتدا یک فایل PDF بارگذاری کنید");
+    toast.error("هیچ مدرکی بارگذاری نشده است.", {position: "top-right"});
     return;
   }
 

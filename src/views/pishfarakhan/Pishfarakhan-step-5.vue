@@ -711,6 +711,7 @@ import {computed, reactive, ref, watch} from "vue";
 import {useRoute} from "vue-router";
 import DatePicker from "vue3-persian-datetime-picker";
 import moment from "moment-jalaali";
+import {toast} from "vue3-toastify";
 
 const progressWidth = computed(
     () => `${((5 - 1) / (steps.length - 1)) * 100}%`
@@ -1072,13 +1073,13 @@ function validateSteppedPageAllEmpty() {
       _markInvalid(el);     // your existing styler
       _attachAutoClear(el); // your existing listener to clear error on change/input
     });
-    alert('لطفاً همه فیلدها را تکمیل کرده و برای آپلودها فایل PDF انتخاب کنید.');
+    toast.error('لطفاً همه فیلدها را تکمیل کرده و برای آپلودها فایل PDF انتخاب کنید.', {position: "top-right"});
     return false; // prevent going to next page
   }
 
   // If any field with a specific validation rule has an error, block next step
   if (_hasSpecificFieldErrorsInActiveTab()) {
-    alert('لطفاً خطاهای مشخص‌شده را برطرف کنید.');
+    toast.error('لطفاً خطاهای مشخص‌شده را برطرف کنید.', {position: "top-right"});
     return false;
   }
 

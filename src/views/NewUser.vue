@@ -119,9 +119,10 @@
                   <select
                       class="w-full rounded-lg border border-gray-300 bg-white py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                   >
-                    <option>مدیر</option>
-                    <option>ثبات</option>
-                    <option>کاربر</option>
+                    <option value="choose" disabled>انتخاب کنید</option>
+                    <option value="manager">مدیر</option>
+                    <option value="stable">ثبات</option>
+                    <option value="user">کاربر</option>
                   </select>
                 </div>
               </div>

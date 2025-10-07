@@ -42,12 +42,15 @@
 
           <div class="flex items-center justify-between relative z-10">
             <div v-for="(step, index) in steps" :key="index" class="flex flex-col items-center">
-              <div
+              <component
+                  :is="index + 1 < 6 ? 'router-link' : 'div'"
+                  :to="index + 1 < 6 ? { name: 'PishfarakhanStep', params: { step: index + 1, id: $route.params.id } } : undefined"
                   class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
                   :class="index + 1 === 6 ? 'bg-teal-500 border-teal-500 text-white' : 'bg-gray-100 border-gray-300 text-gray-500'"
+                  style="text-decoration: none"
               >
                 {{ index + 1 }}
-              </div>
+              </component>
               <span class="text-xs text-center text-gray-600">{{ step }}</span>
             </div>
           </div>
@@ -298,6 +301,10 @@ import {useRoute, useRouter} from 'vue-router'
 import DatePicker from 'vue3-persian-datetime-picker'
 import moment from 'moment-jalaali'
 
+const progressWidth = computed(
+    () => `${((6 - 1) / (steps.length - 1)) * 100}%`
+);
+
 // === Directive: v-numeric (non-negative, Persian/Arabic digits supported) ===
 const vNumeric = {
   beforeMount(el) {
@@ -371,8 +378,6 @@ const preview = reactive({
   rentTotal: '',
   rentMonthly: ''
 })
-
-const progressWidth = computed(() => `${(6 - 1) / (steps.length - 1) * 100}%`)
 
 // helper to normalize to jYYYY/jMM/jDD
 const toJ = (val) => {

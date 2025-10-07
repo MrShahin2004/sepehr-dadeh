@@ -55,20 +55,19 @@
           </div>
           <div class="flex items-center justify-between relative z-10">
             <div
-                v-for="(s, i) in steps"
-                :key="i"
+                v-for="(s, index) in steps"
+                :key="index"
                 class="flex flex-col items-center"
             >
-              <div
+              <component
+                  :is="index + 1 < 5 ? 'router-link' : 'div'"
+                  :to="index + 1 < 5 ? { name: 'PishfarakhanStep', params: { step: index + 1, id: $route.params.id } } : undefined"
                   class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
-                  :class="
-                  i + 1 === 5
-                    ? 'bg-teal-500 border-teal-500 text-white'
-                    : 'bg-gray-100 border-gray-300 text-gray-500'
-                "
+                  :class="index + 1 === 5 ? 'bg-teal-500 border-teal-500 text-white' : 'bg-gray-100 border-gray-300 text-gray-500'"
+                  style="text-decoration: none"
               >
-                {{ i + 1 }}
-              </div>
+                {{ index + 1 }}
+              </component>
               <span class="text-xs text-center text-gray-600">{{ s }}</span>
             </div>
           </div>
@@ -713,6 +712,10 @@ import {useRoute} from "vue-router";
 import DatePicker from "vue3-persian-datetime-picker";
 import moment from "moment-jalaali";
 
+const progressWidth = computed(
+    () => `${((5 - 1) / (steps.length - 1)) * 100}%`
+);
+
 const forms = reactive({
   haghighi: {birthDate: '', postalCode: ''},
   company: {email: '', landline: '', postalCode: ''},
@@ -1018,15 +1021,15 @@ function _hasSpecificFieldErrorsInActiveTab() {
   if (activeTab.value === 'person') {
     return Boolean(
         (forms.haghighi.landline && landlineError.value) ||
-        (forms.haghighi.mobile && mobileError.value)   ||
-        (forms.haghighi.email && emailError.value)     ||
+        (forms.haghighi.mobile && mobileError.value) ||
+        (forms.haghighi.email && emailError.value) ||
         (forms.haghighi.nationalCode && nationalCodeError.value) ||
         (forms.haghighi.postalCode && postalCodeError.value)
     );
   } else if (activeTab.value === 'company') {
     return Boolean(
         (forms.company.landline && companyLandlineError.value) ||
-        (forms.company.email && companyEmailError.value)       ||
+        (forms.company.email && companyEmailError.value) ||
         (forms.company.postalCode && companyPostalCodeError.value)
     );
   }

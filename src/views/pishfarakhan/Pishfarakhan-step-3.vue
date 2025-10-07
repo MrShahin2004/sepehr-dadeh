@@ -6,15 +6,15 @@
       <div class="top-navbar h-32 w-full flex items-center justify-center">
         <div class="absolute left-4 top-2 flex items-center space-x-2">
           <img
-            src="@/assets/images/khamenei.png"
-            class="w-50 h-auto object-contain"
-            alt="Iranian figures"
+              src="@/assets/images/khamenei.png"
+              class="w-50 h-auto object-contain"
+              alt="Iranian figures"
           />
         </div>
         <div class="text-center text-white leading-relaxed">
           <router-link to="/">
             <h1
-              class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
+                class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
             >
               پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان
               رضوی
@@ -23,24 +23,24 @@
         </div>
         <div class="absolute right-4 top-2 flex flex-col items-center">
           <img
-            src="@/assets/images/education.svg"
-            class="w-40 h-auto object-contain"
-            alt="Iranian emblem"
+              src="@/assets/images/education.svg"
+              class="w-40 h-auto object-contain"
+              alt="Iranian emblem"
           />
         </div>
       </div>
     </header>
 
     <main
-      class="main-container mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl"
+        class="main-container mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl"
     >
       <!-- Admin info bar -->
       <div
-        class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6 mx-auto max-w-[98%] px-4"
+          class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6 mx-auto max-w-[98%] px-4"
       >
         <span class="text-sm">اطلاعیه های اخیر</span>
         <span class="px-3 py-1 bg-teal-600 rounded text-sm"
-          >admin : کارشناس ثبت</span
+        >admin : کارشناس ثبت</span
         >
       </div>
 
@@ -49,26 +49,25 @@
         <div class="relative">
           <div class="absolute top-4 left-0 right-0 h-0.5 bg-gray-200 z-0">
             <div
-              class="h-full bg-teal-500 z-0"
-              :style="{ width: progressWidth }"
+                class="h-full bg-teal-500 z-0"
+                :style="{ width: progressWidth }"
             ></div>
           </div>
           <div class="flex items-center justify-between relative z-10">
             <div
-              v-for="(step, index) in steps"
-              :key="index"
-              class="flex flex-col items-center"
+                v-for="(step, index) in steps"
+                :key="index"
+                class="flex flex-col items-center"
             >
-              <div
-                class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
-                :class="
-                  index + 1 === 3
-                    ? 'bg-teal-500 border-teal-500 text-white'
-                    : 'bg-gray-100 border-gray-300 text-gray-500'
-                "
+              <component
+                  :is="index + 1 < 3 ? 'router-link' : 'div'"
+                  :to="index + 1 < 3 ? { name: 'PishfarakhanStep', params: { step: index + 1, id: $route.params.id } } : undefined"
+                  class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
+                  :class="index + 1 === 3 ? 'bg-teal-500 border-teal-500 text-white' : 'bg-gray-100 border-gray-300 text-gray-500'"
+                  style="text-decoration: none"
               >
                 {{ index + 1 }}
-              </div>
+              </component>
               <span class="text-xs text-center text-gray-600">{{ step }}</span>
             </div>
           </div>
@@ -83,10 +82,10 @@
             <!-- Unique ID -->
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2"
-                >کد شناسه یکتا</label
+              >کد شناسه یکتا</label
               >
               <div
-                class="bg-gray-100 px-4 py-3 rounded-lg text-gray-800 font-mono"
+                  class="bg-gray-100 px-4 py-3 rounded-lg text-gray-800 font-mono"
               >
                 {{ contractId }}
               </div>
@@ -99,15 +98,15 @@
               </div>
               <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
                 <button
-                  v-for="opt in processOptions"
-                  :key="opt"
-                  class="px-5 py-2 rounded-xl border transition-colors cursor-pointer"
-                  :class="
+                    v-for="opt in processOptions"
+                    :key="opt"
+                    class="px-5 py-2 rounded-xl border transition-colors cursor-pointer"
+                    :class="
                     proc === opt
                       ? 'bg-[rgba(21,78,193,0.18)] text-[rgb(21,78,193)] border-[rgb(21,78,193)] shadow-sm'
                       : 'bg-transparent text-gray-700 border-gray-300 hover:bg-[rgba(21,78,193,0.08)] hover:text-[rgb(21,78,193)] hover:border-[rgba(21,78,193,0.35)]'
                   "
-                  @click="proc = opt"
+                    @click="proc = opt"
                 >
                   {{ opt }}
                 </button>
@@ -121,15 +120,15 @@
               </div>
               <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
                 <button
-                  v-for="opt in yesNoOptions"
-                  :key="opt.label"
-                  class="px-5 py-2 rounded-xl border transition-colors cursor-pointer"
-                  :class="
+                    v-for="opt in yesNoOptions"
+                    :key="opt.label"
+                    class="px-5 py-2 rounded-xl border transition-colors cursor-pointer"
+                    :class="
                     hasMostanad === opt.value
                       ? 'bg-[rgba(21,78,193,0.18)] text-[rgb(21,78,193)] border-[rgb(21,78,193)] shadow-sm'
                       : 'bg-transparent text-gray-700 border-gray-300 hover:bg-[rgba(21,78,193,0.08)] hover:text-[rgb(21,78,193)] hover:border-[rgba(21,78,193,0.35)]'
                   "
-                  @click="hasMostanad = opt.value"
+                    @click="hasMostanad = opt.value"
                 >
                   {{ opt.label }}
                 </button>
@@ -138,45 +137,45 @@
 
             <!-- SHOW ONLY WHEN 'بلی' IS ACTIVE -->
             <div
-              v-if="hasMostanad === true"
-              class="mt-4 rounded-xl bg-white shadow p-4"
+                v-if="hasMostanad === true"
+                class="mt-4 rounded-xl bg-white shadow p-4"
             >
               <div class="flex items-center justify-between">
                 <h3 class="text-gray-700">بارگذاری مستندات سامانه ستاد</h3>
 
                 <!-- hidden input -->
                 <input
-                  ref="setadInput"
-                  type="file"
-                  class="hidden"
-                  accept="application/pdf"
-                  @change="onSetadPick"
+                    ref="setadInput"
+                    type="file"
+                    class="hidden"
+                    accept="application/pdf"
+                    @change="onSetadPick"
                 />
 
                 <button
-                  class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
-                  @click="$refs.setadInput.click()"
+                    class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+                    @click="$refs.setadInput.click()"
                 >
                   بارگذاری
                 </button>
               </div>
               <!-- chip -->
               <div
-                v-if="selectedSetadPdf"
-                class="mt-4 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
+                  v-if="selectedSetadPdf"
+                  class="mt-4 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
               >
                 <button
-                  type="button"
-                  @click="clearSetad"
-                  class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
-                  aria-label="حذف فایل"
-                  title="حذف فایل"
+                    type="button"
+                    @click="clearSetad"
+                    class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                    aria-label="حذف فایل"
+                    title="حذف فایل"
                 >
                   ✕
                 </button>
 
                 <div
-                  class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                    class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
                 >
                   <div class="font-medium">
                     {{ (selectedSetadPdf.size / 1024).toFixed(2) }}
@@ -185,8 +184,8 @@
                 </div>
 
                 <div
-                  class="text-sm text-gray-800 truncate max-w-[220px]"
-                  :title="selectedSetadPdf.name"
+                    class="text-sm text-gray-800 truncate max-w-[220px]"
+                    :title="selectedSetadPdf.name"
                 >
                   {{ selectedSetadPdf.name }}
                 </div>
@@ -202,17 +201,17 @@
                 </div>
               </div>
               <input
-                ref="contractInput"
-                type="file"
-                accept="application/pdf"
-                class="hidden"
-                @change="onPickContract"
+                  ref="contractInput"
+                  type="file"
+                  accept="application/pdf"
+                  class="hidden"
+                  @change="onPickContract"
               />
               <div class="flex justify-end">
                 <button
-                  type="button"
-                  class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
-                  @click="$refs.contractInput.click()"
+                    type="button"
+                    class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+                    @click="$refs.contractInput.click()"
                 >
                   بارگذاری
                 </button>
@@ -221,38 +220,38 @@
 
             <!-- hidden input -->
             <input
-              ref="contractDocInput"
-              type="file"
-              class="hidden"
-              accept="application/pdf"
-              @change="onContractDocPick"
+                ref="contractDocInput"
+                type="file"
+                class="hidden"
+                accept="application/pdf"
+                @change="onContractDocPick"
             />
 
             <!-- chip -->
             <div
-              v-if="contractDocChip"
-              class="mt-4 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
+                v-if="contractDocChip"
+                class="mt-4 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
             >
               <button
-                type="button"
-                @click="clearContractDoc"
-                class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
-                aria-label="حذف فایل"
-                title="حذف فایل"
+                  type="button"
+                  @click="clearContractDoc"
+                  class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                  aria-label="حذف فایل"
+                  title="حذف فایل"
               >
                 ✕
               </button>
 
               <div
-                class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                  class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
               >
                 <div class="font-medium">{{ contractDocChip.sizeKB }}</div>
                 <div>KB</div>
               </div>
 
               <div
-                class="text-sm text-gray-800 truncate max-w-[220px]"
-                :title="contractDocChip.name"
+                  class="text-sm text-gray-800 truncate max-w-[220px]"
+                  :title="contractDocChip.name"
               >
                 {{ contractDocChip.name }}
               </div>
@@ -267,16 +266,16 @@
                 </div>
               </div>
               <input
-                ref="newsInput"
-                type="file"
-                accept="application/pdf"
-                class="hidden"
+                  ref="newsInput"
+                  type="file"
+                  accept="application/pdf"
+                  class="hidden"
               />
               <div class="flex justify-end">
                 <button
-                  type="button"
-                  class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
-                  @click="$refs.newspaperInput.click()"
+                    type="button"
+                    class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+                    @click="$refs.newspaperInput.click()"
                 >
                   بارگذاری
                 </button>
@@ -285,38 +284,38 @@
 
             <!-- hidden input -->
             <input
-              ref="newspaperInput"
-              type="file"
-              class="hidden"
-              accept="application/pdf"
-              @change="onNewspaperPick"
+                ref="newspaperInput"
+                type="file"
+                class="hidden"
+                accept="application/pdf"
+                @change="onNewspaperPick"
             />
 
             <!-- chip -->
             <div
-              v-if="newspaperChip"
-              class="mt-4 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
+                v-if="newspaperChip"
+                class="mt-4 flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-sm w-fit"
             >
               <button
-                type="button"
-                @click="clearNewspaper"
-                class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
-                aria-label="حذف فایل"
-                title="حذف فایل"
+                  type="button"
+                  @click="clearNewspaper"
+                  class="flex-shrink-0 w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center cursor-pointer"
+                  aria-label="حذف فایل"
+                  title="حذف فایل"
               >
                 ✕
               </button>
 
               <div
-                class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
+                  class="flex-shrink-0 text-xs text-gray-500 w-16 text-center leading-tight"
               >
                 <div class="font-medium">{{ newspaperChip.sizeKB }}</div>
                 <div>KB</div>
               </div>
 
               <div
-                class="text-sm text-gray-800 truncate max-w-[220px]"
-                :title="newspaperChip.name"
+                  class="text-sm text-gray-800 truncate max-w-[220px]"
+                  :title="newspaperChip.name"
               >
                 {{ newspaperChip.name }}
               </div>
@@ -324,23 +323,23 @@
 
             <!-- External note -->
             <div
-              class="rounded-xl bg-white shadow p-5 border border-gray-200 text-sm text-gray-700"
+                class="rounded-xl bg-white shadow p-5 border border-gray-200 text-sm text-gray-700"
             >
               متقاضیان جهت دریافت مجوز نشریه به سامانه جامع رسانه‌های کشوری
               مراجعه فرمایید:
               <a
-                href="https://e-rasaneh.ir"
-                target="_blank"
-                class="text-blue-600 hover:text-blue-800"
-                >e-rasaneh.ir</a
+                  href="https://e-rasaneh.ir"
+                  target="_blank"
+                  class="text-blue-600 hover:text-blue-800"
+              >e-rasaneh.ir</a
               >
             </div>
 
             <div>
               <button
-                type="button"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white cursor-pointer py-3 px-4 rounded-lg"
-                @click="goNext"
+                  type="button"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white cursor-pointer py-3 px-4 rounded-lg"
+                  @click="goNext"
               >
                 ثبت
               </button>
@@ -353,18 +352,18 @@
           <div class="bg-white rounded-lg shadow-sm p-4 overflow-hidden">
             <!-- tabs -->
             <div
-              class="flex flex-wrap gap-2 justify-center sm:justify-start mb-4"
+                class="flex flex-wrap gap-2 justify-center sm:justify-start mb-4"
             >
               <button
-                v-for="opt in pdfTabs"
-                :key="opt.key"
-                class="px-5 py-2 rounded-xl border transition-colors cursor-pointer"
-                :class="
+                  v-for="opt in pdfTabs"
+                  :key="opt.key"
+                  class="px-5 py-2 rounded-xl border transition-colors cursor-pointer"
+                  :class="
                   activeTab === opt.key
                     ? 'bg-[rgba(21,78,193,0.18)] text-[rgb(21,78,193)] border-[rgb(21,78,193)] shadow-sm'
                     : 'bg-transparent text-gray-700 border-gray-300 hover:bg-[rgba(21,78,193,0.08)] hover:text-[rgb(21,78,193)] hover:border-[rgba(21,78,193,0.35)]'
                 "
-                @click="activeTab = opt.key"
+                  @click="activeTab = opt.key"
               >
                 {{ opt.label }}
               </button>
@@ -372,9 +371,9 @@
 
             <div v-if="displayedPdfUrl" class="w-full">
               <iframe
-                :src="displayedPdfUrl"
-                class="w-full h-[105vh] rounded-lg border border-gray-200 block"
-                frameborder="0"
+                  :src="displayedPdfUrl"
+                  class="w-full h-[105vh] rounded-lg border border-gray-200 block"
+                  frameborder="0"
               />
             </div>
             <div v-else class="h-[70vh] flex items-center justify-center">
@@ -388,44 +387,44 @@
     </main>
 
     <!-- Footer (same as step-1/2) -->
-    <hr />
+    <hr/>
     <div class="login-footer">
       <div class="footer-links flex justify-center items-center gap-x-[1rem]">
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >حریم خصوصی</a
-          ></router-link
+        >حریم خصوصی</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >نظرسنجی‌ها</a
-          ></router-link
+        >نظرسنجی‌ها</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >پیوندها</a
-          ></router-link
+        >پیوندها</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >فراخوان‌ها</a
-          ></router-link
+        >فراخوان‌ها</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >آمارها</a
-          ></router-link
+        >آمارها</a
+        ></router-link
         >
         <router-link to="/"
-          ><a
+        ><a
             class="text-white transition hover:cursor-pointer hover:text-blue-500"
-            >صفحه اصلی</a
-          ></router-link
+        >صفحه اصلی</a
+        ></router-link
         >
       </div>
       <div class="footer-desc flex justify-center items-center">
@@ -438,8 +437,8 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
-import { useRoute } from "vue-router";
+import {computed, ref} from "vue";
+import {useRoute} from "vue-router";
 
 const selectedSetadPdf = ref(null);
 const contractPdfUrl = ref(null);
@@ -454,7 +453,7 @@ let contractDocUrl = null;
 let newspaperUrl = null;
 
 const isPdf = (file) =>
-  !!file && (file.type === "application/pdf" || /\.pdf$/i.test(file.name));
+    !!file && (file.type === "application/pdf" || /\.pdf$/i.test(file.name));
 
 const steps = [
   "مجوز اداره کل",
@@ -472,9 +471,9 @@ const proc = ref("اموال منقول");
 
 // Tabs for main PDF viewer
 const pdfTabs = [
-  { key: "contract", label: "متن قرارداد" },
-  { key: "newspaper", label: "روزنامه" },
-  { key: "setad", label: "ستاد" },
+  {key: "contract", label: "متن قرارداد"},
+  {key: "newspaper", label: "روزنامه"},
+  {key: "setad", label: "ستاد"},
 ];
 const activeTab = ref("contract");
 
@@ -490,13 +489,13 @@ const displayedPdfUrl = computed(() => {
 });
 
 const yesNoOptions = [
-  { label: "بلی", value: true },
-  { label: "خیر", value: false },
+  {label: "بلی", value: true},
+  {label: "خیر", value: false},
 ];
 const hasMostanad = ref(false);
 
 const progressWidth = computed(
-  () => `${((3 - 1) / (steps.length - 1)) * 100}%`
+    () => `${((3 - 1) / (steps.length - 1)) * 100}%`
 );
 
 const route = useRoute();
@@ -601,7 +600,7 @@ function goNext() {
   }
 
   window.location.href = `/pishfarakhan/step-4/${encodeURIComponent(
-    contractId.value
+      contractId.value
   )}`;
 }
 </script>
@@ -610,20 +609,24 @@ function goNext() {
 :root {
   --main-title: #dcb417;
 }
+
 .main-title {
   font-family: IranNastaliq, sans-serif;
 }
+
 .main-container {
   margin-bottom: 4rem;
 }
+
 .top-navbar {
   background: #0059e7;
   background: radial-gradient(
-    circle,
-    rgba(0, 89, 231, 1) 0%,
-    rgba(43, 16, 88, 1) 100%
+      circle,
+      rgba(0, 89, 231, 1) 0%,
+      rgba(43, 16, 88, 1) 100%
   );
 }
+
 hr {
   color: white;
   margin-bottom: 1rem;

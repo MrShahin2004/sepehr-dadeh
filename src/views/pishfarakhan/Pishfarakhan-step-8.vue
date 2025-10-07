@@ -36,11 +36,15 @@
           </div>
           <div class="flex items-center justify-between relative z-10">
             <div v-for="(step, index) in steps" :key="index" class="flex flex-col items-center">
-              <div
+              <component
+                  :is="index + 1 < 8 ? 'router-link' : 'div'"
+                  :to="index + 1 < 8 ? { name: 'PishfarakhanStep', params: { step: index + 1, id: $route.params.id } } : undefined"
                   class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold mb-2 bg-white relative z-20"
-                  :class="index + 1 === 8 ? 'bg-teal-500 border-teal-500 text-white' : 'bg-gray-100 border-gray-300 text-gray-500'">
+                  :class="index + 1 === 8 ? 'bg-teal-500 border-teal-500 text-white' : 'bg-gray-100 border-gray-300 text-gray-500'"
+                  style="text-decoration: none"
+              >
                 {{ index + 1 }}
-              </div>
+              </component>
               <span class="text-xs text-center text-gray-600">{{ step }}</span>
             </div>
           </div>
@@ -61,7 +65,8 @@
           >
             ویرایش
           </router-link>
-          <button class="px-4 py-2 rounded-md bg-teal-600 hover:bg-teal-700 text-white cursor-pointer" @click="submitFrm">
+          <button class="px-4 py-2 rounded-md bg-teal-600 hover:bg-teal-700 text-white cursor-pointer"
+                  @click="submitFrm">
             ثبت
           </button>
         </div>

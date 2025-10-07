@@ -100,6 +100,7 @@
 import {computed, onBeforeUnmount, onMounted, ref} from 'vue'
 import {useRoute} from 'vue-router'
 import pdfMake from "@digicole/pdfmake-rtl/build/pdfmake"
+import {toast} from "vue3-toastify";
 // import pdfMake from 'pdfmake/build/pdfmake'
 // import ArabicReshaper from 'arabic-reshaper' // New import for reshaping Persian text
 // فونت‌های فارسی داخل پروژه
@@ -195,8 +196,11 @@ onBeforeUnmount(() => {
 })
 
 function submitFrm() {
-  alert('ثبت شد');
-  window.location.href = "/cartable";
+  toast.success("ثبت شد.", {position: 'top-right'});
+
+  setTimeout(() => {
+    window.location.href = "/cartable";
+  }, 3000);
 }
 </script>
 

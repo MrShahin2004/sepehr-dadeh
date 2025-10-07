@@ -439,6 +439,7 @@
 <script setup>
 import {computed, ref} from "vue";
 import {useRoute} from "vue-router";
+import {toast} from "vue3-toastify";
 
 const selectedSetadPdf = ref(null);
 const contractPdfUrl = ref(null);
@@ -518,7 +519,7 @@ function onPickContract(e) {
   const f = e.target.files?.[0];
   if (!f) return;
   if (!isPdf(f)) {
-    alert("لطفاً فقط فایل PDF انتخاب کنید");
+    toast.error("لطفاً یک فایل PDF بارگذاری کنید.", {position: "top-right"});
     e.target.value = "";
     return;
   }
@@ -536,7 +537,7 @@ function onSetadPick(e) {
   const f = e.target.files?.[0];
   if (!f) return;
   if (!isPdf(f)) {
-    alert("لطفاً فقط فایل PDF انتخاب کنید");
+    toast.error("لطفاً یک فایل PDF بارگذاری کنید.", {position: "top-right"});
     e.target.value = "";
     selectedSetadPdf.value = null;
     return;
@@ -560,7 +561,7 @@ function onNewspaperPick(e) {
   const f = e.target.files?.[0];
   if (!f) return;
   if (!isPdf(f)) {
-    alert("لطفاً فقط فایل PDF انتخاب کنید");
+    toast.error("لطفاً یک فایل PDF بارگذاری کنید.", {position: "top-right"});
     e.target.value = "";
     return;
   }
@@ -602,13 +603,13 @@ function goNext() {
   const hasContract = !!contractDocChip.value;
   const hasNewspaper = !!newspaperChip.value;
   if (!hasContract || !hasNewspaper) {
-    alert("لطفاً فایل‌های 'متن قرارداد' و 'آگهی روزنامه' را بارگذاری کنید.");
+    toast.error("لطفاً فایل‌های 'متن قرارداد' و 'آگهی روزنامه' را بارگذاری کنید.", {position: "top-right"});
     return;
   }
 
   // If 'بلی' selected for Setad docs, ensure Setad file is provided
   if (hasMostanad.value === true && !selectedSetadPdf.value) {
-    alert("با انتخاب گزینه 'بلی'، بارگذاری مستندات سامانه ستاد الزامی است.");
+    toast.error("با انتخاب گزینه 'بلی'، بارگذاری مستندات سامانه ستاد الزامی است.", {position: "top-right"});
     return;
   }
 

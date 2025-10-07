@@ -276,7 +276,16 @@ export default {
       this.modalMessage = "";
     },
     async submitContract() {
-      if (!this.contractTitle.trim() && !this.contractSubject.trim() && !this.selectedFile) {
+      // Unified validation: all three fields are required
+      const titleEmpty = !this.contractTitle?.trim();
+      const subjectEmpty = !this.contractSubject?.trim();
+      const fileEmpty = !this.selectedFile;
+
+      // reflect errors in the UI
+      this.titleError = titleEmpty;
+      this.subjectError = subjectEmpty;
+
+      if (titleEmpty || subjectEmpty || fileEmpty) {
         toast.error('لطفاً همه فیلدها را پر کنید.');
         return;
       }

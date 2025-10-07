@@ -232,6 +232,7 @@
 <script setup>
 import {computed, onBeforeUnmount, ref} from "vue";
 import {useRoute} from "vue-router";
+import {toast} from "vue3-toastify";
 
 const selectedFile = ref(null);
 const fileInput = ref(null); // matches ref="fileInput" in your <input type="file">

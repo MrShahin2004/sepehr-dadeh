@@ -64,7 +64,7 @@
                   :to="index + 1 < currentStep ? { name: 'PishfarakhanStep', params: { step: index + 1, id: $route.params.id } } : undefined"
                   class="step-dot"
                   :class="dotClass(index + 1)"
-                  style="text-decoration: none"
+                  style="text-decoration: none; margin-bottom: 0.5rem;"
               >
                 {{ index + 1 }}
               </component>

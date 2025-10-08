@@ -22,7 +22,7 @@ import RentalProperties from "@/views/RentalProperties.vue";
 const routes = [
     {path: "/", component: HomePage, name: "HomePage"},
     {path: "/reports", component: ContractsReport, name: "ContractsReport", props: true},
-    {path: "/login/", component: LogIn, name: "Login"},
+    {path: "/login", component: LogIn, name: "Login"},
     {path: "/contract/:id", component: ContractDetail, name: "ContractDetail", props: true},
     {path: "/search", component: SearchPage, name: "SearchPage", props: true},
     {path: "/transparency", component: TransparencyPage, name: "TransparencyPage"},

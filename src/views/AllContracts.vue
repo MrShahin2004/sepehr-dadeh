@@ -157,7 +157,7 @@
                     صفحه اصلی
                   </router-link>
                   <router-link
-                      to="/new-contract"
+                      to="/pishfarakhan"
                       class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition"
                   >
                     جدید

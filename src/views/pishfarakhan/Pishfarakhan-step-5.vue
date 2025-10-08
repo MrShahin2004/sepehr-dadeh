@@ -61,7 +61,8 @@
             >
               <component
                   :is="index + 1 < currentStep ? 'router-link' : 'div'"
-                  :to="index + 1 < currentStep ? { name: 'PishfarakhanStep', params: { step: index + 1, id: $route.params.id } } : undefined"
+                  :to="index + 1 < currentStep ? { name: 'PishfarakhanStep', params: { step: index + 1,
+                   id: $route.params.id } } : undefined"
                   class="step-dot"
                   :class="dotClass(index + 1)"
                   style="text-decoration: none; margin-bottom: 0.5rem;"
@@ -89,7 +90,7 @@
               </div>
               <div class="flex items-center gap-2">
                 <span>کد شناسه یکتا:</span>
-                <span class="font-semibold">{{ contractId }}</span>
+                <span class="font-semibold">{{ contractIdFa }}</span>
               </div>
             </div>
             <header
@@ -716,6 +717,10 @@ import {toast} from "vue3-toastify";
 const progressWidth = computed(
     () => `${((5 - 1) / (steps.length - 1)) * 100}%`
 );
+
+// Format Persian digits for UI display
+const toFaDigits = (x) => String(x ?? "").replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
+const contractIdFa = computed(() => toFaDigits(contractId.value));
 
 const forms = reactive({
   haghighi: {birthDate: '', postalCode: ''},

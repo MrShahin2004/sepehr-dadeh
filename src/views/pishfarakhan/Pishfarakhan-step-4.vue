@@ -87,7 +87,7 @@
               <div
                   class="bg-gray-100 px-4 py-3 rounded-lg text-gray-800 font-mono"
               >
-                {{ contractId }}
+                {{ contractIdFa }}
               </div>
             </div>
 
@@ -330,6 +330,10 @@ const steps = [
 const progressWidth = computed(
     () => `${((4 - 1) / (steps.length - 1)) * 100}%`
 );
+
+// Format Persian digits for UI display
+const toFaDigits = (x) => String(x ?? "").replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
+const contractIdFa = computed(() => toFaDigits(contractId.value));
 
 // Upload state
 const auctionResultsChip = ref(null);

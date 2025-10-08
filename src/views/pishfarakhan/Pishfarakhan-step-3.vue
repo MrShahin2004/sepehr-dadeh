@@ -87,7 +87,7 @@
               <div
                   class="bg-gray-100 px-4 py-3 rounded-lg text-gray-800 font-mono"
               >
-                {{ contractId }}
+                {{ contractIdFa }}
               </div>
             </div>
 
@@ -466,6 +466,10 @@ const steps = [
   "مستندات پرداخت",
   "قرارداد",
 ];
+
+// Format Persian digits for UI display
+const toFaDigits = (x) => String(x ?? "").replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
+const contractIdFa = computed(() => toFaDigits(contractId.value));
 
 const processOptions = ["اموال منقول", "اموال غیر منقول", "اجاره"];
 const proc = ref("اموال منقول");

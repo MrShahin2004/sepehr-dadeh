@@ -93,7 +93,7 @@
               <div
                   class="bg-gray-100 px-4 py-3 rounded-lg text-gray-800 font-mono"
               >
-                {{ contractId }}
+                {{ contractIdFa }}
               </div>
             </div>
 
@@ -236,6 +236,10 @@ import {toast} from "vue3-toastify";
 
 const selectedFile = ref(null);
 const fileInput = ref(null); // matches ref="fileInput" in your <input type="file">
+
+// Format Persian digits for UI display
+const toFaDigits = (x) => String(x ?? "").replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
+const contractIdFa = computed(() => toFaDigits(contractId.value));
 
 // Step labels (right to left)
 const steps = [

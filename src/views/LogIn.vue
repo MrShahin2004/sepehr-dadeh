@@ -139,11 +139,6 @@ export default {
     SendRequest() {
       this.$router.push({name: "CarTable"});
     },
-    OpenSignIn() {
-      this.$router.push({
-        name: "SignIn",
-      });
-    },
     ErrorPopup(issue, message) {
       let MsgArg = "";
       if (issue === "Empty field(s)") {

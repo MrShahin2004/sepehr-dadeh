@@ -61,10 +61,6 @@
             فراموشی گذر واژه
           </button>
         </div>
-        <div class="register-link w-[40%] flex justify-evenly items-center">
-          <a href="#" @click="OpenSignIn">ثبت نام کنید</a>
-          <p>حساب کاربری ندارید؟</p>
-        </div>
       </div>
     </div>
     <hr/>

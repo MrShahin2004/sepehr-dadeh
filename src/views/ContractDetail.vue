@@ -63,6 +63,12 @@
               </tr>
               </tbody>
             </table>
+            <button
+                @click="ReturnToHomePage"
+                class="px-8 py-2 bg-gray-200 rounded-xl hover:bg-gray-300 transition
+                  cursor-pointer translate-x-[-176%] translate-y-[270px]">
+              بازگشت
+            </button>
           </div>
           <div v-else class="mt-12 text-center text-gray-500">
             قراردادی یافت نشد.

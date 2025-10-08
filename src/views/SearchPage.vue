@@ -103,22 +103,42 @@
             </div>
 
             <!-- Pagination -->
-            <div class="flex justify-center mt-4 gap-2">
+            <div class="flex justify-center mt-4 gap-2 flex-row-reverse">
+              <!-- Next group (appears leftmost in RTL thanks to flex-row-reverse) -->
               <button
-                  class="cursor-pointer"
-                  v-for="page in totalPages"
-                  :key="page"
-                  @click="currentPage = page"
-                  :class="[
-                  'px-3 py-1 rounded-md',
-                  currentPage === page
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-200 hover:bg-gray-300',
-                ]"
+                  v-if="showNextGroup"
+                  @click="nextPageGroup"
+                  class="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 cursor-pointer"
               >
-                {{ page }}
+                بعدی
+              </button>
+
+              <!-- Visible page numbers (5 at a time) -->
+              <div class="flex gap-2">
+                <button
+                    class="cursor-pointer"
+                    v-for="page in visiblePageNumbers"
+                    :key="page"
+                    @click="goToPage(page)"
+                    :class="[
+                           'px-3 py-1 rounded-md',
+                           currentPage === page ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300',
+                          ]"
+                >
+                  {{ page }}
+                </button>
+              </div>
+
+              <!-- Previous group (appears rightmost in RTL) -->
+              <button
+                  v-if="showPrevGroup"
+                  @click="prevPageGroup"
+                  class="px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 cursor-pointer"
+              >
+                قبلی
               </button>
             </div>
+
           </div>
         </div>
       </div>
@@ -160,6 +180,8 @@ export default {
       filteredAgreements: agreements,
       currentPage: 1,
       itemsPerPage: 10,
+      groupSize: 5,
+      pageWindowStart: 1,
     };
   },
   computed: {
@@ -183,6 +205,22 @@ export default {
       const end = start + this.itemsPerPage;
       return this.filteredAgreements.slice(start, end);
     },
+    visiblePageNumbers() {
+      const pages = [];
+      const total = this.totalPages;
+      const start = this.pageWindowStart;
+      const end = Math.min(start + this.groupSize - 1, total);
+      for (let p = start; p <= end; p++) {
+        pages.push(p);
+      }
+      return pages;
+    },
+    showPrevGroup() {
+      return this.pageWindowStart > 1;
+    },
+    showNextGroup() {
+      return this.pageWindowStart + this.groupSize - 1 < this.totalPages;
+    },
   },
   methods: {
     onSearch() {
@@ -190,18 +228,38 @@ export default {
       if (!q) {
         this.filteredAgreements = this.mergedAgreements;
       } else {
-        this.filteredAgreements = this.mergedAgreements.filter((a) => {
-          return (
-              a.title.includes(q) ||
-              a.description.includes(q) ||
-              String(a.id).includes(q) ||
-              a.date.includes(q)
-          );
-        });
+        this.filteredAgreements = this.mergedAgreements.filter((a) =>
+            a.title.includes(q) ||
+            a.description.includes(q) ||
+            String(a.id).includes(q) ||
+            a.date.includes(q)
+        );
       }
-      this.currentPage = 1; // Reset to first page on new search
+      this.currentPage = 1;       // go back to page 1
+      this.pageWindowStart = 1;   // show the first window (1–5)
     },
-  },
+
+    goToPage(page) {
+      this.currentPage = page;
+      // If needed, snap the window so the chosen page is visible
+      const start = this.pageWindowStart;
+      const end = start + this.groupSize - 1;
+      if (page < start || page > end) {
+        this.pageWindowStart = page - ((page - 1) % this.groupSize);
+      }
+    },
+
+    nextPageGroup() {
+      const nextStart = this.pageWindowStart + this.groupSize;
+      if (nextStart <= this.totalPages) this.pageWindowStart = nextStart;
+    },
+
+    prevPageGroup() {
+      const prevStart = this.pageWindowStart - this.groupSize;
+      this.pageWindowStart = prevStart >= 1 ? prevStart : 1;
+    },
+  }
+  ,
   created() {
     // Initialize results with merged list on load
     this.filteredAgreements = this.mergedAgreements;

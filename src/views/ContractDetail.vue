@@ -145,6 +145,11 @@ export default {
       // If not found in user contracts, check static agreements
       return agreements.find((a) => a.id === numericId);
     },
+  },
+  methods: {
+    ReturnToHomePage() {
+      this.$router.push("/");
+    }
   }
 };
 </script>

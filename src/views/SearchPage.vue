@@ -117,6 +117,7 @@
               <div class="flex gap-2">
                 <button
                     class="cursor-pointer"
+                    style="font-family: YekanBakh, sans-serif"
                     v-for="page in visiblePageNumbers"
                     :key="page"
                     @click="goToPage(page)"

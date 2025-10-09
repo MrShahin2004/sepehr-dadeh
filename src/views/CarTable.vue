@@ -174,6 +174,7 @@
                 <div class="flex justify-center gap-1">
                   <button
                       class="cursor-pointer"
+                      style="font-family: YekanBakh, sans-serif"
                       v-for="page in totalPages"
                       :key="page"
                       @click="currentPage = page"

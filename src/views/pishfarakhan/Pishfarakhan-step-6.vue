@@ -4,32 +4,45 @@
     <header class="relative overflow-hidden">
       <div class="top-navbar h-32 w-full flex items-center justify-center">
         <div class="absolute left-4 top-2 flex items-center space-x-2">
-          <img src="@/assets/images/khamenei.png" class="w-50 h-auto object-contain" alt="Iranian figures"/>
+          <img
+            src="@/assets/images/khamenei.png"
+            class="w-50 h-auto object-contain"
+            alt="Iranian figures"
+          />
         </div>
 
         <div class="text-center text-white leading-relaxed">
           <router-link to="/">
-            <h1 class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]">
-              پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان رضوی
+            <h1
+              class="main-title text-3xl text-shadow-[0_4px_10px_black] text-[var(--main-title)]"
+            >
+              پایگاه اطلاعات قرار دادهای اداره کل آموزش و پرورش استان خراسان
+              رضوی
             </h1>
           </router-link>
         </div>
 
         <div class="absolute right-4 top-2 flex flex-col items-center">
-          <img src="@/assets/images/education.svg" class="w-40 h-auto object-contain" alt="Iranian emblem"/>
+          <img
+            src="@/assets/images/education.svg"
+            class="w-40 h-auto object-contain"
+            alt="Iranian emblem"
+          />
         </div>
       </div>
     </header>
 
     <!-- ==== Main ==== -->
-    <main class="main-container mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl">
+    <main
+      class="main-container mx-auto max-w-[98%] px-4 py-6 bg-gray-100 rounded-xl"
+    >
       <!-- Admin info bar -->
       <div
-          class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6 mx-auto max-w-[98%] px-4"
+        class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6 mx-auto max-w-[98%] px-4"
       >
         <span class="text-sm">اطلاعیه های اخیر</span>
         <span class="px-3 py-1 bg-teal-600 rounded text-sm"
-        >admin : کارشناس ثبت</span
+          >admin : کارشناس ثبت</span
         >
       </div>
 
@@ -37,17 +50,31 @@
       <section class="bg-white rounded-lg shadow-sm p-6 mb-6">
         <div class="relative">
           <div class="absolute top-4 left-0 right-0 h-0.5 bg-gray-200 z-0">
-            <div class="h-full bg-teal-500 z-0" :style="{ width: progressWidth }"></div>
+            <div
+              class="h-full bg-teal-500 z-0"
+              :style="{ width: progressWidth }"
+            ></div>
           </div>
 
           <div class="flex items-center justify-between relative z-10">
-            <div v-for="(step, index) in steps" :key="index" class="flex flex-col items-center">
+            <div
+              v-for="(step, index) in steps"
+              :key="index"
+              class="flex flex-col items-center"
+            >
               <component
-                  :is="index + 1 < currentStep ? 'router-link' : 'div'"
-                  :to="index + 1 < currentStep ? { name: 'PishfarakhanStep', params: { step: index + 1, id: $route.params.id } } : undefined"
-                  class="step-dot"
-                  :class="dotClass(index + 1)"
-                  style="text-decoration: none; margin-bottom: 0.5rem;"
+                :is="index + 1 < currentStep ? 'router-link' : 'div'"
+                :to="
+                  index + 1 < currentStep
+                    ? {
+                        name: 'PishfarakhanStep',
+                        params: { step: index + 1, id: $route.params.id },
+                      }
+                    : undefined
+                "
+                class="step-dot"
+                :class="dotClass(index + 1)"
+                style="text-decoration: none; margin-bottom: 0.5rem"
               >
                 {{ index + 1 }}
               </component>
@@ -65,65 +92,110 @@
           <div class="lg:col-span-7 space-y-5">
             <!-- اطلاعات قرارداد -->
             <div class="rounded-xl border border-gray-200">
-              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">اطلاعات قرارداد</div>
+              <div
+                class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium"
+              >
+                اطلاعات قرارداد
+              </div>
 
               <div class="p-5 space-y-5">
                 <!-- عنوان قرارداد (select فروش / اجاره) -->
                 <div>
-                  <label class="block text-sm text-gray-600 mb-2">عنوان قرارداد</label>
+                  <label class="block text-sm text-gray-600 mb-2"
+                    >عنوان قرارداد</label
+                  >
                   <div class="relative">
                     <select
-                        v-model="form.subject"
-                        class="w-full appearance-none rounded-lg border border-gray-300 bg-white px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      v-model="form.subject"
+                      class="w-full appearance-none rounded-lg border border-gray-300 bg-white px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-teal-500"
                     >
                       <option value="" disabled>انتخاب کنید</option>
-                      <option v-for="opt in subjectOptions" :key="opt" :value="opt">{{ opt }}</option>
+                      <option
+                        v-for="opt in subjectOptions"
+                        :key="opt"
+                        :value="opt"
+                      >
+                        {{ opt }}
+                      </option>
                     </select>
                     <svg
-                        class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                      class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </div>
                 </div>
 
                 <!-- فروش -->
-                <div v-if="form.subject === 'فروش'" class="rounded-xl border border-gray-200 p-5 space-y-4">
+                <div
+                  v-if="form.subject === 'فروش'"
+                  class="rounded-xl border border-gray-200 p-5 space-y-4"
+                >
                   <div>
-                    <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ کل قرارداد (ریال)</label>
+                    <label
+                      class="block text-sm font-medium text-indigo-700 mb-2"
+                      >مبلغ کل قرارداد (ریال)</label
+                    >
                     <input
-                        v-model="form.saleTotal" v-numeric inputmode="numeric"
-                        type="text"
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      v-model="form.saleTotal"
+                      v-numeric
+                      inputmode="numeric"
+                      type="text"
+                      class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                     />
                   </div>
                   <div>
-                    <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ جزء (ریال)</label>
+                    <label
+                      class="block text-sm font-medium text-indigo-700 mb-2"
+                      >مبلغ جزء (ریال)</label
+                    >
                     <input
-                        v-model="form.salePart" v-numeric inputmode="numeric"
-                        type="text"
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      v-model="form.salePart"
+                      v-numeric
+                      inputmode="numeric"
+                      type="text"
+                      class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                     />
                   </div>
                 </div>
 
                 <!-- اجاره -->
-                <div v-if="form.subject === 'اجاره'" class="rounded-xl border border-gray-200 p-5 space-y-4">
+                <div
+                  v-if="form.subject === 'اجاره'"
+                  class="rounded-xl border border-gray-200 p-5 space-y-4"
+                >
                   <div>
-                    <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ کل اجاره (ریال)</label>
+                    <label
+                      class="block text-sm font-medium text-indigo-700 mb-2"
+                      >مبلغ کل اجاره (ریال)</label
+                    >
                     <input
-                        v-model="form.rentTotal" v-numeric inputmode="numeric"
-                        type="text"
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      v-model="form.rentTotal"
+                      v-numeric
+                      inputmode="numeric"
+                      type="text"
+                      class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                     />
                   </div>
                   <div>
-                    <label class="block text-sm font-medium text-indigo-700 mb-2">مبلغ اجاره ماهیانه (ریال)</label>
+                    <label
+                      class="block text-sm font-medium text-indigo-700 mb-2"
+                      >مبلغ اجاره ماهیانه (ریال)</label
+                    >
                     <input
-                        v-model="form.rentMonthly" v-numeric inputmode="numeric"
-                        type="text"
-                        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      v-model="form.rentMonthly"
+                      v-numeric
+                      inputmode="numeric"
+                      type="text"
+                      class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                     />
                   </div>
                 </div>
@@ -131,35 +203,43 @@
                 <!-- تاریخ‌ها -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label class="block text-sm text-gray-600 mb-2">از تاریخ</label>
+                    <label class="block text-sm text-gray-600 mb-2"
+                      >از تاریخ</label
+                    >
                     <div class="relative">
                       <DatePicker
-                          v-model="form.fromDate"
-                          format="jYYYY/jMM/jDD"
-                          display-format="jYYYY/jMM/jDD"
-                          :auto-submit="true"
-                          :editable="true"
-                          :input-class="'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500'"
+                        v-model="form.fromDate"
+                        format="jYYYY/jMM/jDD"
+                        display-format="jYYYY/jMM/jDD"
+                        :auto-submit="true"
+                        :editable="true"
+                        :input-class="'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500'"
                       />
                       <span class="absolute right-3 top-2.5">
-                        <i class="fa-regular fa-calendar-days text-gray-500"></i>
+                        <i
+                          class="fa-regular fa-calendar-days text-gray-500"
+                        ></i>
                       </span>
                     </div>
                   </div>
 
                   <div>
-                    <label class="block text-sm text-gray-600 mb-2">تا تاریخ</label>
+                    <label class="block text-sm text-gray-600 mb-2"
+                      >تا تاریخ</label
+                    >
                     <div class="relative">
                       <DatePicker
-                          v-model="form.toDate"
-                          format="jYYYY/jMM/jDD"
-                          display-format="jYYYY/jMM/jDD"
-                          :auto-submit="true"
-                          :editable="true"
-                          :input-class="'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500'"
+                        v-model="form.toDate"
+                        format="jYYYY/jMM/jDD"
+                        display-format="jYYYY/jMM/jDD"
+                        :auto-submit="true"
+                        :editable="true"
+                        :input-class="'w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500'"
                       />
                       <span class="absolute right-3 top-2.5">
-                        <i class="fa-regular fa-calendar-days text-gray-500"></i>
+                        <i
+                          class="fa-regular fa-calendar-days text-gray-500"
+                        ></i>
                       </span>
                     </div>
                   </div>
@@ -169,33 +249,48 @@
 
             <!-- ناظر قرارداد -->
             <div class="rounded-xl border border-gray-200">
-              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">ناظر قرارداد</div>
+              <div
+                class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium"
+              >
+                ناظر قرارداد
+              </div>
               <div class="p-5">
                 <label class="block text-sm text-gray-600 mb-2">نام ناظر</label>
                 <input
-                    v-model="form.supervisor"
-                    type="text"
-                    class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  v-model="form.supervisor"
+                  type="text"
+                  class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 />
               </div>
             </div>
 
             <!-- نوع تضمین قرارداد -->
             <div>
-              <label class="block text-sm text-gray-600 mb-2">نوع تضمین قرارداد</label>
+              <label class="block text-sm text-gray-600 mb-2"
+                >نوع تضمین قرارداد</label
+              >
               <div class="relative">
                 <select
-                    v-model="form.guarantee"
-                    class="w-full appearance-none rounded-lg border border-gray-300 bg-white px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  v-model="form.guarantee"
+                  class="w-full appearance-none rounded-lg border border-gray-300 bg-white px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 >
                   <option value="" disabled>انتخاب کنید</option>
-                  <option v-for="g in guaranteeOptions" :key="g" :value="g">{{ g }}</option>
+                  <option v-for="g in guaranteeOptions" :key="g" :value="g">
+                    {{ g }}
+                  </option>
                 </select>
                 <svg
-                    class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </div>
             </div>
@@ -203,12 +298,14 @@
             <!-- ثبت اطلاعات -->
             <div class="pt-2">
               <button
-                  type="button"
-                  :disabled="!isFormComplete"
-                  @click="handleSubmit"
-                  :class="[
+                type="button"
+                :disabled="!isFormComplete"
+                @click="handleSubmit"
+                :class="[
                   'w-full rounded-md text-white py-2 text-sm tracking-wide transition',
-                  isFormComplete ? 'bg-[#154ec1] cursor-pointer' : 'bg-[#a3b3ff] cursor-not-allowed'
+                  isFormComplete
+                    ? 'bg-[#154ec1] cursor-pointer'
+                    : 'bg-[#a3b3ff] cursor-not-allowed',
                 ]"
               >
                 ثبت اطلاعات
@@ -218,51 +315,91 @@
 
           <div class="lg:col-span-5">
             <div class="rounded-xl border border-gray-200">
-              <div class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium">پیش نمایش اطلاعات قرارداد</div>
+              <div
+                class="px-5 py-4 border-b border-gray-200 text-gray-700 font-medium"
+              >
+                پیش نمایش اطلاعات قرارداد
+              </div>
 
               <div class="divide-y divide-gray-200">
                 <!-- موضوع قرارداد -->
-                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
+                <div
+                  class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
                   <span class="text-sm">موضوع قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">{{ preview.subject || '---' }}</span>
+                  <span class="text-sm font-medium text-gray-800">{{
+                    preview.subject || "---"
+                  }}</span>
                 </div>
 
                 <!-- فروش: مبالغ -->
-                <div v-if="form.subject === 'فروش'" class="flex items-center justify-between px-5 py-3 text-gray-600">
+                <div
+                  v-if="form.subject === 'فروش'"
+                  class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
                   <span class="text-sm">مبلغ کل قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">{{ preview.saleTotal || '---' }}</span>
+                  <span class="text-sm font-medium text-gray-800">{{
+                    preview.saleTotal || "---"
+                  }}</span>
                 </div>
-                <div v-if="form.subject === 'فروش'" class="flex items-center justify-between px-5 py-3 text-gray-600">
+                <div
+                  v-if="form.subject === 'فروش'"
+                  class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
                   <span class="text-sm">مبلغ جزء:</span>
-                  <span class="text-sm font-medium text-gray-800">{{ preview.salePart || '---' }}</span>
+                  <span class="text-sm font-medium text-gray-800">{{
+                    preview.salePart || "---"
+                  }}</span>
                 </div>
 
                 <!-- اجاره: مبالغ -->
-                <div v-if="form.subject === 'اجاره'" class="flex items-center justify-between px-5 py-3 text-gray-600">
+                <div
+                  v-if="form.subject === 'اجاره'"
+                  class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
                   <span class="text-sm">مبلغ کل اجاره:</span>
-                  <span class="text-sm font-medium text-gray-800">{{ preview.rentTotal || '---' }}</span>
+                  <span class="text-sm font-medium text-gray-800">{{
+                    preview.rentTotal || "---"
+                  }}</span>
                 </div>
-                <div v-if="form.subject === 'اجاره'" class="flex items-center justify-between px-5 py-3 text-gray-600">
+                <div
+                  v-if="form.subject === 'اجاره'"
+                  class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
                   <span class="text-sm">مبلغ اجاره ماهیانه:</span>
-                  <span class="text-sm font-medium text-gray-800">{{ preview.rentMonthly || '---' }}</span>
+                  <span class="text-sm font-medium text-gray-800">{{
+                    preview.rentMonthly || "---"
+                  }}</span>
                 </div>
 
                 <!-- مدت قرارداد -->
-                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
+                <div
+                  class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
                   <span class="text-sm">مدت قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">{{ preview.duration }}</span>
+                  <span class="text-sm font-medium text-gray-800">{{
+                    preview.duration
+                  }}</span>
                 </div>
 
                 <!-- ناظر -->
-                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
+                <div
+                  class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
                   <span class="text-sm">ناظر قرارداد:</span>
-                  <span class="text-sm font-medium text-gray-800">{{ preview.supervisor || '---' }}</span>
+                  <span class="text-sm font-medium text-gray-800">{{
+                    preview.supervisor || "---"
+                  }}</span>
                 </div>
 
                 <!-- نوع تضمین -->
-                <div class="flex items-center justify-between px-5 py-3 text-gray-600">
+                <div
+                  class="flex items-center justify-between px-5 py-3 text-gray-600"
+                >
                   <span class="text-sm">نوع تضمین:</span>
-                  <span class="text-sm font-medium text-gray-800">{{ preview.guarantee || '---' }}</span>
+                  <span class="text-sm font-medium text-gray-800">{{
+                    preview.guarantee || "---"
+                  }}</span>
                 </div>
               </div>
             </div>
@@ -272,51 +409,78 @@
     </main>
 
     <!-- ==== Footer (unchanged) ==== -->
-    <hr/>
+    <hr />
     <div class="login-footer">
       <div class="footer-links flex justify-center items-center gap-x-[1rem]">
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">حریم خصوصی</a>
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >حریم خصوصی</a
+          >
         </router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">نظرسنجی‌ها</a>
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >نظرسنجی‌ها</a
+          >
         </router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">پیوندها</a>
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >پیوندها</a
+          >
         </router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">فراخوان‌ها</a>
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >فراخوان‌ها</a
+          >
         </router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">آمارها</a>
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >آمارها</a
+          >
         </router-link>
-        <router-link to="/"><a class="text-white transition hover:cursor-pointer hover:text-blue-500">صفحه اصلی</a>
+        <router-link to="/"
+          ><a
+            class="text-white transition hover:cursor-pointer hover:text-blue-500"
+            >صفحه اصلی</a
+          >
         </router-link>
       </div>
       <div class="footer-desc flex justify-center items-center">
-        <p class="text-[white]">© کلیه حقوق این پایگاه به سپهر داده تعلق دارد</p>
+        <p class="text-[white]">
+          © کلیه حقوق این پایگاه به سپهر داده تعلق دارد
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {computed, reactive, watch} from 'vue'
-import {useRoute, useRouter} from 'vue-router'
-import DatePicker from 'vue3-persian-datetime-picker'
-import moment from 'moment-jalaali'
+import { computed, reactive, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import DatePicker from "vue3-persian-datetime-picker";
+import moment from "moment-jalaali";
 
 const progressWidth = computed(
-    () => `${((6 - 1) / (steps.length - 1)) * 100}%`
+  () => `${((6 - 1) / (steps.length - 1)) * 100}%`,
 );
 
 // === Directive: v-numeric (non-negative, Persian/Arabic digits supported) ===
 const vNumeric = {
   beforeMount(el) {
-    const persian = '۰۱۲۳۴۵۶۷۸۹';
-    const arabic = '٠١٢٣٤٥٦٧٨٩';
-    const toEnglishDigits = (str) => str
-        .replace(/[۰-۹]/g, d => String(persian.indexOf(d)))
-        .replace(/[٠-٩]/g, d => String(arabic.indexOf(d)));
+    const persian = "۰۱۲۳۴۵۶۷۸۹";
+    const arabic = "٠١٢٣٤٥٦٧٨٩";
+    const toEnglishDigits = (str) =>
+      str
+        .replace(/[۰-۹]/g, (d) => String(persian.indexOf(d)))
+        .replace(/[٠-٩]/g, (d) => String(arabic.indexOf(d)));
     const sanitize = (value) => {
-      if (value == null) return '';
+      if (value == null) return "";
       let v = toEnglishDigits(String(value));
-      v = v.replace(/\D/g, ''); // keep digits only (no negatives)
+      v = v.replace(/\D/g, ""); // keep digits only (no negatives)
       return v;
     };
     const onInput = () => {
@@ -324,149 +488,149 @@ const vNumeric = {
       if (el.value !== cleaned) {
         el.value = cleaned;
         // ensure v-model updates
-        el.dispatchEvent(new Event('input', {bubbles: true}));
+        el.dispatchEvent(new Event("input", { bubbles: true }));
       }
     };
-    el.addEventListener('input', onInput);
-    el._numericCleanup = () => el.removeEventListener('input', onInput);
+    el.addEventListener("input", onInput);
+    el._numericCleanup = () => el.removeEventListener("input", onInput);
   },
   unmounted(el) {
     if (el._numericCleanup) el._numericCleanup();
-  }
+  },
 };
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
 // Works for /pishfarakhan/step-:step/:id and also for step-8-edit.
 // If there is no :step param, we fall back to 8 for the edit page, else 1.
 const currentStep = computed(() => {
-  const s = Number(route.params.step)
-  if (Number.isFinite(s)) return s
-  return route.name === 'PishfarakhanStep8Edit' ? 8 : 1
-})
+  const s = Number(route.params.step);
+  if (Number.isFinite(s)) return s;
+  return route.name === "PishfarakhanStep8Edit" ? 8 : 1;
+});
 
 // Class resolver for each dot (1..8)
 function dotClass(n) {
-  if (n < currentStep.value) return 'step-dot--done'
-  if (n === currentStep.value) return 'step-dot--current'
-  return 'step-dot--todo'
+  if (n < currentStep.value) return "step-dot--done";
+  if (n === currentStep.value) return "step-dot--current";
+  return "step-dot--todo";
 }
 
-
 const steps = [
-  'مجوز اداره کل',
-  'نامه کارشناسی',
-  'فرآیند درخواست',
-  'نتایج مزایده',
-  'مشخصات',
-  'اطلاعات قرارداد',
-  'مستندات پرداخت',
-  'قرارداد'
-]
+  "مجوز اداره کل",
+  "نامه کارشناسی",
+  "فرآیند درخواست",
+  "نتایج مزایده",
+  "مشخصات",
+  "اطلاعات قرارداد",
+  "مستندات پرداخت",
+  "قرارداد",
+];
 
 // only the two options used for the dynamic behavior
-const subjectOptions = ['فروش', 'اجاره']
+const subjectOptions = ["فروش", "اجاره"];
 
 const form = reactive({
-  subject: '',
+  subject: "",
   // dynamic money fields
-  saleTotal: '',
-  salePart: '',
-  rentTotal: '',
-  rentMonthly: '',
+  saleTotal: "",
+  salePart: "",
+  rentTotal: "",
+  rentMonthly: "",
   // dates & other fields
-  fromDate: '',
-  toDate: '',
-  supervisor: '',
-  guarantee: ''
-})
+  fromDate: "",
+  toDate: "",
+  supervisor: "",
+  guarantee: "",
+});
 
-const guaranteeOptions = ["ضمانت نامه بانکی", "حساب سپرده", "سایر"]
+const guaranteeOptions = ["ضمانت نامه بانکی", "حساب سپرده", "سایر"];
 
 const preview = reactive({
-  subject: '',
-  duration: '--- تا ---',
-  supervisor: '',
-  guarantee: '',
-  saleTotal: '',
-  salePart: '',
-  rentTotal: '',
-  rentMonthly: ''
-})
+  subject: "",
+  duration: "--- تا ---",
+  supervisor: "",
+  guarantee: "",
+  saleTotal: "",
+  salePart: "",
+  rentTotal: "",
+  rentMonthly: "",
+});
 
 // helper to normalize to jYYYY/jMM/jDD
 const toJ = (val) => {
   try {
-    if (!val) return ''
-    let m = moment(val, 'jYYYY/jMM/jDD', true)
+    if (!val) return "";
+    let m = moment(val, "jYYYY/jMM/jDD", true);
     if (!m.isValid()) {
-      m = moment(val)
+      m = moment(val);
     }
-    return m.isValid() ? m.format('jYYYY/jMM/jDD') : ''
+    return m.isValid() ? m.format("jYYYY/jMM/jDD") : "";
   } catch {
-    return ''
+    return "";
   }
-}
+};
 
 watch(
-    () => ({
-      subject: form.subject,
-      supervisor: form.supervisor,
-      guarantee: form.guarantee,
-      fromDate: form.fromDate,
-      toDate: form.toDate,
-      saleTotal: form.saleTotal,
-      salePart: form.salePart,
-      rentTotal: form.rentTotal,
-      rentMonthly: form.rentMonthly
-    }),
-    v => {
-      preview.subject = v.subject
-      preview.supervisor = v.supervisor
-      preview.guarantee = v.guarantee
-      preview.saleTotal = v.saleTotal
-      preview.salePart = v.salePart
-      preview.rentTotal = v.rentTotal
-      preview.rentMonthly = v.rentMonthly
+  () => ({
+    subject: form.subject,
+    supervisor: form.supervisor,
+    guarantee: form.guarantee,
+    fromDate: form.fromDate,
+    toDate: form.toDate,
+    saleTotal: form.saleTotal,
+    salePart: form.salePart,
+    rentTotal: form.rentTotal,
+    rentMonthly: form.rentMonthly,
+  }),
+  (v) => {
+    preview.subject = v.subject;
+    preview.supervisor = v.supervisor;
+    preview.guarantee = v.guarantee;
+    preview.saleTotal = v.saleTotal;
+    preview.salePart = v.salePart;
+    preview.rentTotal = v.rentTotal;
+    preview.rentMonthly = v.rentMonthly;
 
-      const fromStr = toJ(v.fromDate) || '---'
-      const toStr = toJ(v.toDate) || '---'
-      preview.duration = `${fromStr} تا ${toStr}`
-    },
-    {immediate: true, deep: true}
-)
+    const fromStr = toJ(v.fromDate) || "---";
+    const toStr = toJ(v.toDate) || "---";
+    preview.duration = `${fromStr} تا ${toStr}`;
+  },
+  { immediate: true, deep: true },
+);
 
 /* ======== ENABLE/DISABLE LOGIC FOR BUTTON ======== */
-const isNonEmpty = (v) => (v !== null && v !== undefined && String(v).trim() !== '')
+const isNonEmpty = (v) =>
+  v !== null && v !== undefined && String(v).trim() !== "";
 const isFormComplete = computed(() => {
   // always require subject selection
-  if (!isNonEmpty(form.subject)) return false
+  if (!isNonEmpty(form.subject)) return false;
 
   // fields common to both modes
-  const common = ['fromDate', 'toDate', 'supervisor', 'guarantee']
-  if (!common.every((k) => isNonEmpty(form[k]))) return false
+  const common = ["fromDate", "toDate", "supervisor", "guarantee"];
+  if (!common.every((k) => isNonEmpty(form[k]))) return false;
 
   // dynamic fields by subject
-  if (form.subject === 'فروش') {
-    return ['saleTotal', 'salePart'].every((k) => isNonEmpty(form[k]))
+  if (form.subject === "فروش") {
+    return ["saleTotal", "salePart"].every((k) => isNonEmpty(form[k]));
   }
-  if (form.subject === 'اجاره') {
-    return ['rentTotal', 'rentMonthly'].every((k) => isNonEmpty(form[k]))
+  if (form.subject === "اجاره") {
+    return ["rentTotal", "rentMonthly"].every((k) => isNonEmpty(form[k]));
   }
-  return false
-})
+  return false;
+});
 
 function saveAndNext() {
-  const id = route.params.id
-  router.push(`/pishfarakhan/step-7/${id}`)
+  const id = route.params.id;
+  router.push(`/pishfarakhan/step-7/${id}`);
 }
 
 function handleSubmit() {
   if (!isFormComplete.value) {
     return;
   } else {
-    saveAndNext()
+    saveAndNext();
   }
 }
 </script>
@@ -486,7 +650,8 @@ function handleSubmit() {
   font-weight: 700;
   font-size: 0.875rem; /* text-sm */
   position: relative;
-  transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
+  transition: transform 0.15s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease, color 0.2s ease;
 }
 
 /* 1) PASSED steps – like screenshot #1 (green filled, white number) */
@@ -508,8 +673,7 @@ function handleSubmit() {
   background-color: #2fb7c2; /* teal fill */
   color: #fff;
   /* two rings: a thin white inner, then teal outer */
-  box-shadow: 0 0 0 3px #ffffff,
-  0 0 0 7px rgba(47, 183, 194, 0.85);
+  box-shadow: 0 0 0 3px #ffffff, 0 0 0 7px rgba(47, 183, 194, 0.85);
   transform: translateZ(0); /* crisp edges */
 }
 </style>

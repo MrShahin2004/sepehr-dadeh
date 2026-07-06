@@ -96,7 +96,7 @@
                   >
                     <td class="py-3 px-4">
                       <button
-                          class="text-blue-600 hover:text-blue-800 p-1 rounded"
+                          @click="simulateDownload(item.id)" class="text-blue-600 hover:text-blue-800 p-1 rounded cursor-pointer transition-colors"
                       >
                         <svg
                             class="w-5 h-5"
@@ -306,6 +306,7 @@
 
 <script>
 import agreements from "@/data/agreements.js";
+import { toast } from 'vue3-toastify';
 
 export default {
   name: "CarTable",
@@ -341,6 +342,12 @@ export default {
   methods: {
     GoToDashboard() {
       this.$router.push({name: "DashBoard"});
+    },
+    simulateDownload(id) {
+      toast.success(`درخواست دریافت فایل قرارداد (شناسه: ${id}) به سرور ارسال شد.`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
   }
 };

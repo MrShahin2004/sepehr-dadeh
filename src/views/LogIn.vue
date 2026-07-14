@@ -2,44 +2,44 @@
   <div class="flex flex-col justify-between z-1">
     <div class="flex justify-between relative">
       <img
-          class="w-[160px]"
-          src="@/assets/images/khamenei.png"
-          alt="khamenei_image"
+        class="w-[160px]"
+        src="@/assets/images/khamenei.png"
+        alt="khamenei_image"
       />
       <router-link to="/">
         <h1
-            class="text-[30px] absolute left-[50%] top-[90px] translate-x-[-50%] translate-y-[-100%] text-shadow-[0_4px_10px_black]"
-            style="font-family: 'IranNastaliq', 'cursive'"
+          class="text-[30px] absolute left-[50%] top-[90px] translate-x-[-50%] translate-y-[-100%] text-shadow-[0_4px_10px_black]"
+          style="font-family: 'IranNastaliq', 'cursive'"
         >
           پایگاه اطلاعات قراردادهای اداره کل آموزش و پرورش استان خراسان رضوی
         </h1>
       </router-link>
       <img
-          class="w-[160px]"
-          src="@/assets/images/education.svg"
-          alt="education_image"
+        class="w-[160px]"
+        src="@/assets/images/education.svg"
+        alt="education_image"
       />
     </div>
     <div class="login-body w-full h-full flex justify-center items-center">
       <div
-          class="w-[500px] h-[600px] bg-[var(--body-bg)] flex flex-col justify-between items-center rounded-[10px]"
+        class="w-[500px] h-[600px] bg-[var(--body-bg)] flex flex-col justify-between items-center rounded-[10px]"
       >
         <p
-            class="body-title text-[15px] bg-[var(--title-bg)] w-[90%] box-border h-fit rounded-[6px]"
-            dir="rtl"
+          class="body-title text-[15px] bg-[var(--title-bg)] w-[90%] box-border h-fit rounded-[6px]"
+          dir="rtl"
         >
           ورود به سامانه کشوری برون سپاری
         </p>
         <div
-            class="body-inputs w-full flex flex-col justify-center items-center"
+          class="body-inputs w-full flex flex-col justify-center items-center"
         >
-          <TypeSelect @SendType="AssignType($event)"/>
-          <UserName @SendUser="AssignUser($event)"/>
-          <PassWord @SendPass="AssignPass($event)"/>
-          <SecurityCode @SendCode="AssignCode($event)"/>
+          <TypeSelect @SendType="AssignType($event)" />
+          <UserName @SendUser="AssignUser($event)" />
+          <PassWord @SendPass="AssignPass($event)" />
+          <SecurityCode @SendCode="AssignCode($event)" />
         </div>
         <div
-            class="body-desc text-[16px] flex flex-col justify-center items-center"
+          class="body-desc text-[16px] flex flex-col justify-center items-center"
         >
           <p>فیلد گذر واژه به کوچکی و بزرگی حروف حساس است</p>
           <p>گذر واژه باید ترکیبی از عدد و حروف باشد</p>
@@ -47,42 +47,42 @@
           <p>به زبان صفحه کلید خود دقت کنید تا روی زبان درست تنظیم شده باشد</p>
         </div>
         <div
-            class="buttons flex flex-col md:flex-row justify-center items-center gap-4"
+          class="buttons flex flex-col md:flex-row justify-center items-center gap-4"
         >
           <button
-              @click="SendRequest"
-              class="bg-[var(--btn-bg)] text-[white] w-[150px] h-[50px] rounded-[10px] hover:cursor-pointer"
+            @click="SendRequest"
+            class="bg-[var(--btn-bg)] text-[white] w-[150px] h-[50px] rounded-[10px] hover:cursor-pointer"
           >
             ورود به سامانه
           </button>
           <button
-              class="bg-[var(--btn-bg)] text-[white] w-[150px] h-[50px] rounded-[10px] hover:cursor-pointer"
+            class="bg-[var(--btn-bg)] text-[white] w-[150px] h-[50px] rounded-[10px] hover:cursor-pointer"
           >
             فراموشی گذر واژه
           </button>
         </div>
       </div>
     </div>
-    <hr/>
+    <hr />
     <div class="login-footer">
       <div class="footer-links flex justify-center items-center gap-x-[1rem]">
         <a class="text-white transition hover:cursor-pointer" href="#"
-        >حریم خصوصی</a
+          >حریم خصوصی</a
         >
         <a class="text-white transition hover:cursor-pointer" href="#"
-        >نظرسنجی‌ها</a
+          >نظرسنجی‌ها</a
         >
         <a class="text-white transition hover:cursor-pointer" href="#"
-        >پیوندها</a
+          >پیوندها</a
         >
         <a class="text-white transition hover:cursor-pointer" href="#"
-        >فراخوان‌ها</a
+          >فراخوان‌ها</a
         >
         <a class="text-white transition hover:cursor-pointer" href="#"
-        >آمارها</a
+          >آمارها</a
         >
         <a class="text-white transition hover:cursor-pointer" href="#"
-        >صفحه اصلی</a
+          >صفحه اصلی</a
         >
       </div>
       <div class="footer-desc flex justify-center items-center">
@@ -92,7 +92,7 @@
       </div>
     </div>
     <div
-        class="popup w-[400px] h-[150px] rounded-[6px] z-10 absolute top-[0] right-[0]"
+      class="popup w-[400px] h-[150px] rounded-[6px] z-10 absolute top-[0] right-[0]"
     ></div>
   </div>
 </template>
@@ -102,7 +102,7 @@ import TypeSelect from "@/components/LoginPageComps/TypeSelect.vue";
 import UserName from "@/components/LoginPageComps/UserName.vue";
 import PassWord from "@/components/LoginPageComps/PassWord.vue";
 import SecurityCode from "@/components/LoginPageComps/SecurityCode.vue";
-// import {toast} from "vue3-toastify";
+import { toast } from "vue3-toastify";
 // import {jwtDecode} from "jwt-decode";
 
 export default {
@@ -137,7 +137,27 @@ export default {
       this.ReceivedCode = code;
     },
     SendRequest() {
-      this.$router.push({name: "CarTable"});
+      const type = this.ReceivedType?.trim();
+      const user = this.ReceivedUser?.trim();
+      const pass = this.ReceivedPass?.trim();
+      const code = this.ReceivedCode?.toString().trim();
+
+      if (!type || type === "انتخاب کنید" || !user || !pass || !code) {
+        toast.error("لطفاً همه فیلدها را پر کنید.", {
+          autoClose: 4000,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        return;
+      }
+
+      toast.success("ورود به سامانه با موفقیت انجام شد.", {
+        autoClose: 2500,
+        position: toast.POSITION.TOP_RIGHT,
+      });
+
+      setTimeout(() => {
+        this.$router.push({ name: "CarTable" });
+      }, 1000);
     },
     ErrorPopup(issue, message) {
       let MsgArg = "";
@@ -174,10 +194,10 @@ export default {
       PopupEl.style.transform = "translateX(0)";
       PopupEl.classList.remove("top-[0]", "right-[0]");
       PopupEl.classList.add(
-          "popup-show",
-          "top-[10px]",
-          "right-[10px]",
-          "bg-[#9c2b2e]"
+        "popup-show",
+        "top-[10px]",
+        "right-[10px]",
+        "bg-[#9c2b2e]",
       );
       PopupEl.innerHTML = `
           <div class="w-[100%] h-[100%] flex justify-center items-center">
@@ -192,10 +212,10 @@ export default {
           PopupEl.style.transform = "translateX(100%)";
           PopupEl.style.display = "none";
           PopupEl.classList.remove(
-              "popup-hide",
-              "top-[10px]",
-              "right-[10px]",
-              "bg-[#9c2b2e]"
+            "popup-hide",
+            "top-[10px]",
+            "right-[10px]",
+            "bg-[#9c2b2e]",
           );
         }, 500);
       }, 3000);
@@ -206,10 +226,10 @@ export default {
       PopupEl.style.transform = "translateX(0)";
       PopupEl.classList.remove("top-[0]", "right-[0]");
       PopupEl.classList.add(
-          "popup-show",
-          "top-[10px]",
-          "right-[10px]",
-          "bg-[#4caf50]"
+        "popup-show",
+        "top-[10px]",
+        "right-[10px]",
+        "bg-[#4caf50]",
       );
       PopupEl.innerHTML = `
           <div class="w-[100%] h-[100%] flex justify-center items-center">
@@ -224,10 +244,10 @@ export default {
           PopupEl.style.transform = "translateX(100%)";
           PopupEl.style.display = "none";
           PopupEl.classList.remove(
-              "popup-hide",
-              "top-[10px]",
-              "right-[10px]",
-              "bg-[#4caf50]"
+            "popup-hide",
+            "top-[10px]",
+            "right-[10px]",
+            "bg-[#4caf50]",
           );
         }, 500);
       }, 2000);
@@ -254,9 +274,9 @@ export default {
 #body {
   background: #0059e7;
   background: radial-gradient(
-      circle,
-      rgba(0, 89, 231, 1) 0%,
-      rgba(43, 16, 88, 1) 100%
+    circle,
+    rgba(0, 89, 231, 1) 0%,
+    rgba(43, 16, 88, 1) 100%
   );
   font-family: YekanBakh, sans-serif;
 }

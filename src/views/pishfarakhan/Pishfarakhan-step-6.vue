@@ -42,7 +42,7 @@
       >
         <span class="text-sm">اطلاعیه های اخیر</span>
         <span class="px-3 py-1 bg-teal-600 rounded text-sm"
-          >admin : کارشناس ثبت</span
+          >Shahin Hashemi : کارشناس ثبت</span
         >
       </div>
 

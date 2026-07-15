@@ -1,11 +1,5 @@
 <template>
-  <!-- Loading overlay injected -->
-  <div v-if="isLoading" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white/100">
-    <img src="../assets/images/loading.png" alt="loading" class="w-24 h-24 animate-spin"/>
-    <p class="mt-4 text-lg text-gray-700">در حال بارگذاری...</p>
-  </div>
-
-  <div class="w-full flex flex-col items-center" v-show="!isLoading">
+  <div class="w-full flex flex-col items-center">
     <header class="flex justify-between w-full px-4 sm:px-8 pt-4">
       <img
           class="w-[191px] h-[100px]"
@@ -39,7 +33,7 @@
             <!-- Left Panel -->
             <div class="w-64 bg-[#48b3bd] rounded-lg p-4 text-white">
               <div class="text-center mb-4">
-                <h3 class="text-lg font-semibold mb-2">admin : کارشناس ثبت</h3>
+                <h3 class="text-lg font-semibold mb-2">Shahin Hashemi : کارشناس ثبت</h3>
                 <div
                     class="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center"
                 >
@@ -102,7 +96,8 @@
                   >
                     <td class="py-3 px-4">
                       <button
-                          class="text-blue-600 hover:text-blue-800 p-1 rounded"
+                          @click="simulateDownload(item.id)"
+                          class="text-blue-600 hover:text-blue-800 p-1 rounded cursor-pointer transition-colors"
                       >
                         <svg
                             class="w-5 h-5"
@@ -118,10 +113,10 @@
                       </button>
                     </td>
                     <td class="py-3 px-4">
-                          <span
-                              class="bg-yellow-400 text-gray-800 px-3 py-1 rounded text-xs font-medium"
-                          >در حال اجرا</span
-                          >
+                        <span
+                            class="bg-yellow-400 text-gray-800 px-3 py-1 rounded text-xs font-medium"
+                        >در حال اجرا</span
+                        >
                     </td>
                     <td class="py-3 px-4 text-sm text-gray-700">
                       {{ item.date }}
@@ -180,15 +175,16 @@
                 <div class="flex justify-center gap-1">
                   <button
                       class="cursor-pointer"
+                      style="font-family: YekanBakh, sans-serif"
                       v-for="page in totalPages"
                       :key="page"
                       @click="currentPage = page"
                       :class="[
-                        'px-3 py-1 rounded text-sm font-medium transition',
-                        currentPage === page
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-200 hover:bg-gray-300 text-gray-700',
-                      ]"
+                      'px-3 py-1 rounded text-sm font-medium transition',
+                      currentPage === page
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-200 hover:bg-gray-300 text-gray-700',
+                    ]"
                   >
                     {{ page }}
                   </button>
@@ -207,52 +203,52 @@
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm text">قسمتی از فضای ورزشی کاظمیان</span>
+                  <span class="text-sm text">مدرسه قرنی</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">ds</span>
+                  <span class="text-sm">انعقاد قرارداد خدمات پشتیبانی مدارس</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">fd</span>
+                  <span class="text-sm">تامین تجهیزات آموزشی هنرستان‌ها</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">dsad</span>
+                  <span class="text-sm">بهینه سازی سیستم گرمایشی مدارس</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">ds</span>
+                  <span class="text-sm">قرارداد تامین اقلام بهداشتی</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">تست</span>
+                  <span class="text-sm">بازسازی سالن‌های ورزشی</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">test</span>
+                  <span class="text-sm">سامانه مدیریت قراردادها (نسخه جدید)</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">dsad</span>
+                  <span class="text-sm">تامین سیستم‌های هوشمند مدارس</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">dsa</span>
+                  <span class="text-sm">نوسازی ناوگان سرویس مدارس</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">test</span>
+                  <span class="text-sm">قرارداد تجهیز کتابخانه‌های آموزشی</span>
                 </div>
               </div>
             </div>
@@ -311,21 +307,16 @@
 
 <script>
 import agreements from "@/data/agreements.js";
+import {toast} from 'vue3-toastify';
 
 export default {
-  name: "MovableProperties",
+  name: "CarTable",
   data() {
     return {
-      isLoading: true,
       agreements,
       currentPage: 1,
       itemsPerPage: 10,
     };
-  },
-  mounted() {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
   },
   computed: {
     mergedAgreements() {
@@ -352,6 +343,12 @@ export default {
   methods: {
     GoToDashboard() {
       this.$router.push({name: "DashBoard"});
+    },
+    simulateDownload(id) {
+      toast.success(`درخواست دریافت فایل قرارداد (شناسه: ${id}) به سرور ارسال شد.`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
   }
 };

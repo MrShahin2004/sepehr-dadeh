@@ -25,7 +25,7 @@
       <div
           class="bg-teal-500 text-white rounded-lg shadow p-4 flex items-center justify-between mb-6 mx-auto max-w-[98%] px-4">
         <span class="text-sm">اطلاعیه های اخیر</span>
-        <span class="px-3 py-1 bg-teal-600 rounded text-sm">admin : کارشناس ثبت</span>
+        <span class="px-3 py-1 bg-teal-600 rounded text-sm">Shahin Hashemi : کارشناس ثبت</span>
       </div>
 
       <!-- Progress (current: 8) -->

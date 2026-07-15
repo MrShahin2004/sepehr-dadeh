@@ -96,7 +96,8 @@
                   >
                     <td class="py-3 px-4">
                       <button
-                          @click="simulateDownload(item.id)" class="text-blue-600 hover:text-blue-800 p-1 rounded cursor-pointer transition-colors"
+                          @click="simulateDownload(item.id)"
+                          class="text-blue-600 hover:text-blue-800 p-1 rounded cursor-pointer transition-colors"
                       >
                         <svg
                             class="w-5 h-5"
@@ -306,7 +307,7 @@
 
 <script>
 import agreements from "@/data/agreements.js";
-import { toast } from 'vue3-toastify';
+import {toast} from 'vue3-toastify';
 
 export default {
   name: "CarTable",

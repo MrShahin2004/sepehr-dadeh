@@ -203,52 +203,52 @@
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm text">قسمتی از فضای ورزشی کاظمیان</span>
+                  <span class="text-sm text">مدرسه قرنی</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">ds</span>
+                  <span class="text-sm">انعقاد قرارداد خدمات پشتیبانی مدارس</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">fd</span>
+                  <span class="text-sm">تامین تجهیزات آموزشی هنرستان‌ها</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">dsad</span>
+                  <span class="text-sm">بهینه سازی سیستم گرمایشی مدارس</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">ds</span>
+                  <span class="text-sm">قرارداد تامین اقلام بهداشتی</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">تست</span>
+                  <span class="text-sm">بازسازی سالن‌های ورزشی</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">test</span>
+                  <span class="text-sm">سامانه مدیریت قراردادها (نسخه جدید)</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">dsad</span>
+                  <span class="text-sm">تامین سیستم‌های هوشمند مدارس</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">dsa</span>
+                  <span class="text-sm">نوسازی ناوگان سرویس مدارس</span>
                 </div>
                 <div
                     class="flex justify-end items-center gap-2 p-2 bg-white/10 rounded"
                 >
-                  <span class="text-sm">test</span>
+                  <span class="text-sm">قرارداد تجهیز کتابخانه‌های آموزشی</span>
                 </div>
               </div>
             </div>

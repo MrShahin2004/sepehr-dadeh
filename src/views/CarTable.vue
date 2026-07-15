@@ -33,7 +33,7 @@
             <!-- Left Panel -->
             <div class="w-64 bg-[#48b3bd] rounded-lg p-4 text-white">
               <div class="text-center mb-4">
-                <h3 class="text-lg font-semibold mb-2">ShahinHashemi : کارشناس ثبت</h3>
+                <h3 class="text-lg font-semibold mb-2">Shahin Hashemi : کارشناس ثبت</h3>
                 <div
                     class="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center"
                 >
